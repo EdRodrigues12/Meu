@@ -18,8 +18,8 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				+ "profissao, estadoCivil, tituloEleitor, zona,"
 				+ "secao, cep, endereco, numero, bairro, complemento,"
 				+ "cidade, uf, foto, dataFalecimento, dataExumacao, horaFalecimento, horaExumacao, localFalecimento,"
-				+ "cartorio, registroObito, crm, causaMorte) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?)";
+				+ "cartorio, registroObito, crm, causaMorte, idade) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?)";
 
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
@@ -63,7 +63,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 			stmt.setDate(30, pzre);
 			stmt.setString(31, f.getCrm());
 			stmt.setString(32, f.getCausamorte());
-
+            stmt.setInt(33, f.getIdade());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
@@ -81,7 +81,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				+ "secao = ?, cep = ?, endereco = ?, numero = ?, bairro = ?, complemento = ?,	"
 				+ "cidade = ?, uf = ?,foto = ?, dataFalecimento = ?, dataExumacao = ?, horaFalecimento = ?,"
 				+ "horaExumacao = ?, localFalecimento = ?,"
-				+ "cartorio = ?, registroObito = ?, crm = ?, causaMorte = ? WHERE cpf = ? ";
+				+ "cartorio = ?, registroObito = ?, crm = ?, causaMorte = ? idade = ? WHERE cpf = ? ";
 
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
@@ -126,6 +126,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 			stmt.setString(30, f.getCrm());
 			stmt.setString(31, f.getCausamorte());
 			stmt.setString(32, f.getCpf());
+			stmt.setInt(33, f.getIdade());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
@@ -202,6 +203,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setDtRegistroObito(rs.getDate("registroObito"));
 				d.setCrm(rs.getString("crm"));
 				d.setCausamorte(rs.getString("causaMorte"));
+				d.setIdade(rs.getInt("idade"));
 				falecidos.add(d);
 			}
 		} catch (SQLException e) {
@@ -256,6 +258,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setDtRegistroObito(rs.getDate("registroObito"));
 				d.setCrm(rs.getString("crm"));
 				d.setCausamorte(rs.getString("causaMorte"));
+				d.setIdade(rs.getInt("idade"));
 			}
 		} catch (SQLException e) {
 			throw new DAOException(e);

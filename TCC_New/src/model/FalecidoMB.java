@@ -40,6 +40,7 @@ public class FalecidoMB {
 	private Jazigo jazigo = new Jazigo();
 	private List<Jazigo> list = new ArrayList<Jazigo>();
 	private StreamedContent imagem;
+	private String dono;
 	
 	public String adicionar() throws DAOException {;
 		falecidoDao.adicionar(falecido);
@@ -75,11 +76,9 @@ public class FalecidoMB {
 	}
 	
 	public String carregaJazigos() throws DAOException{
-		int codigo = falecido.getCodJazigo();
+		//int codigo = falecido.getCodJazigo();
 		//int txtNumero = (int) nomeText.getValue();
-		
-		jazigo = new Jazigo();
-		jazigo = jazigoDao.pesquisarUmJazigo(codigo);
+		setList(jazigoDao.pesquisarDono(dono));
 		return "";
 		
 	}
@@ -161,6 +160,14 @@ public class FalecidoMB {
 
 	public void setNomeText(HtmlInputText nomeText) {
 		this.nomeText = nomeText;
+	}
+
+	public String getDono() {
+		return dono;
+	}
+
+	public void setDono(String dono) {
+		this.dono = dono;
 	}
 
 	

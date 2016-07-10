@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBResourceManager {
 	private static String JDBC_DRIVER = "net.sourceforge.jtds.jdbc.Driver";
-	private static String JDBC_URL = "jdbc:jtds:sqlserver://127.0.0.1:1433;DatabaseName=BD_cemiterio4;namedPipes=true";
+	private static String JDBC_URL = "jdbc:jtds:sqlserver://127.0.0.1:1433;DatabaseName=BD_cemiterio5;namedPipes=true";
 	private static String USER = "root";
 	private static String PASSWORD = "root";
 

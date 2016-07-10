@@ -36,7 +36,7 @@ public class Falecido {
 	private Date dtRegistroObito;
 	private String crm;
 	private String causamorte;
-	
+	private int idade;
 
 	public String getCpfDeclarante() {
 		return cpfDeclarante;
@@ -292,6 +292,14 @@ public class Falecido {
 
 	public void setCausamorte(String causamorte) {
 		this.causamorte = causamorte;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 	

@@ -12,6 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sun.xml.internal.ws.util.UtilException;
+
 import dao.DAOException;
 import dao.DBResourceManager;
 import dao.JazigoDAO;
@@ -63,7 +66,7 @@ public class RelatorioMB {
 				sos.flush();
 				sos.close();
 			}else{
-				
+				throw new UtilException("Não foi possível gerar o relatório.", erro);
 				
 			}
 		}
