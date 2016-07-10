@@ -199,7 +199,7 @@ public class JazigoDAOImpl implements JazigoDAO {
 
 	@Override
 	public List<Jazigo> pesquisarDono(String dono) throws DAOException {
-		String sql = "SELECT * FROM jazigo WHERE numero dono ? ";
+		String sql = "SELECT * FROM jazigo WHERE dono ? ";
 		List<Jazigo> jazigos = new ArrayList<Jazigo>();
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
