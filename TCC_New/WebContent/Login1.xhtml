@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Login</title>
+<link href="style\estiloLg.css" rel="stylesheet" type="text/css"/>
+<script>
+		function validador(){
+			if(document.getElementById("txtUsuario").value == ""){
+					alert("O campo nome esta em branco");
+				}	
+			if(document.getElementById("txtSenha").value == ""){
+					alert("O campo senha esta em branco");
+				}
+			}
+		</script>
+</head>
+<body>
+<h:form id="formBody">
+<p:messages showSummary="true" 
+			showDetail="false" 
+			toolTip="true"
+			infoStyle="color:blue;"
+			layoult="table"
+			for="formBody"/>
+	<h:panelGrid columns="2">
+		<h:outputText value="UserID: "/>
+		
+		<h:inputText id="txtUsuario" value="#{loginMB.id}"/>
+		<h:message for="txtUsuario"/>
+		<h:panelGroup/>
+		<h:outputText value="Senha: "/>
+		<h:inputSecret id="txtSenha" value="#{loginMB.senha}"/>
+		<h:message for="txtSenha"/>
+		<h:panelGroup/>		
+		<h:commandButton value="Logar" action="#{loginMB.logar}"/>
+				
+	</h:panelGrid>
+	
+</h:form>
+<div id="container">
+			<form>
+				
+				<div class= "meuestilo"><center><b> Faça o Login: </b></center></div>
+				
+				<h:outputText value="UserID: "/>
+		
+				<h:inputText id="txtUsuario" value="#{loginMB.id}"/>
+				<h:message for="txtUsuario"/>
+				<h:panelGroup/>
+				<h:outputText value="Senha: "/>
+				<h:inputSecret id="txtSenha" value="#{loginMB.senha}"/>
+				<h:message for="txtSenha"/>
+				<h:panelGroup/>		
+				
+				<p><a href="#">Esqueceu sua senha?</a></p>				
+				
+				<div id="lower">
+					<div class="t1"><input type="checkbox"/></div><label class="check" for="checkbox">Continuar conectado</label>
+				</div>
+					<br/>
+						<center><input type="image"  src="images/botao_login.png"  value="Login" onclick="validador()"/></center>
+										
+			</form>
+		</div>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DataExumacao" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="74435f19-a21a-416f-9727-8f1045cd3466">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="rua" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select rua,quadra,numero from jazigo where rua = $P{rua}]]>
+	</queryString>
+	<field name="rua" class="java.lang.String"/>
+	<field name="quadra" class="java.lang.String"/>
+	<field name="numero" class="java.lang.Integer"/>
+	<group name="Group2">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="c4661503-f8ef-4015-b32b-6f4653daa166"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="3a074fe9-7006-4ae0-8860-11846e9a8d36"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Jazigo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="9001d6a4-fdc6-4855-ad5a-f05093e6d16b"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Jazigos por rua]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22">
+			<line>
+				<reportElement x="-20" y="21" width="595" height="1" forecolor="#666666" uuid="2c4ed41c-1d04-40e9-84bd-afcf21ceb113"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="-20" y="1" width="203" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2e61c6ed-7fd4-4142-aa13-0be1510806e4"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="366" y="1" width="209" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1fd8aaad-f51e-4412-a80e-a749d0faa551"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="183" y="1" width="183" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8027c34b-25cd-4c8a-9b14-4238b1ccc67c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quadra]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1" uuid="1259f8d2-8bc1-475c-a6cf-536ea337525b"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="1" width="183" height="20" uuid="55e4c457-c1c1-4c85-acac-88c665417f1d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rua}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="1" width="183" height="20" uuid="acedd074-22de-4a9d-98ea-47dbed212575"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quadra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="1" width="189" height="20" uuid="3d737d80-ead2-41f6-aef5-c175753ef3b5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="123">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="110" width="515" height="13" backcolor="#E6E6E6" uuid="7639c2b8-9deb-4a0c-b9d4-d43d07ca4df7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="110" width="40" height="13" backcolor="#E6E6E6" uuid="e4e29fd7-6a97-4501-824d-b89ad0013376"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="110" width="100" height="13" uuid="be00f117-9392-42ca-9fcc-49f374b26737"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
