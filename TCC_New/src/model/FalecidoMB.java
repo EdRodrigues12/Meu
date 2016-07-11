@@ -78,7 +78,7 @@ public class FalecidoMB {
 	public String carregaJazigos() throws DAOException{
 		//int codigo = falecido.getCodJazigo();
 		//int txtNumero = (int) nomeText.getValue();
-		setList(jazigoDao.pesquisarDono(dono));
+		//setList(jazigoDao.pesquisarDono(dono));
 		return "";
 		
 	}

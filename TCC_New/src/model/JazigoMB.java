@@ -38,10 +38,6 @@ public class JazigoMB {
 			return "";
 		}
 		
-		public String atualizarDono() throws DAOException {
-			jazigoDao.atualizarDono(jazigo);;
-			return "";
-		}
 
 		public String deletar() throws DAOException {
 			jazigoDao.deletar(jazigo.getCodigo());

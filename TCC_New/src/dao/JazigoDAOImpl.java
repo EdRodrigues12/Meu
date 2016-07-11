@@ -97,7 +97,6 @@ public class JazigoDAOImpl implements JazigoDAO {
 				j.setQuadra(rs.getString("quadra"));
 				j.setGaveta(rs.getInt("gaveta"));
 				j.setNumero(rs.getInt("numero"));
-				j.setDono(rs.getString("dono"));
 				jazigos.add(j);
 			}
 		} catch (SQLException e) {
@@ -127,7 +126,6 @@ public class JazigoDAOImpl implements JazigoDAO {
 				j.setQuadra(rs.getString("quadra"));
 				j.setGaveta(rs.getInt("gaveta"));
 				j.setNumero(rs.getInt("numero"));
-				j.setDono(rs.getString("dono"));
 				j.setCodigo(rs.getInt("codigo"));
 				
 
@@ -161,7 +159,6 @@ public class JazigoDAOImpl implements JazigoDAO {
 				j.setQuadra(rs.getString("quadra"));
 				j.setGaveta(rs.getInt("gaveta"));
 				j.setNumero(rs.getInt("numero"));
-				j.setDono(rs.getString("dono"));
 				jazigos.add(j);
 			}
 		} catch (SQLException e) {
@@ -172,57 +169,4 @@ public class JazigoDAOImpl implements JazigoDAO {
 		return jazigos;
 	}
 
-
-	@Override
-	public void atualizarDono(Jazigo j) throws DAOException {
-		String sql = "UPDATE jazigo SET dono = ? WHERE codigo = ?";
-		try {
-			Connection con = DBResourceManager.getInstance().getCon();
-			PreparedStatement stmt = con.prepareStatement(sql);
-
-			//stmt.setString(1, j.getRua());
-			//stmt.setString(2, j.getQuadra());
-			//stmt.setInt(3, j.getGaveta());
-			//stmt.setInt(4, j.getNumero());
-			stmt.setString(1, j.getDono());
-			stmt.setInt(2, j.getCodigo());
-			stmt.executeUpdate();
-			stmt.close();
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		} catch (ClassNotFoundException e) {
-			throw new DAOException(e);
-		}
-		
-	}
-
-
-	@Override
-	public List<Jazigo> pesquisarDono(String dono) throws DAOException {
-		String sql = "SELECT * FROM jazigo WHERE dono ? ";
-		List<Jazigo> jazigos = new ArrayList<Jazigo>();
-		try {
-			Connection con = DBResourceManager.getInstance().getCon();
-			PreparedStatement stmt = con.prepareStatement(sql);
-
-			stmt.setString(1, "%" + dono + "%");
-			ResultSet rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				Jazigo j = new Jazigo();
-				j.setCodigo(rs.getInt("codigo"));
-				j.setRua(rs.getString("rua"));
-				j.setQuadra(rs.getString("quadra"));
-				j.setGaveta(rs.getInt("gaveta"));
-				j.setNumero(rs.getInt("numero"));
-				j.setDono(rs.getString("dono"));
-				jazigos.add(j);
-			}
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		} catch (ClassNotFoundException e) {
-			throw new DAOException(e);
-		}
-		return jazigos;
-	}
 }

@@ -17,9 +17,5 @@ public interface JazigoDAO {
 
 	public Jazigo pesquisarUmJazigo(int numerojazigo) throws DAOException;
 	
-	public void atualizarDono(Jazigo j) throws DAOException;
 	
-	public List<Jazigo> pesquisarDono(String dono) throws DAOException;
-	
-
 }

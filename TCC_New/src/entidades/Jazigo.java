@@ -5,7 +5,6 @@ public class Jazigo {
 	private int codigo;
 	private String rua;
 	private String quadra;
-	private String dono;
 	private int gaveta;
 	private int numero;
 
@@ -49,13 +48,7 @@ public class Jazigo {
 		this.numero = numJazigo;
 	}
 
-	public String getDono() {
-		return dono;
-	}
-
-	public void setDono(String dono) {
-		this.dono = dono;
-	}
+	
 	
 	
 

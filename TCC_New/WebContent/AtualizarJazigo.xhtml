@@ -38,8 +38,8 @@
     <p:submenu label="Adicionar" icon="ui-icon-floppy">
         <p:column>
             <p:submenu label="Jazigo">
-                <p:menuitem value="Adicionar" url="AdicionarJazigo.xhtml" />
-                
+                <p:menuitem value="Adicionar Jazigo" url="AdicionarJazigo.xhtml" />
+                <p:menuitem value="Adicionar Dono Jazigo" url="AdicionarDonoJazigo.xhtml" />
             </p:submenu>
             <p:submenu label="Declarante">
                 <p:menuitem value="Adicionar" url="AdicionarDeclarante.xhtml" />
@@ -75,7 +75,8 @@
  
         <p:column>
             <p:submenu label="Jazigo">
-                <p:menuitem value="Pesquisar" url="PesquisarJazigo.xhtml" />
+                <p:menuitem value="Pesquisar Jazigo" url="PesquisarJazigo.xhtml" />
+                 <p:menuitem value="Pesquisar Dono Jazigo" url="PesquisarDonoJazigo.xhtml" />
                 
             </p:submenu>
             <p:submenu label="Declarante">
@@ -106,7 +107,8 @@
     <p:submenu label="Atualizar" icon="ui-icon-floppy">
         <p:column>
             <p:submenu label="Jazigo">
-                <p:menuitem value="Atualizar" url="AtualizarJazigo.xhtml" />
+                <p:menuitem value="Atualizar Jazigo" url="AtualizarJazigo.xhtml" />
+                <p:menuitem value="Atualizar Dono Jazigo" url="AtualizarDonoJazigo.xhtml" />
                 
             </p:submenu>
             <p:submenu label="Declarante">
@@ -130,8 +132,8 @@
     <p:submenu label="Deletar" icon="ui-icon-bitbucket">
         <p:column>
             <p:submenu label="Jazigo">
-                <p:menuitem value="Deletar" url="DeletarJazigo.xhtml" />
-                
+                <p:menuitem value="Deletar Jazigo" url="DeletarJazigo.xhtml" />
+                <p:menuitem value="Deletar Dono Jazigo" url="DeletarDonoJazigo.xhtml" />
             </p:submenu>
             <p:submenu label="Declarante">
                 <p:menuitem value="Deletar" url="DeletarDeclarante.xhtml" />
@@ -148,6 +150,27 @@
             <p:submenu label="Usuário">
                 <p:menuitem value="Deletar" url="DeletarUsuario.xhtml" />
             </p:submenu>
+        </p:column>
+    </p:submenu>
+    
+    <p:submenu label="Relatório" icon="ui-icon-bitbucket">
+        <p:column>
+            <p:submenu label="Data Falecimento">
+                <p:menuitem value="Gerar" url="" />
+                
+            </p:submenu>
+            <p:submenu label="Data Exumação">
+                <p:menuitem value="Gerar" url="" />
+                
+            </p:submenu>
+            <p:submenu label="Jazigo">
+                <p:menuitem value="Gerar" url="RelatJazigoRua.xhtml" />
+                
+            </p:submenu>
+            <p:submenu label="Velório">
+                <p:menuitem value="Gerar" url="" />
+            </p:submenu>
+            
         </p:column>
     </p:submenu>
  
