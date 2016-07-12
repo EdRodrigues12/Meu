@@ -395,17 +395,17 @@
 <h:panelGrid columns="2">
   	
     <p:outputLabel value="Dono :"/>
-    <p:inputText  id="dono" 
+    <p:inputText  id="nome" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.dono}">
+	value="#{donoMB.dj.nome}">
 	</p:inputText>
   	
 </h:panelGrid>
 <br />
 <p:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Ver Jazigo"  actionListener="#{falecidoMB.carregaJazigos}" onclick="Enviar1()"  /> 
+						   <p:commandButton value="Ver Jazigo"  actionListener="#{donoMB.pesquisar}" onclick="Enviar1()"  /> 
 							</h:panelGroup>
 					</p:panelGrid>
 		<br />			

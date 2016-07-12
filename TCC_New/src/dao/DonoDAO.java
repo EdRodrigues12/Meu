@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import entidades.Dono;
+import entidades.DonoJazigo;
 
 public interface DonoDAO {
 	
@@ -17,6 +18,10 @@ public interface DonoDAO {
 	public Dono pesquisarDonoCpf(String cpf) throws DAOException;
 	
 	public boolean deletarJazigo(int codigo) throws DAOException;
+	
+	public List<DonoJazigo> pesquisarJazigo(String dono) throws DAOException;
+	
+	
 
 	
 

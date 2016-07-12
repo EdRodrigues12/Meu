@@ -199,7 +199,7 @@
 <br />
 <p:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  actionListener="#{jazigoMB.pesquisar}" ajax = "false"/> 
+						   <p:commandButton value="Pesquisar"  actionListener="#{jazigoMB.pesquisar}" onclick="Enviar1()"/> 
 							</h:panelGroup>
 					</p:panelGrid>
 </h:form>
@@ -209,34 +209,29 @@
 <div align="center">
 			<div class="texto">
 				<h:form>
-				<h:panelGrid columns="2" value="#{jazigoMB.jazigo}">
-	<p:outputLabel value="Rua :" />
-    <p:inputText  id="txtRuaA" 
-	value="#{jazigoMB.jazigo.rua}">
+				<h:panelGrid columns="2">
+	<p:outputLabel value="Código Jazigo :" />
+    <p:inputText  id="txtCod" 
+	value="#{donoMB.dono.codJazigo}">
     </p:inputText>
-    <p:outputLabel value="Quadra :"/>
-    <p:inputText  id="txtQuadraA"
-	value="#{jazigoMB.jazigo.quadra}"> 
+    <p:outputLabel value="Nome :"/>
+    <p:inputText  id="txtNome"
+	value="#{donoMB.dono.nome}"> 
 	</p:inputText>
-    <p:outputLabel value="GavetaA :"/>
-    <p:inputText id="txtGaveta" 
-	value="#{jazigoMB.jazigo.gaveta}">
-	</p:inputText>
-    <p:outputLabel value="N° :"/>
-    <p:inputText  id="txtNumeroAT" 
-	value="#{jazigoMB.jazigo.numero}">
-	</p:inputText>
+    <p:outputLabel value="CPF Declarante :" />
+    <p:inputMask id="txtCPF" mask="999.999.999-99" 
+    onBlur="ValidarCPF(txtCPF);" 
+    onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{donoMB.dono.cpf}">
+    </p:inputMask>
 	
-    <p:outputLabel value="Dono :"/>
-    <p:inputText  id="txtdono" 
-	value="#{jazigoMB.jazigo.dono}">
-	</p:inputText>
-  	
 </h:panelGrid>
 <br />
 <p:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Adicionar"  action="#{jazigoMB.atualizarDono}" ajax = "false" /> 
+						   <p:commandButton value="Adicionar"  action="#{donoMB.adicionar}" ajax = "false" /> 
 							</h:panelGroup>
 					</p:panelGrid>
 				</h:form>
@@ -255,5 +250,10 @@
 				</center>
 			</p>
 		</div>
+		<script language="JavaScript" type="text/javascript">
+		function Enviar1(){
+window.open('Jazigos.xhtml','Jazigo','scrollbars=yes, menubar=yes, status=yes, resizable=no, width=250px, height=250px, left=10px, top=10px')
+		}
+</script>
 </h:body>
 </html>
