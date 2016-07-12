@@ -36,7 +36,7 @@ public class DonoMB {
 	}
 
 	public String pesquisar() throws DAOException {
-		setList(donoDao.pesquisarJazigo(dj.getNome()));
+		setList(donoDao.pesquisarJazigo(dono.getNome()));
 		return "";
 	}
 	

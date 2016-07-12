@@ -5,8 +5,14 @@ public class Dono {
 	private String cpf;
 	private String nome;
 	private int codJazigo;
+	private Jazigo jazigo;
 	
-	
+	public Jazigo getJazigo() {
+		return jazigo;
+	}
+	public void setJazigo(Jazigo jazigo) {
+		this.jazigo = jazigo;
+	}
 	public String getCpf() {
 		return cpf;
 	}
