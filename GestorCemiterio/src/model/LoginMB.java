@@ -24,6 +24,7 @@ public class LoginMB {
 	private List<Usuario> lista = new ArrayList<Usuario>();
 	private String id;
 	private String senha;
+	private boolean logado = false;
 
 	public String adicionar() throws DAOExceptionLG {;
 		usuarioDao.adicionar(user);
@@ -55,7 +56,7 @@ public class LoginMB {
 		if(usuarioDao.verificar(id)==true && 
 				usuarioDao.password(id).equals(senha)){
 				//if(usuarioDao.verNivel(user.getId()).equals("Administrador")){
-		pagina = "Index?faces-redirect=true";
+		pagina = "index?faces-redirect=true";
 	
 		}else{
 			
@@ -110,7 +111,12 @@ public class LoginMB {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+	public boolean isLogado() {
+		return logado;
+	}
+	public void setLogado(boolean logado) {
+		this.logado = logado;
+	}
 	
 
 }
