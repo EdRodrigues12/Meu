@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Início da TAG HTML -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<!-- Início da TAG HEAD -->
+<h:head>
+	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
+	<link href="style\estilo.css" rel="stylesheet" type="text/css"/>
+	<title>
+		SGC - Adicionar Declarante
+	</title>
+</h:head>
+<!-- Fim da TAG HEAD -->
+<!-- Início da TAG BODY -->
+<h:body>
+	<!-- Início da DIV CORPO -->
+	<div id="corpo">
+		<!-- Início da DIV CABEÇALHO -->
+		<div id="cabeçalho">
+			<!-- Início da DIV LOGO -->
+			<div id="logo">
+				<h1>
+					<p:graphicImage url="img/bgzin.png" width="960" height="193"/>
+				</h1>
+			</div>
+			<!-- Fim da DIV LOGO -->
+		</div>
+		<!-- Fim da DIV CABEÇALHO -->
+		<!-- Início da DIV MENU -->
+		<div id="menu">
+			<ul>
+				<li>
+					<h:outputLink value="index.xhtml">
+						<f:verbatim>HOME</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuAdmin.xhtml">
+						<f:verbatim>ADMINISTRADOR</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuCola.xhtml">
+						<f:verbatim>COLABORADORES</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuDecla.xhtml">
+						<f:verbatim>DECLARANTE</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuFal.xhtml">
+						<f:verbatim>FALECIDO</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuJaz.xhtml">
+						<f:verbatim>JAZIGO</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuRela.xhtml">
+						<f:verbatim>RELATÓRIOS</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuVelo.xhtml">
+						<f:verbatim>VELÓRIO</f:verbatim>
+					</h:outputLink>
+				</li>
+			</ul>
+		</div>
+		<!-- Fim da DIV MENU -->
+		<!-- Início da DIV WELCOME -->
+		<div id="welcome">
+			<h2>
+				<p:outputLabel value="Adicionar Declarante" />
+			</h2>
+			<!-- Início da DIV TEXTO -->
+			<div class="texto">
+				<h:form>
+	<h:panelGrid columns="2">
+	<p:outputLabel value="CPF :" />
+    <p:inputMask id="txtCPF" mask="999.999.999-99" 
+    onBlur="ValidarCPF(txtCPF);" 
+    onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.cpf}">
+    </p:inputMask>
+    <p:outputLabel value="Nascimento :"/>
+    <p:calendar  effect="fold"  
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.nascimento}"> 
+	</p:calendar>
+    <p:outputLabel value="Nome :"/>
+    <p:inputText id="txtNome" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.nome}">
+	</p:inputText>
+    <p:outputLabel value="RG :"/>
+    <p:inputMask  id="txtRG" mask="999.999.999-9"
+    maxlength="13"
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.rg}">
+	</p:inputMask>
+	<p:outputLabel value="Sexo: " />
+	<p:selectOneMenu id="cbbSexo" value="#{declaranteMB.declarante.sexo}"
+							style="comboBox">
+							<f:selectItem itemValue="F" itemLabel="Feminino" />
+							<f:selectItem itemValue="M" itemLabel="Masculino" />
+						</p:selectOneMenu>
+	<p:outputLabel value="CEP :"/>
+	<p:inputMask  id="txtCEP" mask="99999-999"
+    maxlength="9"
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.cep}">
+	</p:inputMask>
+	<p:outputLabel value="Endereço :"/>
+    <p:inputText id="txtEndereco" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.endereco}">
+	</p:inputText>
+	<p:outputLabel value="N° :"/>
+    <p:inputText id="txtN" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.numero}">
+	</p:inputText>
+	<p:outputLabel value="Complemento :"/>
+    <p:inputText id="txtComplemento" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.complemento}">
+	</p:inputText>
+	<p:outputLabel value="Bairro :"/>
+    <p:inputText id="txtBairro" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.bairro}">
+	</p:inputText>
+	<p:outputLabel value="Cidade :"/>
+    <p:inputText id="txtCidade" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.cidade}">
+	</p:inputText>
+	<p:outputLabel value="UF: " />
+	<p:selectOneMenu id="cbbUF" value="#{declaranteMB.declarante.uf}"
+							style="comboBox">
+							<f:selectItem itemValue="AL" itemLabel="AL" />
+							<f:selectItem itemValue="AM" itemLabel="AM" />
+							<f:selectItem itemValue="AP" itemLabel="AP" />
+							<f:selectItem itemValue="BA" itemLabel="BA" />
+							<f:selectItem itemValue="CE" itemLabel="CE" />
+							<f:selectItem itemValue="DF" itemLabel="DF" />
+							<f:selectItem itemValue="ES" itemLabel="ES" />
+							<f:selectItem itemValue="GO" itemLabel="GO" />
+							<f:selectItem itemValue="MA" itemLabel="MA" />
+							<f:selectItem itemValue="MG" itemLabel="MG" />
+							<f:selectItem itemValue="MS" itemLabel="MS" />
+							<f:selectItem itemValue="MT" itemLabel="MT" />
+							<f:selectItem itemValue="PA" itemLabel="PA" />
+							<f:selectItem itemValue="PE" itemLabel="PE" />
+							<f:selectItem itemValue="PB" itemLabel="PB" />
+							<f:selectItem itemValue="PR" itemLabel="PR" />
+							<f:selectItem itemValue="PI" itemLabel="PI" />
+							<f:selectItem itemValue="RJ" itemLabel="RJ" />
+							<f:selectItem itemValue="RN" itemLabel="RN" />
+							<f:selectItem itemValue="RO" itemLabel="RO" />
+							<f:selectItem itemValue="RS" itemLabel="RS" />
+							<f:selectItem itemValue="RR" itemLabel="RR" />
+							<f:selectItem itemValue="SC" itemLabel="SC" />
+							<f:selectItem itemValue="SE" itemLabel="SE" />
+							<f:selectItem itemValue="SP" itemLabel="SP" />
+							<f:selectItem itemValue="TO" itemLabel="TO" />
+						</p:selectOneMenu>
+	<p:outputLabel value="Profissão :"/>
+    <p:inputText id="txtProfissao" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.profissao}">
+	</p:inputText>
+	<p:outputLabel value="Parentesco: " />
+	<p:selectOneMenu id="cbbParentesco" value="#{declaranteMB.declarante.parentesco}"
+							style="comboBox">
+							<f:selectItem itemValue="Avó" itemLabel="Avó" />
+							<f:selectItem itemValue="Avô" itemLabel="Avô" />
+							<f:selectItem itemValue="Esposa" itemLabel="Esposa" />
+							<f:selectItem itemValue="Filho" itemLabel="Filho" />
+							<f:selectItem itemValue="Madrasta" itemLabel="Madrasta" />
+							<f:selectItem itemValue="Madrinha" itemLabel="Madrinha" />
+							<f:selectItem itemValue="Mãe" itemLabel="Mãe" />
+							<f:selectItem itemValue="Marido" itemLabel="Marido" />
+							<f:selectItem itemValue="Neto" itemLabel="Neto" />
+							<f:selectItem itemValue="Padrasto" itemLabel="Padrasto" />
+							<f:selectItem itemValue="Padrinho" itemLabel="Padrinho" />
+							<f:selectItem itemValue="Pai" itemLabel="Pai" />
+							<f:selectItem itemValue="Primo" itemLabel="Primo" />
+							<f:selectItem itemValue="Sobrinho" itemLabel="Sobrinho" />
+							<f:selectItem itemValue="Tio" itemLabel="Tio" />
+							<f:selectItem itemValue="Tia" itemLabel="Tia" />
+							<f:selectItem itemValue="Outro" itemLabel="Outro" />
+							
+						</p:selectOneMenu>
+						
+	<p:outputLabel value="Telefone :"/>
+	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
+    maxlength="13"
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.telefone}">
+	</p:inputMask>
+	<p:outputLabel value="Celular :"/>
+	<p:inputMask  id="txtCelular" mask="(99)99999-9999"
+    maxlength="14"
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.celular}">
+	</p:inputMask>
+	<p:outputLabel value="Email :"/>
+    <p:inputText id="txtEmail" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{declaranteMB.declarante.email}">
+	</p:inputText>
+  	
+</h:panelGrid>
+<br />
+<p:panelGrid>
+						<h:panelGroup>
+						   <p:commandButton value="Adicionar"  action="#{declaranteMB.adicionar}" ajax = "false" /> 
+							</h:panelGroup>
+					</p:panelGrid>
+					<h:panelGrid>
+						<h:panelGroup>
+							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
+						</h:panelGroup>
+					</h:panelGrid>
+				</h:form>
+				<p/>
+			</div>
+			<!-- Fim da DIV TEXTO -->
+			<!-- Início da DIV RODAPÉ -->
+			<div id="rodapé">
+				<p align="center">
+						2016 © -TODOS OS DIREITOS RESERVADOS POR SHEEP
+						SOFTWARE COMPANY
+				</p>
+			</div>
+			<!-- Fim da DIV RODAPÉ -->
+		</div>
+		<!-- Fim da DIV WELCOME -->
+	</div>
+	<!-- Fim da DIV CORPO -->
+</h:body>
+<!-- Fim da TAG BODY -->
+</html>
+<!-- Fim da TAG HTML -->

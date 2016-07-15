@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Início da TAG HTML -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<!-- Início da TAG HEAD -->
+<h:head>
+	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
+	<link href="style\estilo.css" rel="stylesheet" type="text/css"/>
+	<title>
+		SGC - Deletar Declarante
+	</title>
+</h:head>
+<!-- Fim da TAG HEAD -->
+<!-- Início da TAG BODY -->
+<h:body>
+	<!-- Início da DIV CORPO -->
+	<div id="corpo">
+		<!-- Início da DIV CABEÇALHO -->
+		<div id="cabeçalho">
+			<!-- Início da DIV LOGO -->
+			<div id="logo">
+				<h1>
+					<p:graphicImage url="img/bgzin.png" width="960" height="193"/>
+				</h1>
+			</div>
+			<!-- Fim da DIV LOGO -->
+		</div>
+		<!-- Fim da DIV CABEÇALHO -->
+		<!-- Início da DIV MENU -->
+		<div id="menu">
+			<ul>
+				<li>
+					<h:outputLink value="index.xhtml">
+						<f:verbatim>HOME</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuAdmin.xhtml">
+						<f:verbatim>ADMINISTRADOR</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuCola.xhtml">
+						<f:verbatim>COLABORADORES</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuDecla.xhtml">
+						<f:verbatim>DECLARANTE</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuFal.xhtml">
+						<f:verbatim>FALECIDO</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuJaz.xhtml">
+						<f:verbatim>JAZIGO</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuRela.xhtml">
+						<f:verbatim>RELATÓRIOS</f:verbatim>
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuVelo.xhtml">
+						<f:verbatim>VELÓRIO</f:verbatim>
+					</h:outputLink>
+				</li>
+			</ul>
+		</div>
+		<!-- Fim da DIV MENU -->
+		<!-- Início da DIV WELCOME -->
+		<div id="welcome">
+			<h2>
+				<p:outputLabel value="Deletar Declarante" />
+			</h2>
+			<!-- Início da DIV TEXTO -->
+			<div class="texto">
+				<h:form>
+	<h:panelGrid columns="2">
+  	
+     <p:outputLabel value="CPF :" />
+    <p:inputMask id="txtCPF" mask="999.999.999-99"
+    required="true"
+	requiredMessage="Campo Obrigatorio" 
+	value="#{declaranteMB.declarante.cpf}">
+    </p:inputMask>
+  	
+</h:panelGrid>
+<br />
+<p:panelGrid>
+						<h:panelGroup>
+						   <p:commandButton value="Pesquisar"  action="#{declaranteMB.pesquisar}" ajax = "false"/> 
+							</h:panelGroup>
+					</p:panelGrid>
+</h:form>
+</div>
+</div>			
+<div id="welcome">
+			
+<div class="texto">
+
+<h:form  >
+
+<h:panelGrid columns="2">
+  	
+   
+    <p:outputLabel value="Nascimento :"/>
+    <p:calendar  effect="fold" 
+	value="#{declaranteMB.declarante.nascimento}"> 
+	</p:calendar>
+    <p:outputLabel value="Nome :"/>
+    <p:inputText id="txtNome"
+	value="#{declaranteMB.declarante.nome}">
+	</p:inputText>
+    <p:outputLabel value="RG :"/>
+    <p:inputMask  id="txtRG" mask="999.999.999-9"
+    maxlength="13"
+	value="#{declaranteMB.declarante.rg}">
+	</p:inputMask>
+	<p:outputLabel value="Sexo :"/>
+    <p:inputText id="txtSexo" 
+	value="#{declaranteMB.declarante.sexo}">
+	</p:inputText>
+	<p:outputLabel value="CEP :"/>
+	<p:inputMask  id="txtCEP" mask="99999-999"
+    maxlength="9"
+	value="#{declaranteMB.declarante.cep}">
+	</p:inputMask>
+	<p:outputLabel value="Endereço :"/>
+    <p:inputText id="txtEndereco" 
+	value="#{declaranteMB.declarante.endereco}">
+	</p:inputText>
+	<p:outputLabel value="N° :"/>
+    <p:inputText id="txtN"
+	value="#{declaranteMB.declarante.numero}">
+	</p:inputText>
+	<p:outputLabel value="Complemento :"/>
+    <p:inputText id="txtComplemento" 
+	value="#{declaranteMB.declarante.complemento}">
+	</p:inputText>
+	<p:outputLabel value="Bairro :"/>
+    <p:inputText id="txtBairro" 
+	value="#{declaranteMB.declarante.bairro}">
+	</p:inputText>
+	<p:outputLabel value="Cidade :"/>
+    <p:inputText id="txtCidade"
+	value="#{declaranteMB.declarante.cidade}">
+	</p:inputText>
+	<p:outputLabel value="UF :"/>
+    <p:inputText id="txtUF" 
+	value="#{declaranteMB.declarante.uf}">
+	</p:inputText>
+	<p:outputLabel value="Profissão :"/>
+    <p:inputText id="txtProfissao" 
+	value="#{declaranteMB.declarante.profissao}">
+	</p:inputText>
+	<p:outputLabel value="Parentesco :"/>
+    <p:inputText id="txtParentesco" 
+	value="#{declaranteMB.declarante.parentesco}">
+	</p:inputText>				
+	<p:outputLabel value="Telefone :"/>
+	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
+    maxlength="13"
+	value="#{declaranteMB.declarante.telefone}">
+	</p:inputMask>
+	<p:outputLabel value="Celular :"/>
+	<p:inputMask  id="txtCelular" mask="(99)99999-9999"
+    maxlength="14"
+	value="#{declaranteMB.declarante.celular}">
+	</p:inputMask>
+	<p:outputLabel value="Email :"/>
+    <p:inputText id="txtEmail"
+	value="#{declaranteMB.declarante.email}">
+	</p:inputText>
+  	
+</h:panelGrid>
+<br />
+<p:panelGrid>
+						<h:panelGroup>
+						   <p:commandButton value="Deletar"  action="#{declaranteMB.deletar}" ajax = "false" /> 
+							</h:panelGroup>
+					</p:panelGrid>
+					<h:panelGrid>
+						<h:panelGroup>
+							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
+						</h:panelGroup>
+					</h:panelGrid>
+				</h:form>
+				<p/>
+			</div>
+			<!-- Fim da DIV TEXTO -->
+			<!-- Início da DIV RODAPÉ -->
+			<div id="rodapé">
+				<p align="center">
+						2016 © -TODOS OS DIREITOS RESERVADOS POR SHEEP
+						SOFTWARE COMPANY
+				</p>
+			</div>
+			<!-- Fim da DIV RODAPÉ -->
+		</div>
+		<!-- Fim da DIV WELCOME -->
+	</div>
+	<!-- Fim da DIV CORPO -->
+</h:body>
+<!-- Fim da TAG BODY -->
+</html>
+<!-- Fim da TAG HTML -->

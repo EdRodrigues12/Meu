@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+     
+    <h:head>
+        <title>Jazigo</title>
+        <style type="text/css">
+            .ui-widget {
+                font-size: 70%;
+                width: 100 ;
+                height:100;
+            }
+        </style>
+    </h:head>
+     
+    <h:body>
+        <i id="customheader" class="fa fa-fw fa-car" style="display:none"></i>
+ 
+        <p:dataTable var="donoJazigo" value="#{donoMB.list}">
+            <p:column headerText="Código Jazigo">
+                <h:outputText value="#{donoJazigo.codigo}" />
+            </p:column>
+            
+            <p:column headerText="Rua">
+                <h:outputText value="#{donoJazigo.rua}" />
+            </p:column>
+ 
+            <p:column headerText="Quadra">
+                <h:outputText value="#{donoJazigo.quadra}" />
+            </p:column>
+ 
+            <p:column headerText="N°">
+                <h:outputText value="#{donoJazigo.numero}" />
+            </p:column>
+ 
+            <p:column headerText="Gaveta">
+                <h:outputText value="#{donoJazigo.gaveta}" />
+            </p:column>
+            
+             <p:column headerText="C.P.F">
+                <h:outputText value="#{donoJazigo.cpf}" />
+            </p:column>
+            
+            <p:column headerText="Dono">
+                <h:outputText value="#{donoJazigo.nome}" />
+            </p:column>
+        </p:dataTable>
+    </h:body>
+     
+</html>
