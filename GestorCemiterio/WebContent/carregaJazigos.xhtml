@@ -17,34 +17,34 @@
     <h:body>
         <i id="customheader" class="fa fa-fw fa-car" style="display:none"></i>
  
-        <p:dataTable var="donoJazigo" value="#{donoMB.list}">
+        <p:dataTable var="dono" value="#{donoMB.lista}">
             <p:column headerText="Código Jazigo">
-                <h:outputText value="#{donoJazigo.codigo}" />
+                <h:outputText value="#{dono.codJazigo}" />
             </p:column>
             
-            <p:column headerText="Rua">
-                <h:outputText value="#{donoJazigo.rua}" />
+            <p:column headerText="CPF Dono">
+                <h:outputText value="#{dono.cpf}" />
             </p:column>
  
             <p:column headerText="Quadra">
-                <h:outputText value="#{donoJazigo.quadra}" />
+                <h:outputText value="#{dono.nome}" />
             </p:column>
  
-            <p:column headerText="N°">
-                <h:outputText value="#{donoJazigo.numero}" />
-            </p:column>
+<!--             <p:column headerText="N°"> -->
+<!--                 <h:outputText value="#{}" /> -->
+<!--             </p:column> -->
  
-            <p:column headerText="Gaveta">
-                <h:outputText value="#{donoJazigo.gaveta}" />
-            </p:column>
+<!--             <p:column headerText="Gaveta"> -->
+<!--                 <h:outputText value="#{}" /> -->
+<!--             </p:column> -->
             
-             <p:column headerText="C.P.F">
-                <h:outputText value="#{donoJazigo.cpf}" />
-            </p:column>
+<!--              <p:column headerText="C.P.F"> -->
+<!--                 <h:outputText value="#{}" /> -->
+<!--             </p:column> -->
             
-            <p:column headerText="Dono">
-                <h:outputText value="#{donoJazigo.nome}" />
-            </p:column>
+<!--             <p:column headerText="Dono"> -->
+<!--                 <h:outputText value="#{}" /> -->
+<!--             </p:column> -->
         </p:dataTable>
     </h:body>
      

@@ -167,7 +167,11 @@
     <p:calendar  effect="fold"
 	value="#{falecidoMB.falecido.nascimento}"> 
 	</p:calendar>
-	
+	<p:inputText id="txtIdade" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{falecidoMB.falecido.idade}">
+	</p:inputText>
    <p:outputLabel value="Profissão :"/>
     <p:inputText id="txtProfissao"
 	value="#{falecidoMB.falecido.profissao}">
@@ -258,24 +262,41 @@
 	
 	</h:panelGrid>
 
-           <h2>
-				<h:outputText value=" Jazigo" />
+           <p:separator />
+
+			<h2>
+				<h:outputText value="Pesquisar Jazigo" />
 			</h2>
-			
-				
-					<h:panelGrid columns="2">
-				         	<p:outputLabel value="Nome Dono Jazigo :"/>
-						    <p:inputText  id="nome" 
-						    required="true"
-							requiredMessage="Campo Obrigatorio"
-							value="#{donoMB.dono.nome}">
-							</p:inputText>
-					</h:panelGrid>
-					<p:panelGrid>
+
+<p:separator />
+
+
+<h:panelGrid columns="2">
+  	
+    <p:outputLabel value="Nome Dono Jazigo :"/>
+    <p:inputText  id="nome" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{donoMB.dono.nome}">
+	</p:inputText>
+  	
+</h:panelGrid>
+<br />
+<h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Ver Jazigo"  actionListener="#{falecidoMB.carregaJazigos}" onclick="Enviar1()"  /> 
+						   <p:commandButton value="Ver Jazigo"  actionListener="#{donoMB.pesquisarDono}" onclick="Enviar1()"  /> 
 							</h:panelGroup>
-					</p:panelGrid>
+					</h:panelGrid>
+		<br />	
+	<h:panelGrid>	
+	<p:outputLabel value="Código Jazigo :"/>
+    <p:inputText  id="txtCod" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{falecidoMB.falecido.codJazigo}">
+	</p:inputText>				
+	</h:panelGrid>	
+<p:separator />
 
            <h2>
 				<h:outputText value=" Dados Falecimento" />

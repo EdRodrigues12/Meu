@@ -165,7 +165,11 @@
     <p:calendar  effect="fold"
 	value="#{falecidoMB.falecido.nascimento}"> 
 	</p:calendar>
-	
+	<p:inputText id="txtIdade" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{falecidoMB.falecido.idade}">
+	</p:inputText>
    <p:outputLabel value="Profissão :"/>
     <p:inputText id="txtProfissao"
 	value="#{falecidoMB.falecido.profissao}">
@@ -267,11 +271,11 @@
 			    		value="#{falecidoMB.falecido.codJazigo}">
 						</p:inputText>
 					</h:panelGrid>
-					<p:panelGrid>
-						<h:panelGroup>
-						   <p:commandButton value="Ver Jazigo"  actionListener="#{falecidoMB.carregaJazigos}" onclick="Enviar1()"  /> 
-							</h:panelGroup>
-					</p:panelGrid>
+<!-- 					<p:panelGrid> -->
+<!-- 						<h:panelGroup> -->
+<!-- 						   <p:commandButton value="Ver Jazigo"  actionListener="#{}" onclick="Enviar1()"  />  -->
+<!-- 							</h:panelGroup> -->
+<!-- 					</p:panelGrid> -->
 
            <h2>
 				<h:outputText value=" Dados Falecimento" />

@@ -57,9 +57,9 @@ public class LoginMB {
 				usuarioDao.password(id).equals(senha)){
 				//if(usuarioDao.verNivel(user.getId()).equals("Administrador")){
 		pagina = "index?faces-redirect=true";
-	
+		logado = true;
 		}else{
-			
+			logado = false;
 			FacesContext fc = FacesContext.getCurrentInstance();
 			FacesMessage msg = new FacesMessage("Usuario ou Senha inválidos","Usuário ou "
 					+ "Senha inválidos, tente novamentte");

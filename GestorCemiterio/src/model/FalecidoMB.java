@@ -5,6 +5,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -83,6 +85,22 @@ public class FalecidoMB {
 		
 	}
 	
+	public String calcularExumacao(){
+		int idade = falecido.getIdade();
+		//if(idade > 6){
+			int dias = 62;
+	        Date date = new Date();
+	        Calendar c = Calendar.getInstance();
+	        c.setTime(date);
+	        System.out.println(c.getTime());
+	        c.add(Calendar.DAY_OF_YEAR, dias);
+	        System.out.println(c.getTime());
+			//falecido.setDtExumacao(c) ;
+			
+		//}
+		
+		return "";
+	}
 	 
 	
 	public void handleFileUpload(FileUploadEvent event) {
