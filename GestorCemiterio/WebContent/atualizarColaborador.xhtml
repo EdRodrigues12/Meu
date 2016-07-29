@@ -147,12 +147,12 @@
 			<f:facet name="header">Telefone</f:facet>
 		</h:column>
 		<h:column>
-			<h:commandButton value="Editar" action="#{colaboradorMB.editar( colaborador )}"/>
+			<h:commandButton value="Editar" action="#{colaboradorMB.editar( colaborador )}" update="col" />
 			<f:facet name="header">Atualizar</f:facet>
 		</h:column>
 	</h:dataTable>
 	<br/>
-	<h:panelGrid columns="2">
+	<h:panelGrid columns="2" >
 	<p:outputLabel value="Nome :" />
     <p:inputText  id="txtNome" 
    

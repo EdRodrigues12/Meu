@@ -318,13 +318,13 @@
 <!--     <h:form id="exumacao"> -->
 	<h:panelGrid id="exumacao" columns="3" >
 	<p:outputLabel value="Data Exumação :"/>
-    <p:calendar  effect="fold"  
+    <p:calendar  effect="fold" 
     required="true"
-	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.falecido.dtExumacao}"> 
+	requiredMessage="Campo Obrigatorio" 
+    value="#{falecidoMB.dt}"> 
 	</p:calendar>
 	<h:panelGroup>            
-	<p:commandButton value="Calcular Exumação"  action="#{falecidoMB.calcularExumacao( falecido.idade )}" update="exumacao" /> 
+	<p:commandButton value="Calcular Exumação"  action="#{falecidoMB.calcularExumacao}" update="exumacao" /> 
 	</h:panelGroup>
 	</h:panelGrid>
 <!-- 	</h:form> -->

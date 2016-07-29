@@ -5,7 +5,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -42,9 +41,10 @@ public class FalecidoMB {
 	private Jazigo jazigo = new Jazigo();
 	private List<Jazigo> list = new ArrayList<Jazigo>();
 	private StreamedContent imagem;
-	private String dono;
+	private Date dt;
 	
-	public String adicionar() throws DAOException {;
+	
+	public String adicionar() throws DAOException {
 		falecidoDao.adicionar(falecido);
 		falecido = new Falecido();
 		imagem = new DefaultStreamedContent();
@@ -85,20 +85,26 @@ public class FalecidoMB {
 		
 	}
 	
-	public String calcularExumacao(int idade){
+	public String calcularExumacao(/*int idade*/){
 		System.out.println(" teste");
-		// idade = falecido.getIdade();
-		//if(idade > 6){
-			int dias = 62;
-	        Date date = new Date();
-	        Calendar c = Calendar.getInstance();
-	        c.setTime(date);
-	        System.out.println(c.getTime());
-	        c.add(Calendar.DAY_OF_YEAR, dias);
-	        System.out.println(" teste"+c.getTime());
-			//falecido.setDtExumacao(c) ;
-			
-		//}
+		setDt(new Date());
+//		int idade = falecido.getIdade();
+//		 data = new Date();
+//		 falecido.setDtExumacao(data);
+//		 
+//		 if(idade > 6){
+//			int dias = 62;
+//	        Date date = new Date();
+//	        Calendar c = Calendar.getInstance();
+//	        c.setTime(date);
+//	        System.out.println(c.getTime());
+//	        c.add(Calendar.DAY_OF_YEAR, dias);
+//	        System.out.println(" teste"+c.getTime());
+//			//falecido.setDtExumacao(c) ;
+//			
+//		}else{
+//			System.out.println(" teste");
+//		}
 		
 		return "";
 	}
@@ -181,18 +187,12 @@ public class FalecidoMB {
 		this.nomeText = nomeText;
 	}
 
-	public String getDono() {
-		return dono;
+	public Date getDt() {
+		return dt;
 	}
 
-	public void setDono(String dono) {
-		this.dono = dono;
+	public void setDt(Date dt) {
+		this.dt = dt;
 	}
-
-	
-
-
-	
-	
 
 }
