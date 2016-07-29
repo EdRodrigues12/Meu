@@ -155,27 +155,23 @@
 	<h:panelGrid columns="2">
 	<p:outputLabel value="Nome :" />
     <p:inputText  id="txtNome" 
-    required="true"
-	requiredMessage="Campo Obrigatorio"
+   
 	value="#{colaboradorMB.colaborador.nome}">
     </p:inputText>
     <p:outputLabel value="Serviço :"/>
     <p:inputText  id="txtServiço"
-    required="true"
-	requiredMessage="Campo Obrigatorio"
+   
 	value="#{colaboradorMB.colaborador.servico}"> 
 	</p:inputText>
     <p:outputLabel value="Email :"/>
     <p:inputText id="txtEmail" 
-    required="true"
-	requiredMessage="Campo Obrigatorio"
+   
 	value="#{colaboradorMB.colaborador.email}">
 	</p:inputText>
     <p:outputLabel value="Telefone :"/>
 	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
     maxlength="13"
-    required="true"
-	requiredMessage="Campo Obrigatorio"
+   
 	value="#{colaboradorMB.colaborador.telefone}">
 	</p:inputMask>
 	

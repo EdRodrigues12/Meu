@@ -315,7 +315,7 @@
 				<h:outputText value="Dados Falecimento" />
 			</h2>
 
-    <h:form id="exumacao">
+<!--     <h:form id="exumacao"> -->
 	<h:panelGrid id="exumacao" columns="3" >
 	<p:outputLabel value="Data Exumação :"/>
     <p:calendar  effect="fold"  
@@ -324,10 +324,10 @@
 	value="#{falecidoMB.falecido.dtExumacao}"> 
 	</p:calendar>
 	<h:panelGroup>            
-	<p:commandButton value="Calcular Exumação"  action="#{falecidoMB.calcularExumacao}" update="exumacao" /> 
+	<p:commandButton value="Calcular Exumação"  action="#{falecidoMB.calcularExumacao( falecido.idade )}" update="exumacao" /> 
 	</h:panelGroup>
 	</h:panelGrid>
-	</h:form>
+<!-- 	</h:form> -->
 	
 <h:panelGrid columns="2">
 

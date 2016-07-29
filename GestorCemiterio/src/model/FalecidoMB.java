@@ -85,8 +85,9 @@ public class FalecidoMB {
 		
 	}
 	
-	public String calcularExumacao(){
-		int idade = falecido.getIdade();
+	public String calcularExumacao(int idade){
+		System.out.println(" teste");
+		// idade = falecido.getIdade();
 		//if(idade > 6){
 			int dias = 62;
 	        Date date = new Date();
@@ -94,7 +95,7 @@ public class FalecidoMB {
 	        c.setTime(date);
 	        System.out.println(c.getTime());
 	        c.add(Calendar.DAY_OF_YEAR, dias);
-	        System.out.println(c.getTime());
+	        System.out.println(" teste"+c.getTime());
 			//falecido.setDtExumacao(c) ;
 			
 		//}
