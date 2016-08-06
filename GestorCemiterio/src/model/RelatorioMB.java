@@ -34,6 +34,11 @@ public class RelatorioMB {
 	private Jazigo jazigo = new Jazigo();
 	private List<Jazigo> lista = new ArrayList<Jazigo>();
 	String rua;
+	String causaMorte;
+
+
+	
+
 	public String pesquisar() throws DAOException {
 		setLista(jazigoDao.pesquisarRua(jazigo.getRua()));
 		return "";
@@ -47,6 +52,40 @@ public class RelatorioMB {
 		String jasper = "WEB-INF/reports/jazigoPorRua.jasper";
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("rua",this.rua);
+		byte[]bytes = null;
+		ServletContext contexto = (ServletContext)facesContext.getExternalContext().getContext();;
+		
+		try {
+			JasperReport relatorio = (JasperReport) JRLoader.loadObjectFromFile
+			(contexto.getRealPath(jasper));
+			bytes = JasperRunManager.runReportToPdf(relatorio, param, new DBResourceManager().getCon());
+		} catch (JRException e) {
+		
+			e.printStackTrace();
+		}finally{
+			if(bytes != null){
+				response.setContentType("application/pdf");
+				response.setContentLength(bytes.length);
+				ServletOutputStream sos = response.getOutputStream();
+				sos.write(bytes);
+				sos.flush();
+				sos.close();
+			}else{
+				
+				
+			}
+		}
+		
+	}
+	
+	public void geraCausaFalecimento() throws IOException, ClassNotFoundException, SQLException{
+		 FacesContext facesContext = FacesContext.getCurrentInstance();
+	        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+		String erro = "";
+		
+		String jasper = "WEB-INF/reports/causaFalecimento.jasper";
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("causaMorte",this.causaMorte);
 		byte[]bytes = null;
 		ServletContext contexto = (ServletContext)facesContext.getExternalContext().getContext();;
 		
@@ -95,6 +134,12 @@ public class RelatorioMB {
 		this.lista = lista;
 	}
 	
-	
+	public String getCausaMorte() {
+		return causaMorte;
+	}
+
+	public void setCausaMorte(String causaMorte) {
+		this.causaMorte = causaMorte;
+	}
 	
 }
