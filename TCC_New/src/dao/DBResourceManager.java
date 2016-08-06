@@ -11,9 +11,9 @@ public class DBResourceManager {
 	private static String PASSWORD = "root";
 
 //	 private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-//	 private static String JDBC_URL = "jdbc:mysql://localhost/BD_cemiterio";
-//	 private static String USER = "root";
-//	 private static String PASSWORD = "root";
+//	 private static String JDBC_URL = "jdbc:mysql://127.8.12.2:3306/gerenciar";
+//	 private static String USER = "admineMuzzsQ";
+//	 private static String PASSWORD = "KyWvbDR2cxeu";
 
 	private static DBResourceManager instancia;
 	private Connection con;

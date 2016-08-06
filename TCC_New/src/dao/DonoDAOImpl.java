@@ -158,6 +158,7 @@ public class DonoDAOImpl implements DonoDAO {
 
 	@Override
 	public List<DonoJazigo> pesquisarJazigo(String dono) throws DAOException {
+		System.out.println(""+dono);
 		String sql = "SELECT cpf,nome,codigo, rua, quadra, gaveta,numero "
 				+ "FROM dono INNER JOIN jazigo on codigoJazigo = codigo WHERE nome LIKE ?";
 		List<DonoJazigo> donos = new ArrayList<DonoJazigo>();
@@ -171,14 +172,15 @@ public class DonoDAOImpl implements DonoDAO {
 			while (rs.next()) {
 				DonoJazigo d = new DonoJazigo();
 				
-				d.setCpf(rs.getString("cpf"));
-				d.setNome(rs.getString("nome"));
-				d.setCodigo(rs.getInt("codigo"));
-				d.setRua(rs.getString("rua"));
-				d.setQuadra(rs.getString("quadra"));
-				d.setGaveta(rs.getInt("gaveta"));
-				d.setNumero(rs.getInt("numero"));
+				d.setCpf(rs.getString(1));
+				d.setNome(rs.getString(2));
+				d.setCodigo(rs.getInt(3));
+				d.setRua(rs.getString(4));
+				d.setQuadra(rs.getString(5));
+				d.setGaveta(rs.getInt(6));
+				d.setNumero(rs.getInt(7));
 				donos.add(d);
+				System.out.println(""+donos);
 			}
 		} catch (SQLException e) {
 			throw new DAOException(e);
@@ -186,6 +188,7 @@ public class DonoDAOImpl implements DonoDAO {
 			throw new DAOException(e);
 		}
 		return donos;
+		
 	}
 	
 	

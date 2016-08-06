@@ -99,7 +99,7 @@
 <br />
 <p:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  action="#{falecidoMB.pesquisar}"  ajax = "false"/> 
+						   <p:commandButton value="Pesquisar"  action="#{falecidoMB.pesquisar}" ajax = "false"  /> 
 							</h:panelGroup>
 					</p:panelGrid>
 					<br/>
@@ -165,7 +165,8 @@
     <p:calendar  effect="fold"
 	value="#{falecidoMB.falecido.nascimento}"> 
 	</p:calendar>
-	<p:inputText id="txtIdade" 
+	<p:outputLabel value="Idade :"/>
+    <p:inputText id="txtIdade" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.idade}">
@@ -273,7 +274,7 @@
 					</h:panelGrid>
 <!-- 					<p:panelGrid> -->
 <!-- 						<h:panelGroup> -->
-<!-- 						   <p:commandButton value="Ver Jazigo"  actionListener="#{}" onclick="Enviar1()"  />  -->
+<!-- 						   <p:commandButton value="Ver Jazigo"  actionListener="#{falecidoMB}" onclick="Enviar1()"  />  -->
 <!-- 							</h:panelGroup> -->
 <!-- 					</p:panelGrid> -->
 

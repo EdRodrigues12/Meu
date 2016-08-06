@@ -32,11 +32,13 @@ public class DonoMB {
 	
 	public String pesquisarDono() throws DAOException {
 		setLista(donoDao.pesquisar(dono.getNome()));
+		System.out.println(dono.getNome());
 		return "";
 	}
 
 	public String pesquisar() throws DAOException {
 		setList(donoDao.pesquisarJazigo(dono.getNome()));
+		System.out.println(dono.getNome());
 		return "";
 	}
 	

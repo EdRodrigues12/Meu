@@ -147,7 +147,7 @@
 			<f:facet name="header">Telefone</f:facet>
 		</h:column>
 		<h:column>
-			<h:commandButton value="Editar" action="#{colaboradorMB.editar( colaborador )}" update="col" />
+			<p:commandButton value="Editar" action="#{colaboradorMB.editar( colaborador )}" ajax = "false"/>
 			<f:facet name="header">Atualizar</f:facet>
 		</h:column>
 	</h:dataTable>

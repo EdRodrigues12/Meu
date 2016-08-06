@@ -1,31 +1,30 @@
 package model;
 
 import java.io.ByteArrayInputStream;
-
 import java.io.IOException;
-
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
-
 
 import dao.DAOException;
 import dao.FalecidoDAO;
 import dao.FalecidoDAOImpl;
 import dao.JazigoDAO;
 import dao.JazigoDAOImpl;
-
 import entidades.Falecido;
 import entidades.Jazigo;
 
@@ -33,6 +32,7 @@ import entidades.Jazigo;
 @ManagedBean
 @SessionScoped
 public class FalecidoMB {
+
 	private HtmlInputText nomeText = new HtmlInputText();
 	private FalecidoDAO falecidoDao = new FalecidoDAOImpl();
 	private Falecido falecido = new Falecido();
@@ -41,7 +41,8 @@ public class FalecidoMB {
 	private Jazigo jazigo = new Jazigo();
 	private List<Jazigo> list = new ArrayList<Jazigo>();
 	private StreamedContent imagem;
-	private Date dt;
+	private Date dtExumacao;
+	private String dono;
 	
 	
 	public String adicionar() throws DAOException {
@@ -52,6 +53,7 @@ public class FalecidoMB {
 	}
 
 	public String pesquisar() throws DAOException {
+		
 		String codigo = falecido.getCpf();
 		int num = falecido.getCodJazigo();
 		jazigo = new Jazigo();
@@ -72,12 +74,14 @@ public class FalecidoMB {
 	}
 
 	public String deletar() throws DAOException {
+		System.out.println(" teste");
 		falecidoDao.deletar(falecido.getCpf());
 		return "";
 
 	}
 	
 	public String carregaJazigos() throws DAOException{
+		System.out.println(" teste");
 		//int codigo = falecido.getCodJazigo();
 		//int txtNumero = (int) nomeText.getValue();
 		//setList(jazigoDao.pesquisarDono(dono));
@@ -85,28 +89,26 @@ public class FalecidoMB {
 		
 	}
 	
-	public String calcularExumacao(/*int idade*/){
+	public void calcularExumacao(/*int idade*/)throws DAOException{
 		System.out.println(" teste");
-		setDt(new Date());
-//		int idade = falecido.getIdade();
-//		 data = new Date();
-//		 falecido.setDtExumacao(data);
-//		 
-//		 if(idade > 6){
-//			int dias = 62;
-//	        Date date = new Date();
-//	        Calendar c = Calendar.getInstance();
-//	        c.setTime(date);
-//	        System.out.println(c.getTime());
-//	        c.add(Calendar.DAY_OF_YEAR, dias);
-//	        System.out.println(" teste"+c.getTime());
-//			//falecido.setDtExumacao(c) ;
-//			
-//		}else{
-//			System.out.println(" teste");
-//		}
 		
-		return "";
+		int idade = falecido.getIdade();
+		  
+		 if(idade > 6){
+			int dias = 62;
+	        Date date = new Date();
+	        Calendar c = Calendar.getInstance();
+	        c.setTime(date);
+	        System.out.println(c.getTime());
+	        c.add(Calendar.DAY_OF_YEAR, dias);
+	        System.out.println(" teste"+c.getTime());
+			//falecido.setDtExumacao(c) ;
+			
+		}else{
+			System.out.println(" teste");
+		}
+		
+		//return "";
 	}
 	 
 	
@@ -187,12 +189,22 @@ public class FalecidoMB {
 		this.nomeText = nomeText;
 	}
 
-	public Date getDt() {
-		return dt;
+	public Date getDtExumacao() {
+		return dtExumacao;
 	}
 
-	public void setDt(Date dt) {
-		this.dt = dt;
+	public void setDtExumacao(Date dtExumacao) {
+		this.dtExumacao = dtExumacao;
 	}
+
+	public String getDono() {
+		return dono;
+	}
+
+	public void setDono(String dono) {
+		this.dono = dono;
+	}
+
+
 
 }

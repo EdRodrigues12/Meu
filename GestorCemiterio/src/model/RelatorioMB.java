@@ -44,7 +44,7 @@ public class RelatorioMB {
 	        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
 		String erro = "";
 		
-		String jasper = "WEB-INF/reports/DataExumacao.jasper";
+		String jasper = "WEB-INF/reports/jazigoPorRua.jasper";
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("rua",this.rua);
 		byte[]bytes = null;

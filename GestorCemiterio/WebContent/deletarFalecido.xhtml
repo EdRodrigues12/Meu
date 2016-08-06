@@ -165,12 +165,13 @@
     <p:calendar  effect="fold"
 	value="#{falecidoMB.falecido.nascimento}"> 
 	</p:calendar>
-	<p:inputText id="txtIdade" 
+	<p:outputLabel value="Idade :"/>
+    <p:inputText id="txtIdade" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.idade}">
 	</p:inputText>
-   <p:outputLabel value="Profissão :"/>
+	<p:outputLabel value="Profissão :"/>
     <p:inputText id="txtProfissao"
 	value="#{falecidoMB.falecido.profissao}">
 	</p:inputText>

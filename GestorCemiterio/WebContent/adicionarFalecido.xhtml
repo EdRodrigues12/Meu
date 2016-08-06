@@ -315,19 +315,6 @@
 				<h:outputText value="Dados Falecimento" />
 			</h2>
 
-<!--     <h:form id="exumacao"> -->
-	<h:panelGrid id="exumacao" columns="3" >
-	<p:outputLabel value="Data Exumação :"/>
-    <p:calendar  effect="fold" 
-    required="true"
-	requiredMessage="Campo Obrigatorio" 
-    value="#{falecidoMB.dt}"> 
-	</p:calendar>
-	<h:panelGroup>            
-	<p:commandButton value="Calcular Exumação"  action="#{falecidoMB.calcularExumacao}" update="exumacao" /> 
-	</h:panelGroup>
-	</h:panelGrid>
-<!-- 	</h:form> -->
 	
 <h:panelGrid columns="2">
 
@@ -338,7 +325,12 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtFalecimento}"> 
 	</p:calendar>
-	
+	<p:outputLabel value="Data Exumação :"/>
+    <p:calendar  effect="fold" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+    value="#{falecidoMB.falecido.dtExumacao}"> 
+	</p:calendar>
 	<p:outputLabel for="txtFal" value="Hora Falecimento:" />
         <p:calendar id="txtFal" value="#{falecidoMB.falecido.hrFalecimeneto}" 
         required="true"
@@ -386,6 +378,7 @@
 					<p:panelGrid>
 							<h:panelGroup>             
 						  	 <p:commandButton value="Finalizar Cadastro"  action="#{falecidoMB.adicionar}" ajax = "false"/> 
+							
 							</h:panelGroup>
 					</p:panelGrid>	
 					<h:panelGrid>
