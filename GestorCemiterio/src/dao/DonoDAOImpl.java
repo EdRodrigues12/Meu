@@ -27,6 +27,7 @@ public class DonoDAOImpl implements DonoDAO {
 			stmt.setInt(3, d.getCodJazigo());
 
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -48,6 +49,7 @@ public class DonoDAOImpl implements DonoDAO {
 			stmt.setString(2, d.getNome());
 			stmt.setInt(3, d.getCodJazigo());
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -70,7 +72,7 @@ public class DonoDAOImpl implements DonoDAO {
 			stmt.executeUpdate();
 			// stmt.close();
 			deletado = true;
-
+			stmt.close(); 
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -97,6 +99,7 @@ public class DonoDAOImpl implements DonoDAO {
 				d.setCodJazigo(rs.getInt("codigoJazigo"));
 				donos.add(d);
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -123,6 +126,7 @@ public class DonoDAOImpl implements DonoDAO {
 				d.setCodJazigo(rs.getInt("codigoJazigo"));
 				donos.add(d);
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -145,7 +149,7 @@ public class DonoDAOImpl implements DonoDAO {
 			stmt.executeUpdate();
 			// stmt.close();
 			deletado = true;
-
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -180,6 +184,7 @@ public class DonoDAOImpl implements DonoDAO {
 				donos.add(d);
 				System.out.println(""+donos);
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {

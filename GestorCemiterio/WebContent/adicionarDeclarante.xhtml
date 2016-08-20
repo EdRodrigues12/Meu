@@ -97,6 +97,9 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{declaranteMB.declarante.nascimento}"> 
+	<f:convertDateTime	pattern="dd/MM/yyyy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
     <p:outputLabel value="Nome :"/>
     <p:inputText id="txtNome" 

@@ -13,7 +13,7 @@ public class JazigoDAOImpl implements JazigoDAO {
 
 	
 	public void adicionar(Jazigo j) throws DAOException {
-		String sql = "INSERT INTO jazigo (rua, quadra, gaveta, numero) VALUES ( ?, ?, ?, ?)";
+		String sql = "INSERT INTO jazigo (rua, quadra, gaveta, numero,terreno,lado,comprimento,largura) VALUES ( ?, ?, ?, ?,?, ?, ?, ?)";
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -23,8 +23,13 @@ public class JazigoDAOImpl implements JazigoDAO {
 			stmt.setString(2, j.getQuadra());
 			stmt.setInt(3, j.getGaveta());
 			stmt.setInt(4, j.getNumero());
+			stmt.setInt(5, j.getTerreno());
+			stmt.setString(6, j.getLado());
+			stmt.setFloat(7, j.getComprimento());
+			stmt.setFloat(8, j.getLargura());
 
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -36,7 +41,8 @@ public class JazigoDAOImpl implements JazigoDAO {
 	
 	public void atualizar(Jazigo j) throws DAOException {
 		String sql = "UPDATE jazigo SET rua = ?,"
-				+ " quadra = ?,  gaveta = ?,  numero = ? WHERE codigo = ?";
+				+ " quadra = ?,  gaveta = ?,  numero = ?, terreno = ?,"
+				+ " lado = ?,  comprimento = ?,  largura = ? WHERE codigo = ?";
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -45,7 +51,11 @@ public class JazigoDAOImpl implements JazigoDAO {
 			stmt.setString(2, j.getQuadra());
 			stmt.setInt(3, j.getGaveta());
 			stmt.setInt(4, j.getNumero());
-			stmt.setInt(5, j.getCodigo());
+			stmt.setInt(5, j.getTerreno());
+			stmt.setString(6, j.getLado());
+			stmt.setFloat(7, j.getComprimento());
+			stmt.setFloat(8, j.getLargura());
+			stmt.setInt(9, j.getCodigo());
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
@@ -70,7 +80,7 @@ public class JazigoDAOImpl implements JazigoDAO {
 			stmt.executeUpdate();
 			// stmt.close();
 			deletado = true;
-
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -97,8 +107,13 @@ public class JazigoDAOImpl implements JazigoDAO {
 				j.setQuadra(rs.getString("quadra"));
 				j.setGaveta(rs.getInt("gaveta"));
 				j.setNumero(rs.getInt("numero"));
+				j.setTerreno(rs.getInt("terreno"));
+				j.setLado(rs.getString("lado"));
+				j.setComprimento(rs.getFloat("comprimento"));
+				j.setLargura(rs.getFloat("largura"));
 				jazigos.add(j);
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -126,11 +141,15 @@ public class JazigoDAOImpl implements JazigoDAO {
 				j.setQuadra(rs.getString("quadra"));
 				j.setGaveta(rs.getInt("gaveta"));
 				j.setNumero(rs.getInt("numero"));
+				j.setTerreno(rs.getInt("terreno"));
+				j.setLado(rs.getString("lado"));
+				j.setComprimento(rs.getFloat("comprimento"));
+				j.setLargura(rs.getFloat("largura"));
 				j.setCodigo(rs.getInt("codigo"));
 				
 
 			}
-
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -159,8 +178,13 @@ public class JazigoDAOImpl implements JazigoDAO {
 				j.setQuadra(rs.getString("quadra"));
 				j.setGaveta(rs.getInt("gaveta"));
 				j.setNumero(rs.getInt("numero"));
+				j.setTerreno(rs.getInt("terreno"));
+				j.setLado(rs.getString("lado"));
+				j.setComprimento(rs.getFloat("comprimento"));
+				j.setLargura(rs.getFloat("largura"));
 				jazigos.add(j);
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {

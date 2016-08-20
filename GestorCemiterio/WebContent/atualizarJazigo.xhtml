@@ -111,10 +111,29 @@
 						<p:outputLabel value="Quadra: " />
 						<p:inputText value="#{jazigoMB.jazigo.quadra}"
 						maxlength="8" />
+						<p:outputLabel value="Terreno :"/>
+					    <p:inputText  id="txtTerreno"
+					    maxlength="8"
+					    value="#{jazigoMB.jazigo.terreno}"> 
+						</p:inputText>
 						<p:outputLabel value="Gaveta: " />
 						<p:inputText value="#{jazigoMB.jazigo.gaveta}" />
+						<p:outputLabel value="Lado: " />
+						<p:selectOneMenu id="cbbLAdo" value="#{jazigoMB.jazigo.lado}"
+							style="comboBox">
+							<f:selectItem itemValue="Direito" itemLabel="Direito" />
+							<f:selectItem itemValue="Esquerdo" itemLabel="Esquerdo" />
+						</p:selectOneMenu>
 						<p:outputLabel value="Numero: " />
 						<p:inputText value="#{jazigoMB.jazigo.numero}" />
+						<p:outputLabel value="Comprimento :"/>
+					    <p:inputText  id="txtComp" 
+					    value="#{jazigoMB.jazigo.comprimento}">
+						</p:inputText>
+						<p:outputLabel value="Largura :"/>
+					    <p:inputText  id="txtLarg" 
+					    value="#{jazigoMB.jazigo.largura}">
+						</p:inputText>
 					</h:panelGrid>
   	
 

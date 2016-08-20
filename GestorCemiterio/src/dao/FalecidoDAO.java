@@ -11,7 +11,7 @@ public interface FalecidoDAO {
 
 	public boolean deletar(String CPF_falecido) throws DAOException;
 
-	public List<Falecido> pesquisar(String CPF_falecido) throws DAOException;
+	public List<Falecido> pesquisar(String nome) throws DAOException;
 	
 	public Falecido pesquisar1(String CPF) throws DAOException;
 

@@ -5,6 +5,6 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class Velorio {
+public class VelorioMB {
 
 }

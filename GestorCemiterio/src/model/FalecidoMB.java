@@ -66,6 +66,24 @@ public class FalecidoMB {
 	    
 		return "";
 	}
+	public String pesquisarPorNome() throws DAOException{
+		//falecido = new Falecido();
+		imagem = new DefaultStreamedContent();
+		setLista(falecidoDao.pesquisar(falecido.getNome()));
+//		falecido.setFoto(falecido.getFoto());
+//	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
+		return "";
+	}
+	
+	public String ver(Falecido f) { 
+		falecido = f;
+		imagem = new DefaultStreamedContent();
+		falecido.setFoto(falecido.getFoto());
+	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
+	    
+		System.out.println("Botao Editar do taxista " + f.getNome() + " foi pressionado");
+		return "";
+	}
 
 	public String atualizar() throws DAOException {
 		falecidoDao.atualizar(falecido);

@@ -18,8 +18,8 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				+ "profissao, estadoCivil, tituloEleitor, zona,"
 				+ "secao, cep, endereco, numero, bairro, complemento,"
 				+ "cidade, uf, foto, dataFalecimento, dataExumacao, horaFalecimento, horaExumacao, localFalecimento,"
-				+ "cartorio, registroObito, crm, causaMorte, idade) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?)";
+				+ "cartorio, registroObito, crm, causaMorte, idade, dataSepultamento, horaSepultamento) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
@@ -64,7 +64,12 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 			stmt.setString(31, f.getCrm());
 			stmt.setString(32, f.getCausamorte());
             stmt.setInt(33, f.getIdade());
+            java.sql.Date sds = new java.sql.Date(f.getDataSepultamento().getTime());
+			stmt.setDate(34, sds);
+			java.sql.Timestamp hes = new java.sql.Timestamp(f.getHoraSepultamento().getTime());
+			stmt.setTimestamp(35, hes);
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -81,7 +86,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				+ "secao = ?, cep = ?, endereco = ?, numero = ?, bairro = ?, complemento = ?,	"
 				+ "cidade = ?, uf = ?,foto = ?, dataFalecimento = ?, dataExumacao = ?, horaFalecimento = ?,"
 				+ "horaExumacao = ?, localFalecimento = ?,"
-				+ "cartorio = ?, registroObito = ?, crm = ?, causaMorte = ? idade = ? WHERE cpf = ? ";
+				+ "cartorio = ?, registroObito = ?, crm = ?, causaMorte = ?, idade = ?, dataSepultamento = ?, horaSepultamento = ? WHERE cpf = ? ";
 
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
@@ -127,7 +132,12 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 			stmt.setString(31, f.getCausamorte());
 			stmt.setString(32, f.getCpf());
 			stmt.setInt(33, f.getIdade());
+			java.sql.Date sds = new java.sql.Date(f.getDataSepultamento().getTime());
+			stmt.setDate(34, sds);
+			java.sql.Timestamp hes = new java.sql.Timestamp(f.getHoraSepultamento().getTime());
+			stmt.setTimestamp(35, hes);
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -147,7 +157,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 			// stmt.close();
 			stmt.executeUpdate();
 			deletado = true;
-
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -159,14 +169,14 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 	}
 
 	
-	public List<Falecido> pesquisar(String cpf) throws DAOException {
-		String sql = "SELECT * FROM falecido WHERE cpf like ? ";
+	public List<Falecido> pesquisar(String nome) throws DAOException {
+		String sql = "SELECT * FROM falecido WHERE  nome like ? ";
 		List<Falecido> falecidos = new ArrayList<Falecido>();
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
 
-			stmt.setString(1, "%" + cpf + "%");
+			stmt.setString(1, "%" + nome + "%");
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -204,8 +214,11 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setCrm(rs.getString("crm"));
 				d.setCausamorte(rs.getString("causaMorte"));
 				d.setIdade(rs.getInt("idade"));
+				d.setDataSepultamento(rs.getDate("dataSepultamento"));
+				d.setHoraSepultamento(rs.getDate("horaSepultamento"));
 				falecidos.add(d);
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -259,7 +272,10 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setCrm(rs.getString("crm"));
 				d.setCausamorte(rs.getString("causaMorte"));
 				d.setIdade(rs.getInt("idade"));
+				d.setDataSepultamento(rs.getDate("dataSepultamento"));
+				d.setHoraSepultamento(rs.getDate("horaSepultamento"));
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {

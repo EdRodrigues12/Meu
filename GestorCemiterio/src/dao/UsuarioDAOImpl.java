@@ -25,7 +25,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			stmt.setString(5, usu.getSenha());
 			
 			stmt.executeUpdate();
-		
+			stmt.close();
 		} catch (SQLException | ClassNotFoundException e) {
 			throw new DAOExceptionLG(e);
 		}
@@ -48,7 +48,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			stmt.setString(5, usu.getId());
 			
 			stmt.executeUpdate();
-			
+			stmt.close();
 		} catch (SQLException | ClassNotFoundException e) {
 			throw new DAOExceptionLG(e);
 		} 
@@ -63,7 +63,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, id);			
 			stmt.executeUpdate();
-			
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOExceptionLG(e);
 		} catch (ClassNotFoundException e) {
@@ -88,6 +88,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 				usu.setSenha(rs.getString("senha"));
 				usu.setId(rs.getString("id"));
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOExceptionLG(e);
 		} catch (ClassNotFoundException e) {
@@ -109,6 +110,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			while (rs.next()) {
 				usu.setSenha(rs.getString("senha"));
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOExceptionLG(e);
 		} catch (ClassNotFoundException e) {
@@ -133,6 +135,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 				while (rs.next()) {
 					usu.setSenha(rs.getString("senha"));
 				}
+				stmt.close();
 			} catch (SQLException e) {
 				throw new DAOExceptionLG(e);
 			} catch (ClassNotFoundException e) {
@@ -153,6 +156,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			while (rs.next()) {
 				usu.setNivel(rs.getString("nivel"));
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOExceptionLG(e);
 		} catch (ClassNotFoundException e) {
@@ -173,6 +177,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			while (rs.next()) {
 				usu.setId(rs.getString("id"));
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOExceptionLG(e);
 		} catch (ClassNotFoundException e) {

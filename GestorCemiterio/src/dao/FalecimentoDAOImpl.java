@@ -36,6 +36,7 @@ public class FalecimentoDAOImpl implements FalecimentoDAO {
 			stmt.setString(10, f.getCausamorte());
 
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -70,6 +71,7 @@ public class FalecimentoDAOImpl implements FalecimentoDAO {
 			stmt.setString(10, f.getCpfFalecido());
 
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -92,7 +94,7 @@ public class FalecimentoDAOImpl implements FalecimentoDAO {
 
 			stmt.executeUpdate();
 			deletado = true;
-
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -126,7 +128,9 @@ public class FalecimentoDAOImpl implements FalecimentoDAO {
 				f.setCausamorte(rs.getString("causaMorte"));
 
 				falecimentos.add(f);
+				
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -159,6 +163,7 @@ public class FalecimentoDAOImpl implements FalecimentoDAO {
 
 				
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {

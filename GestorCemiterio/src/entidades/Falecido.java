@@ -37,6 +37,9 @@ public class Falecido {
 	private String crm;
 	private String causamorte;
 	private int idade;
+	private Date dataSepultamento;
+	private Date horaSepultamento;
+	
 
 	public String getCpfDeclarante() {
 		return cpfDeclarante;
@@ -300,6 +303,22 @@ public class Falecido {
 
 	public void setIdade(int idade) {
 		this.idade = idade;
+	}
+
+	public Date getDataSepultamento() {
+		return dataSepultamento;
+	}
+
+	public void setDataSepultamento(Date dataSepultamento) {
+		this.dataSepultamento = dataSepultamento;
+	}
+
+	public Date getHoraSepultamento() {
+		return horaSepultamento;
+	}
+
+	public void setHoraSepultamento(Date horaSepultamento) {
+		this.horaSepultamento = horaSepultamento;
 	}
 
 	

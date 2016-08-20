@@ -97,17 +97,42 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.quadra}"> 
 	</p:inputText>
+	 <p:outputLabel value="Terreno :"/>
+    <p:inputText  id="txtTerreno"
+    maxlength="8"
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{jazigoMB.jazigo.terreno}"> 
+	</p:inputText>
     <p:outputLabel value="Gaveta :"/>
     <p:inputText id="txtGaveta" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.gaveta}">
 	</p:inputText>
+	<p:outputLabel value="Lado: " />
+	<p:selectOneMenu id="cbbLAdo" value="#{jazigoMB.jazigo.lado}"
+							style="comboBox">
+							<f:selectItem itemValue="Direito" itemLabel="Direito" />
+							<f:selectItem itemValue="Esquerdo" itemLabel="Esquerdo" />
+						</p:selectOneMenu>
     <p:outputLabel value="N° Jazigo :"/>
     <p:inputText  id="txtNumero" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.numero}">
+	</p:inputText>
+	<p:outputLabel value="Comprimento :"/>
+    <p:inputText  id="txtComp" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{jazigoMB.jazigo.comprimento}">
+	</p:inputText>
+	<p:outputLabel value="Largura :"/>
+    <p:inputText  id="txtLarg" 
+    required="true"
+	requiredMessage="Campo Obrigatorio"
+	value="#{jazigoMB.jazigo.largura}">
 	</p:inputText>
   	
 </h:panelGrid>

@@ -41,6 +41,7 @@ public class DeclaranteDAOImpl implements DeclaranteDAO {
 			stmt.setString(17, d.getEmail());
 
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -81,6 +82,7 @@ public class DeclaranteDAOImpl implements DeclaranteDAO {
 			stmt.setString(17, d.getCpf());
 
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -101,6 +103,7 @@ public class DeclaranteDAOImpl implements DeclaranteDAO {
 			// stmt.close();
 			stmt.executeUpdate();
 			deletado = true;
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -143,6 +146,7 @@ public class DeclaranteDAOImpl implements DeclaranteDAO {
 				d.setEmail(rs.getString("email"));
 				declarantes.add(d);
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -179,6 +183,7 @@ public class DeclaranteDAOImpl implements DeclaranteDAO {
 				d.setCelular(rs.getString("celular"));
 				d.setEmail(rs.getString("email"));
 			}
+			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {

@@ -5,8 +5,12 @@ public class Jazigo {
 	private int codigo;
 	private String rua;
 	private String quadra;
+	private String lado;
 	private int gaveta;
 	private int numero;
+	private int terreno;
+	private float comprimento;
+	private float largura;
 
 	public int getCodigo() {
 		return codigo;
@@ -46,6 +50,38 @@ public class Jazigo {
 
 	public void setNumero(int numJazigo) {
 		this.numero = numJazigo;
+	}
+
+	public String getLado() {
+		return lado;
+	}
+
+	public void setLado(String lado) {
+		this.lado = lado;
+	}
+
+	public int getTerreno() {
+		return terreno;
+	}
+
+	public void setTerreno(int terreno) {
+		this.terreno = terreno;
+	}
+
+	public float getComprimento() {
+		return comprimento;
+	}
+
+	public void setComprimento(float comprimento) {
+		this.comprimento = comprimento;
+	}
+
+	public float getLargura() {
+		return largura;
+	}
+
+	public void setLargura(float largura) {
+		this.largura = largura;
 	}
 
 	

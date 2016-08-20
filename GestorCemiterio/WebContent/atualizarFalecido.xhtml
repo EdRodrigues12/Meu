@@ -157,7 +157,7 @@
 	<p:selectOneMenu id="cbbEtnia" value="#{falecidoMB.falecido.etnia}"
 							style="comboBox">
 							<f:selectItem itemValue="Branco" itemLabel="Branco" />
-							<f:selectItem itemValue="Cabloco" itemLabel="Cabloco" />
+							<f:selectItem itemValue="Caboclo" itemLabel="Caboclo" />
 							<f:selectItem itemValue="Cafuzo" itemLabel="Cafuzo" />
 							<f:selectItem itemValue="Indígena" itemLabel="Indígena" />
 							<f:selectItem itemValue="Mulato" itemLabel="Mulato" />
@@ -166,6 +166,9 @@
     <p:outputLabel value="Nascimento :"/>
     <p:calendar  effect="fold"
 	value="#{falecidoMB.falecido.nascimento}"> 
+	<f:convertDateTime	pattern="dd/MM/yyyy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel value="Idade :"/>
     <p:inputText id="txtIdade" 
@@ -180,11 +183,14 @@
 	<p:outputLabel value="Estado Civil : " />
 	<p:selectOneMenu id="cbbCivil" value="#{falecidoMB.falecido.estCivil}"
 							style="comboBox">
-							<f:selectItem itemValue="Casado" itemLabel="Casado" />
-							<f:selectItem itemValue="Divorsiado" itemLabel="Divorsiado" />
-							<f:selectItem itemValue="Separado" itemLabel="Separado" />
-							<f:selectItem itemValue="Solteiro" itemLabel="Solteiro" />
-							<f:selectItem itemValue="Viúvo" itemLabel="Viúvo" />
+							<f:selectItem itemValue="Branco" itemLabel="Branco" />
+							<f:selectItem itemValue="Pardo" itemLabel="Pardo" />
+							<f:selectItem itemValue="Caboclo" itemLabel="Caboclo" />
+							<f:selectItem itemValue="Cafuzo" itemLabel="Cafuzo" />
+							<f:selectItem itemValue="Indígena" itemLabel="Indígena" />
+							<f:selectItem itemValue="Mulato" itemLabel="Mulato" />
+							<f:selectItem itemValue="Negro" itemLabel="Negro" />
+							<f:selectItem itemValue="Amarelo" itemLabel="Amarelo" />
 							
 	</p:selectOneMenu>
 	<p:outputLabel value="Titulo Eleitor :"/>
@@ -259,7 +265,16 @@
 							<f:selectItem itemValue="SP" itemLabel="SP" />
 							<f:selectItem itemValue="TO" itemLabel="TO" />
 						</p:selectOneMenu>
-	
+	<p:outputLabel value="Data Sepultamento :"/>
+    <p:calendar  effect="fold"
+	value="#{falecidoMB.falecido.dataSepultamento}"> 
+	<f:convertDateTime	pattern="dd/MM/yyyy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
+	</p:calendar>
+	<p:outputLabel for="txtFal" value="Hora Sepultamento:" />
+        <p:calendar id="txtFal" value="#{falecidoMB.falecido.horaSepultamento}" 
+        pattern="HH:mm" timeOnly="true"  />
 	
 	</h:panelGrid>
 
@@ -311,12 +326,18 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtFalecimento}"> 
+	<f:convertDateTime	pattern="dd/MM/yyyy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel value="Data Exumação :"/>
     <p:calendar  effect="fold"  
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtExumacao}"> 
+	<f:convertDateTime	pattern="dd/MM/yyyy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel for="txtFal" value="Hora Falecimento:" />
         <p:calendar id="txtFal" value="#{falecidoMB.falecido.hrFalecimeneto}" 
