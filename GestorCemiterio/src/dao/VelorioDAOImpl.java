@@ -14,7 +14,7 @@ public class VelorioDAOImpl implements VelorioDAO {
 
 	@Override
 	public void adicionar(Velorio v) throws DAOException {
-		String sql = "INSERT INTO velorio (cpfFalecido,nomeFalecido, cpfDeclarante, nomeDeclarante, sala, dia, diaFim, horainicio, horafinal, statu) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO velorio (cpfFalecido,nomeFalecido, cpfDeclarante, nomeDeclarante, sala, dia, diaFim, horaInicio, horafim, statu) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -46,7 +46,7 @@ public class VelorioDAOImpl implements VelorioDAO {
 
 	@Override
 	public void atualizar(Velorio v) throws DAOException {
-		String sql = "UPDATE velorio SET cpfFalecido =?,nomeFalecido =?, cpfDeclarante =?, nomeDeclarante =?, sala =?, dia =?, diaFim =?, horainicio =?, horafinal =?"
+		String sql = "UPDATE velorio SET cpfFalecido =?,nomeFalecido =?, cpfDeclarante =?, nomeDeclarante =?, sala =?, dia =?, diaFim =?, horaInicio =?, horaFim =?"
 				+ ", statu =? WHERE id = ? ";
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
@@ -100,6 +100,39 @@ public class VelorioDAOImpl implements VelorioDAO {
 				v.setHoraInicio(rs.getDate("horaInicio"));
 				v.setHoraFim(rs.getDate("horaFim"));
 				v.setSala(rs.getInt("sala"));
+				velorios.add(v);
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} catch (ClassNotFoundException e) {
+			throw new DAOException(e);
+		}
+		return velorios;
+	}
+	
+	@Override
+	public List<Velorio> pesquisarTudo() throws DAOException {
+		String sql = "SELECT * FROM velorio ";
+		List<Velorio> velorios = new ArrayList<Velorio>();
+		try {
+			Connection con = DBResourceManager.getInstance().getCon();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Velorio v = new Velorio();
+				v.setId(rs.getLong("id"));
+				v.setCpfFalecido(rs.getString("cpfFalecido"));
+				v.setCpfDeclarante(rs.getString("cpfDeclarante"));
+				v.setNomeDeclarante(rs.getString("nomeDeclarante"));
+				v.setNomeFalecido(rs.getString("nomeFalecido"));
+				v.setDia(rs.getDate("dia"));
+				v.setDiaFim(rs.getDate("diaFim"));
+				v.setHoraInicio(rs.getDate("horaInicio"));
+				v.setHoraFim(rs.getDate("horaFim"));
+				v.setSala(rs.getInt("sala"));
+				v.setStatus(rs.getBoolean("statu"));
 				velorios.add(v);
 			}
 			stmt.close();
@@ -247,37 +280,6 @@ public class VelorioDAOImpl implements VelorioDAO {
 		return v;
 	}
 
-	@Override
-	public List<Velorio> pesquisarTudo() throws DAOException {
-		String sql = "SELECT * FROM velorio ";
-		List<Velorio> velorios = new ArrayList<Velorio>();
-		try {
-			Connection con = DBResourceManager.getInstance().getCon();
-			PreparedStatement stmt = con.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				Velorio v = new Velorio();
-				v.setId(rs.getLong("id"));
-				v.setCpfFalecido(rs.getString("cpfFalecido"));
-				v.setCpfDeclarante(rs.getString("cpfDeclarante"));
-				v.setNomeDeclarante(rs.getString("nomeDeclarante"));
-				v.setNomeFalecido(rs.getString("nomeFalecido"));
-				v.setDia(rs.getDate("dia"));
-				v.setDiaFim(rs.getDate("diaFim"));
-				v.setHoraInicio(rs.getDate("horaInicio"));
-				v.setHoraFim(rs.getDate("horaFim"));
-				v.setSala(rs.getInt("sala"));
-				v.setStatus(rs.getBoolean("statu"));
-				velorios.add(v);
-			}
-			stmt.close();
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		} catch (ClassNotFoundException e) {
-			throw new DAOException(e);
-		}
-		return velorios;
-	}
+	
 
 }

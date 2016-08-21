@@ -20,7 +20,7 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
-import org.springframework.scheduling.commonj.ScheduledTimerListener;
+
 
 import dao.DAOException;
 import dao.VelorioDAO;
@@ -57,13 +57,13 @@ public class VelorioMB implements Serializable {
 				DefaultScheduleEvent evt = new DefaultScheduleEvent();
 				evt.setEndDate(vel.getDiaFim());
 				evt.setStartDate(vel.getDia());
-				evt.setStartDate(vel.getHoraInicio());
-				evt.setEndDate(vel.getHoraFim());
+				//evt.setStartDate(vel.getHoraInicio());
+				//evt.setEndDate(vel.getHoraFim());
 				evt.setData(vel.getId());
 				evt.setTitle(vel.getNomeFalecido());
-				evt.setTitle(vel.getNomeDeclarante());
+				//evt.setTitle(vel.getNomeDeclarante());
 				evt.setDescription(vel.getCpfFalecido());
-				evt.setDescription(vel.getCpfDeclarante());
+				//evt.setDescription(vel.getCpfDeclarante());
 				evt.setAllDay(true);
 				evt.setEditable(true);
 				
@@ -87,7 +87,7 @@ public class VelorioMB implements Serializable {
 		
 		for(Velorio vel : lista){
 			if(vel.getId() == (Long) evt.getData()){
-				velorio = vel;
+				velorio =  vel;
 				break;
 				
 			}
@@ -102,14 +102,24 @@ public class VelorioMB implements Serializable {
 		
 	}
 	
+	public String adicionar() throws DAOException {;
+	dao.adicionar(velorio);
+	System.out.println(velorio.getNomeFalecido());
+	velorio = new Velorio();
+	inicializar();
+	return "";
+}
+	
 	public void salvar(){
+			
 		if(velorio.getId() == null){
 			if(velorio.getDia().getTime() <= velorio.getDiaFim().getTime()){
+				dao = new VelorioDAOImpl();
 				try {
 					dao.adicionar(velorio);
 					inicializar();
 				} catch (DAOException e) {
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar"));
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar no banco"));
 					
 				}
 				velorio = new Velorio();
@@ -121,8 +131,9 @@ public class VelorioMB implements Serializable {
 		}else{
 			try {
 				dao.atualizar(velorio);
+				inicializar();
 			} catch (DAOException e) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao atualizar"));
 				
 			}
 			
