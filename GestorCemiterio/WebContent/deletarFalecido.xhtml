@@ -97,11 +97,11 @@
   	
 </h:panelGrid>
 <br />
-<p:panelGrid>
+<h:panelGrid>
 						<h:panelGroup>
 						   <p:commandButton value="Pesquisar por CPF"  action="#{falecidoMB.pesquisar}"  ajax = "false"/> 
 							</h:panelGroup>
-					</p:panelGrid>
+					</h:panelGrid>
 					<br/>
 </h:form>
 <div class="texto">
@@ -114,11 +114,11 @@
   	
 </h:panelGrid>
 <br />
-<p:panelGrid>
+<h:panelGrid>
 					<h:panelGroup>
 						   <p:commandButton value="Pesquisar por Nome"  action="#{falecidoMB.pesquisarPorNome}" ajax = "false"/> 
 							</h:panelGroup>
-					</p:panelGrid>
+					</h:panelGrid>
 </h:form>
 </div>
 <br/>
@@ -403,11 +403,11 @@
 	<p:inputTextarea rows="6" cols="33" value="#{falecidoMB.falecido.causamorte}" />
     
     </h:panelGrid>	
-    <p:panelGrid>
+    <h:panelGrid>
 						<h:panelGroup>
 						   <p:commandButton value="Deletar"  actionListener="#{falecidoMB.deletar}" ajax="false"  /> 
 							</h:panelGroup>
-					</p:panelGrid>
+					</h:panelGrid>
 					<h:panelGrid>
 						<h:panelGroup>
 							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
