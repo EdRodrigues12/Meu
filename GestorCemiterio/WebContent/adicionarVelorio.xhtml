@@ -3,14 +3,52 @@
 <!-- Início da TAG HTML -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
 	<link href="style\estilo.css" rel="stylesheet" type="text/css"/>
 	<title>
-		SGC - Adicionar Velório
+		SGC - Gerenciar Velório
 	</title>
+	<style type="text/css">
+	.emp1 .fc-even-inner{
+	background: #006600;
+	}
+	.emp2 .fc-even-inner{
+	background: #003399;
+	}
+	</style>
+	<script type="text/javascript" >
+	PrimeFaces.locales['pt_BR'] = {  
+            closeText: 'Fechar',  
+            prevText: 'Anterior',  
+            nextText: 'Próximo',  
+            currentText: 'Começo',  
+            monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],  
+            monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],  
+            dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],  
+            dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],  
+            dayNamesMin: ['D','S','T','Q','Q','S','S'],  
+            weekHeader: 'Semana',  
+            firstDay: 1,  
+            isRTL: false,  
+            showMonthAfterYear: false,  
+            yearSuffix: '',  
+            timeOnlyTitle: 'Só Horas',  
+            timeText: 'Tempo',  
+            hourText: 'Hora',  
+            minuteText: 'Minuto',  
+            secondText: 'Segundo',  
+            currentText: 'Hoje',  
+            ampm: false,  
+            month: 'Mês',  
+            week: 'Semana',  
+            day: 'Dia',  
+            allDayText : 'Todo Dia'  
+        };
+	</script>
 </h:head>
 <!-- Fim da TAG HEAD -->
 <!-- Início da TAG BODY -->
@@ -77,27 +115,65 @@
 		<!-- Início da DIV WELCOME -->
 		<div id="welcome">
 			<h2>
-				<h:outputText value="Adicionar Velório" />
+				<h:outputText value="Gerenciar Velório" />
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				<h:form>
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Dado 01: " />
-						<h:inputText id="txtDado01" value="#{managedBeanQualquer}" />
-						<h:outputLabel value="Dado 02: " />
-						<h:selectOneMenu id="cbbDado02" value="#{managedBeanQualquer}"
-							style="comboBox">
-							<f:selectItem itemValue="A" itemLabel="Opção A" />
-							<f:selectItem itemValue="B" itemLabel="Opção B" />
-						</h:selectOneMenu>
-					</h:panelGrid>
-					<h:panelGrid>
-						<h:panelGroup>
-							<h:commandButton value="Botão" action="#{managedBeanQualquer}" />
-						</h:panelGroup>
-					</h:panelGrid>
-				</h:form>
+    <p:growl id="messages" showDetail="true" />
+ 
+    <h:panelGrid columnClasses="value">
+         <h3 style="margin-top: 0">Velórios</h3>
+        <p:schedule id="schedule" value="#{velorioMB.eventModel}" widgetVar="myschedule" timeZone="America/Sao_Paulo" >
+ 
+            <p:ajax event="dateSelect" listener="#{velorioMB.novoEvento}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+            <p:ajax event="eventSelect" listener="#{velorioMB.selecionarEvento}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+            <p:ajax event="eventMove" listener="#{velorioMB.eventMove}" update="schedule" />
+            <p:ajax event="eventResize" listener="#{velorioMB.eventResize}" update="schedule" />
+ 
+        </p:schedule>
+ 
+        </h:panelGrid>
+ 
+    <p:dialog widgetVar="eventDialog" header="Velórios" showEffect="clip" hideEffect="clip">
+        <h:panelGrid id="eventDetails" columns="2">
+        	<p:outputLabel for="nome" value="Nome Falecido" />
+            <p:inputText id="nome" value="#{velorioMB.velorio.nomeFalecido}" required="true" />
+            
+            <p:outputLabel for="cpf" value="C.P.F Falecido" />
+            <p:inputMask id="cpf" value="#{velorioMB.velorio.cpfFalecido}" mask="999.999.999-99" 
+    		 maxlength="14" required="true" />
+                                   
+            <p:outputLabel for="cpfDecl" value="C.P.F Declarante" />
+            <p:inputMask id="cpfDecl" value="#{velorioMB.velorio.cpfDeclarante}" mask="999.999.999-99" 
+    		 maxlength="14" required="true" />
+            
+            <p:outputLabel for="nomeDec" value="Nome Declarante" />
+            <p:inputText id="nomeDec" value="#{velorioMB.velorio.nomeDeclarante}" required="true" />
+ 
+            <p:outputLabel for="sala" value="Sala:" />
+            <p:inputText id="sala" value="#{velorioMB.velorio.sala}" />
+            
+            <p:outputLabel for="status" value="Status:" />
+            <p:selectBooleanCheckbox id="status" value="#{velorioMB.velorio.status}" required="true" />
+ 
+            <p:outputLabel for="popup" value="Data início:" />
+            <p:calendar id="popup" value="#{velorioMB.velorio.dia}" pattern="dd/MM/yyyy " />
+            
+            <p:outputLabel for="popup2" value="Data Final:" />
+            <p:calendar id="popup2" value="#{velorioMB.velorio.diaFim}" pattern="dd/MM/yyyy " />
+            
+            <p:outputLabel for="time" value="Hora início:" />
+            <p:calendar id="time" value="#{velorioMB.velorio.horaInicio}" pattern="HH:mm" timeOnly="true" timeZone="America/Sao_Paulo" required="true" />
+            
+            <p:outputLabel for="time2" value="Hora Final:" />
+            <p:calendar id="time2" value="#{velorioMB.velorio.horaFim}" pattern="HH:mm" timeOnly="true" timeZone="America/Sao_Paulo" required="true" />
+ 
+            <p:commandButton type="reset" value="Reset" />
+            <p:commandButton id="addButton" value="Save" actionListener="#{velorioMB.salvar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" update="messages"  />
+        </h:panelGrid>
+    </p:dialog>    
+</h:form>
 				<p/>
 			</div>
 			<!-- Fim da DIV TEXTO -->

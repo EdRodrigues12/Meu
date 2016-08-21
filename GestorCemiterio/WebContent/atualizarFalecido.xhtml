@@ -164,7 +164,7 @@
 							<f:selectItem itemValue="Negro" itemLabel="Negro" />
 	</p:selectOneMenu>
     <p:outputLabel value="Nascimento :"/>
-    <p:calendar  effect="fold"
+    <p:calendar  effect="fold" locale="de" navigator="true"
 	value="#{falecidoMB.falecido.nascimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yyyy" 
 								locale="pt_BR" 
@@ -322,7 +322,7 @@
 <h:panelGrid columns="2">
   	
     <p:outputLabel value="Data Falecimento :"/>
-    <p:calendar  effect="fold"  
+    <p:calendar  effect="fold" locale="de" navigator="true" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtFalecimento}"> 
@@ -331,7 +331,7 @@
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel value="Data Exumação :"/>
-    <p:calendar  effect="fold"  
+    <p:calendar  effect="fold"  locale="de" navigator="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtExumacao}"> 

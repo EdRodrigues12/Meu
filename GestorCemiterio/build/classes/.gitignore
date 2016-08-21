@@ -1,1 +1,3 @@
-/.gitignore
+/model/
+/entidades/
+/dao/

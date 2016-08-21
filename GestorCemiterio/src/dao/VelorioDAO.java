@@ -18,6 +18,8 @@ public interface VelorioDAO {
 	
 	public List<Velorio> pesquisarH(Date hora) throws DAOException;
 	
+	public List<Velorio> pesquisarTudo() throws DAOException;
+	
 	public Velorio pesquisar1(String cpfFalecido) throws DAOException;
 	
 	public Velorio pesquisarDec(String cpfDeclarante) throws DAOException;
