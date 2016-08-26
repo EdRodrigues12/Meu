@@ -26,27 +26,32 @@ public class ColaboradorMB {
 	}
 	public String atualizar(){
 		dao.atualizar(colaborador);
+		colaborador = new Colaborador();
 		return "";
 	}
 	public String pesquisarPorNome(){
 		setColaboradores(dao.pesquisarPorNome(colaborador.getNome()));
+		colaborador = new Colaborador();
 		//colaborador = colaboradores.get(0);
 		return "";
 	}
 	public String pesquisarPorServico(){
 		setColaboradores(dao.pesquisarPorServico(colaborador.getServico()));
+		colaborador = new Colaborador();
 		//colaborador = colaboradores.get(0);
 		return "";
 	}
 	public String remover(Colaborador c){
 		colaborador = c;
 		dao.remover(c.getId());
+		colaborador = new Colaborador();
 		return "";
 	}
 	
 	public String editar(Colaborador c) { 
 		colaborador = c;
 		System.out.println("Botao Editar do taxista " + c.getNome() + " foi pressionado");
+		colaborador = new Colaborador();
 		return "";
 	}
 	

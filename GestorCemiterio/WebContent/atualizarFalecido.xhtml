@@ -164,11 +164,11 @@
 							<f:selectItem itemValue="Negro" itemLabel="Negro" />
 	</p:selectOneMenu>
     <p:outputLabel value="Nascimento :"/>
-    <p:calendar  effect="fold" locale="de" navigator="true"
+    <p:calendar  effect="fold" navigator="true"
 	value="#{falecidoMB.falecido.nascimento}"> 
-	<f:convertDateTime	pattern="dd/MM/yyyy" 
-								locale="pt_BR" 
-								timeZone="America/Sao_Paulo"/>
+<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
+<!-- 								locale="pt_BR"  -->
+<!-- 								timeZone="America/Sao_Paulo"/> -->
 	</p:calendar>
 	<p:outputLabel value="Idade :"/>
     <p:inputText id="txtIdade" 
@@ -266,11 +266,11 @@
 							<f:selectItem itemValue="TO" itemLabel="TO" />
 						</p:selectOneMenu>
 	<p:outputLabel value="Data Sepultamento :"/>
-    <p:calendar  effect="fold"
+    <p:calendar  effect="fold" navigator="true"
 	value="#{falecidoMB.falecido.dataSepultamento}"> 
-	<f:convertDateTime	pattern="dd/MM/yyyy" 
-								locale="pt_BR" 
-								timeZone="America/Sao_Paulo"/>
+<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
+<!-- 								locale="pt_BR"  -->
+<!-- 								timeZone="America/Sao_Paulo"/> -->
 	</p:calendar>
 	<p:outputLabel for="txtFale" value="Hora Sepultamento:" />
         <p:calendar id="txtFale" value="#{falecidoMB.falecido.horaSepultamento}" 
@@ -322,22 +322,22 @@
 <h:panelGrid columns="2">
   	
     <p:outputLabel value="Data Falecimento :"/>
-    <p:calendar  effect="fold" locale="de" navigator="true" 
+    <p:calendar  effect="fold"  navigator="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtFalecimento}"> 
-	<f:convertDateTime	pattern="dd/MM/yyyy" 
-								locale="pt_BR" 
-								timeZone="America/Sao_Paulo"/>
+<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
+<!-- 								locale="pt_BR"  -->
+<!-- 								timeZone="America/Sao_Paulo"/> -->
 	</p:calendar>
 	<p:outputLabel value="Data Exumação :"/>
-    <p:calendar  effect="fold"  locale="de" navigator="true"
+    <p:calendar  effect="fold"  navigator="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtExumacao}"> 
-	<f:convertDateTime	pattern="dd/MM/yyyy" 
-								locale="pt_BR" 
-								timeZone="America/Sao_Paulo"/>
+<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
+<!-- 								locale="pt_BR"  -->
+<!-- 								timeZone="America/Sao_Paulo"/> -->
 	</p:calendar>
 	<p:outputLabel for="txtFal" value="Hora Falecimento:" />
         <p:calendar id="txtFal" value="#{falecidoMB.falecido.hrFalecimeneto}" 
@@ -362,7 +362,7 @@
 	value="#{falecidoMB.falecido.cartorio}">
 	</p:inputText>
 	<p:outputLabel value="Prazo para registro do óbito :"/>
-    <p:calendar  effect="fold"  
+    <p:calendar  effect="fold"  navigator="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtRegistroObito}"> 

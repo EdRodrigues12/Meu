@@ -46,6 +46,7 @@ public class FalecidoMB {
 	
 	
 	public String adicionar() throws DAOException {
+		falecido = new Falecido();
 		falecidoDao.adicionar(falecido);
 		falecido = new Falecido();
 		imagem = new DefaultStreamedContent();
@@ -53,7 +54,7 @@ public class FalecidoMB {
 	}
 
 	public String pesquisar() throws DAOException {
-		
+		falecido = new Falecido();
 		String codigo = falecido.getCpf();
 		int num = falecido.getCodJazigo();
 		jazigo = new Jazigo();
@@ -63,37 +64,43 @@ public class FalecidoMB {
 		falecido = falecidoDao.pesquisar1(codigo);
 		falecido.setFoto(falecido.getFoto());
 	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
-	    
+	    //falecido = new Falecido();
 		return "";
 	}
 	public String pesquisarPorNome() throws DAOException{
-		//falecido = new Falecido();
+		falecido = new Falecido();
 		imagem = new DefaultStreamedContent();
 		setLista(falecidoDao.pesquisar(falecido.getNome()));
+		falecido = new Falecido();
 //		falecido.setFoto(falecido.getFoto());
 //	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
 		return "";
 	}
 	
 	public String ver(Falecido f) { 
+		falecido = new Falecido();
 		falecido = f;
 		imagem = new DefaultStreamedContent();
 		falecido.setFoto(falecido.getFoto());
 	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
-	    
+	    falecido = new Falecido();
 		System.out.println("Botao Editar do taxista " + f.getNome() + " foi pressionado");
 		return "";
 	}
 
 	public String atualizar() throws DAOException {
+		falecido = new Falecido();
 		falecidoDao.atualizar(falecido);
 		imagem = new DefaultStreamedContent();
+		falecido = new Falecido();
 		return "";
 	}
 
 	public String deletar() throws DAOException {
+		falecido = new Falecido();
 		System.out.println(" teste");
 		falecidoDao.deletar(falecido.getCpf());
+		falecido = new Falecido();
 		return "";
 
 	}

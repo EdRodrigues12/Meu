@@ -33,11 +33,13 @@ public class DeclaranteMB {
 
 	public String atualizar() throws DAOException {
 		declaranteDao.atualizar(declarante);
+		declarante = new Declarante();
 		return "";
 	}
 
 	public String deletar() throws DAOException {
 		declaranteDao.deletar(declarante.getCpf());
+		declarante = new Declarante();
 		return "";
 
 	}

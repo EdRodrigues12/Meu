@@ -107,11 +107,11 @@
   	
    
     <p:outputLabel value="Nascimento :"/>
-    <p:calendar  effect="fold" locale="de" navigator="true"
+    <p:calendar  effect="fold"  navigator="true"
 	value="#{declaranteMB.declarante.nascimento}"> 
-	<f:convertDateTime	pattern="dd/MM/yyyy" 
-								locale="pt_BR" 
-								timeZone="America/Sao_Paulo"/>
+<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
+<!-- 								locale="pt_BR"  -->
+<!-- 								timeZone="America/Sao_Paulo"/> -->
 	</p:calendar>
     <p:outputLabel value="Nome :"/>
     <p:inputText id="txtNome"

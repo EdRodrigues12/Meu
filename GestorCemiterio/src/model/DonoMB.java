@@ -33,29 +33,34 @@ public class DonoMB {
 	public String pesquisarDono() throws DAOException {
 		setLista(donoDao.pesquisar(dono.getNome()));
 		System.out.println(dono.getNome());
+		dono = new Dono();
 		return "";
 	}
 
 	public String pesquisar() throws DAOException {
 		setList(donoDao.pesquisarJazigo(dono.getNome()));
 		System.out.println(dono.getNome());
+		dono = new Dono();
 		return "";
 	}
 	
 	public String pesquisarCpf() throws DAOException {
 		setLista(donoDao.pesquisarDonoCpf(dono.getCpf()));
 		System.out.println(dono.getNome());
+		dono = new Dono();
 		return "";
 	}
 
 	public String atualizar() throws DAOException {
 		donoDao.atualizar(dono);
+		dono = new Dono();
 		return "";
 	}
 
 	public String deletar(Dono d) throws DAOException {
 		dono = d;
 		donoDao.deletar(d.getCpf());
+		dono = new Dono();
 		return "";
 
 	}

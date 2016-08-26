@@ -28,19 +28,21 @@ public class JazigoMB {
 
 		public String pesquisar() throws DAOException {
 			int codigo = jazigo.getNumero();
-			jazigo = new Jazigo();
 			jazigo = jazigoDao.pesquisarUmJazigo(codigo);
+			jazigo = new Jazigo();
 			return "";
 		}
 
 		public String atualizar() throws DAOException {
 			jazigoDao.atualizar(jazigo);
+			jazigo = new Jazigo();
 			return "";
 		}
 		
 
 		public String deletar() throws DAOException {
 			jazigoDao.deletar(jazigo.getCodigo());
+			jazigo = new Jazigo();
 			return "";
 
 		}
