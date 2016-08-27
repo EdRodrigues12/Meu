@@ -129,8 +129,8 @@ public class VelorioDAOImpl implements VelorioDAO {
 				v.setNomeFalecido(rs.getString("nomeFalecido"));
 				v.setDia(rs.getDate("dia"));
 				v.setDiaFim(rs.getDate("diaFim"));
-				v.setHoraInicio(rs.getDate("horaInicio"));
-				v.setHoraFim(rs.getDate("horaFim"));
+				v.setHoraInicio(rs.getTimestamp("horaInicio"));
+				v.setHoraFim(rs.getTimestamp("horaFim"));
 				v.setSala(rs.getInt("sala"));
 				v.setStatus(rs.getBoolean("statu"));
 				velorios.add(v);

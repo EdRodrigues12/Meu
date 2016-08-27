@@ -130,12 +130,12 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 			stmt.setDate(29, pzre);
 			stmt.setString(30, f.getCrm());
 			stmt.setString(31, f.getCausamorte());
-			stmt.setString(32, f.getCpf());
-			stmt.setInt(33, f.getIdade());
+			stmt.setInt(32, f.getIdade());
 			java.sql.Date sds = new java.sql.Date(f.getDataSepultamento().getTime());
-			stmt.setDate(34, sds);
+			stmt.setDate(33, sds);
 			java.sql.Timestamp hes = new java.sql.Timestamp(f.getHoraSepultamento().getTime());
-			stmt.setTimestamp(35, hes);
+			stmt.setTimestamp(34, hes);
+			stmt.setString(35, f.getCpf());
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
@@ -206,8 +206,8 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setFoto(rs.getBytes("foto"));	
 				d.setDtFalecimento(rs.getDate("dataFalecimento"));
 				d.setDtExumacao(rs.getDate("dataExumacao"));
-				d.setHrFalecimeneto(rs.getDate("horaFalecimento"));
-				d.setHrExumacao(rs.getDate("horaExumacao"));
+				d.setHrFalecimeneto(rs.getTimestamp("horaFalecimento"));
+				d.setHrExumacao(rs.getTimestamp("horaExumacao"));
 				d.setLocal(rs.getString("localFalecimento"));
 				d.setCartorio(rs.getString("cartorio"));
 				d.setDtRegistroObito(rs.getDate("registroObito"));
@@ -215,7 +215,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setCausamorte(rs.getString("causaMorte"));
 				d.setIdade(rs.getInt("idade"));
 				d.setDataSepultamento(rs.getDate("dataSepultamento"));
-				d.setHoraSepultamento(rs.getDate("horaSepultamento"));
+				d.setHoraSepultamento(rs.getTimestamp("horaSepultamento"));
 				falecidos.add(d);
 			}
 			stmt.close();
@@ -264,8 +264,8 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setFoto(rs.getBytes("foto"));
 				d.setDtFalecimento(rs.getDate("dataFalecimento"));
 				d.setDtExumacao(rs.getDate("dataExumacao"));
-				d.setHrFalecimeneto(rs.getDate("horaFalecimento"));
-				d.setHrExumacao(rs.getDate("horaExumacao"));
+				d.setHrFalecimeneto(rs.getTimestamp("horaFalecimento"));
+				d.setHrExumacao(rs.getTimestamp("horaExumacao"));
 				d.setLocal(rs.getString("localFalecimento"));
 				d.setCartorio(rs.getString("cartorio"));
 				d.setDtRegistroObito(rs.getDate("registroObito"));
@@ -273,7 +273,7 @@ public class FalecidoDAOImpl implements FalecidoDAO {
 				d.setCausamorte(rs.getString("causaMorte"));
 				d.setIdade(rs.getInt("idade"));
 				d.setDataSepultamento(rs.getDate("dataSepultamento"));
-				d.setHoraSepultamento(rs.getDate("horaSepultamento"));
+				d.setHoraSepultamento(rs.getTimestamp("horaSepultamento"));
 			}
 			stmt.close();
 		} catch (SQLException e) {

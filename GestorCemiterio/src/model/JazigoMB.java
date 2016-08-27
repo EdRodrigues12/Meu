@@ -27,9 +27,10 @@ public class JazigoMB {
 		}
 
 		public String pesquisar() throws DAOException {
+			//jazigo = new Jazigo();
 			int codigo = jazigo.getNumero();
 			jazigo = jazigoDao.pesquisarUmJazigo(codigo);
-			jazigo = new Jazigo();
+			
 			return "";
 		}
 

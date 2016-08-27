@@ -84,8 +84,6 @@
 			<div class="texto">
 			<h:form >
 
-<h:form >
-
 <h:panelGrid columns="2">
   	
     <p:outputLabel value="CPF Falecido :" />
@@ -101,23 +99,74 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  action="#{falecidoMB.pesquisar}"  ajax = "false"/> 
+						   <p:commandButton value="Pesquisar por CPF"  action="#{falecidoMB.pesquisar}"  ajax = "false"/> 
+							</h:panelGroup>
+					</h:panelGrid>
+					<br/>
+</h:form>
+<div class="texto">
+				<h:form>
+	<h:panelGrid columns="2">
+	<p:outputLabel value="Nome Falecido :"/>
+    <p:inputText  id="txtNome"
+	value="#{falecidoMB.falecido.nome}"> 
+	</p:inputText>
+  	
+</h:panelGrid>
+<br />
+<h:panelGrid>
+					<h:panelGroup>
+						   <p:commandButton value="Pesquisar por Nome"  action="#{falecidoMB.pesquisarPorNome}" ajax = "false"/> 
 							</h:panelGroup>
 					</h:panelGrid>
 </h:form>
-
-
-<h:form enctype="multipart/form-data">
+</div>
+<br/>
+<h:form>
+	<h:dataTable 	value="#{falecidoMB.lista}" 
+					var="falecido"
+					style="border-style:solid;"
+					border="3"
+					rowClasses="linha1,linha2">
+		<h:column>#{falecido.cpf}
+			<f:facet name="header">CPF</f:facet>
+		</h:column>
+		
+		<h:column>#{falecido.nome}
+			<f:facet name="header">Nome do Falecido</f:facet>
+		</h:column>
+		
+		<h:column>#{falecido.idade}
+			<f:facet name="header">Idade</f:facet>
+		</h:column>
+		
+		<h:column>#{falecido.cpfDeclarante}
+			<f:facet name="header">CPF Declarante</f:facet>
+		</h:column>
+		
+		
+		<h:column>
+			<h:commandButton value="ver" action="#{falecidoMB.ver( falecido )}"/>
+			<f:facet name="header">Ver Dados Falecido</f:facet>
+		</h:column>
+	</h:dataTable>
 	
- <p:outputLabel value="Foto"/>
+  	
+
+<br />
+</h:form>
+	
+	<h:form enctype="multipart/form-data">
+	
+ <p:outputLabel value="Foto "/>
  <p:graphicImage value="#{falecidoMB.imagem}" id="imagem" cache="false"/>
- <p:fileUpload sizeLimit="204800" label="Procurar..."  
- fileUploadListener="#{falecidoMB.handleFileUpload}"
-  description="Images" update="imagem"/>
+ 
  
         </h:form>        
         <p:messages  severity="info" escape="false" showDetail="true" 
                  autoUpdate="true" closable="true"/>
+     
+ <h:form  >
 
 <h:panelGrid columns="2">
   	
@@ -157,11 +206,13 @@
 	<p:selectOneMenu id="cbbEtnia" value="#{falecidoMB.falecido.etnia}"
 							style="comboBox">
 							<f:selectItem itemValue="Branco" itemLabel="Branco" />
+							<f:selectItem itemValue="Pardo" itemLabel="Pardo" />
 							<f:selectItem itemValue="Caboclo" itemLabel="Caboclo" />
 							<f:selectItem itemValue="Cafuzo" itemLabel="Cafuzo" />
 							<f:selectItem itemValue="Indígena" itemLabel="Indígena" />
 							<f:selectItem itemValue="Mulato" itemLabel="Mulato" />
 							<f:selectItem itemValue="Negro" itemLabel="Negro" />
+							<f:selectItem itemValue="Amarelo" itemLabel="Amarelo" />
 	</p:selectOneMenu>
     <p:outputLabel value="Nascimento :"/>
     <p:calendar  effect="fold" navigator="true"
@@ -176,21 +227,18 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.idade}">
 	</p:inputText>
-   <p:outputLabel value="Profissão :"/>
+	<p:outputLabel value="Profissão :"/>
     <p:inputText id="txtProfissao"
 	value="#{falecidoMB.falecido.profissao}">
 	</p:inputText>
 	<p:outputLabel value="Estado Civil : " />
 	<p:selectOneMenu id="cbbCivil" value="#{falecidoMB.falecido.estCivil}"
 							style="comboBox">
-							<f:selectItem itemValue="Branco" itemLabel="Branco" />
-							<f:selectItem itemValue="Pardo" itemLabel="Pardo" />
-							<f:selectItem itemValue="Caboclo" itemLabel="Caboclo" />
-							<f:selectItem itemValue="Cafuzo" itemLabel="Cafuzo" />
-							<f:selectItem itemValue="Indígena" itemLabel="Indígena" />
-							<f:selectItem itemValue="Mulato" itemLabel="Mulato" />
-							<f:selectItem itemValue="Negro" itemLabel="Negro" />
-							<f:selectItem itemValue="Amarelo" itemLabel="Amarelo" />
+							<f:selectItem itemValue="Casado" itemLabel="Casado" />
+							<f:selectItem itemValue="Divorciado" itemLabel="Divorciado" />
+							<f:selectItem itemValue="Separado" itemLabel="Separado" />
+							<f:selectItem itemValue="Solteiro" itemLabel="Solteiro" />
+							<f:selectItem itemValue="Viúvo" itemLabel="Viúvo" />
 							
 	</p:selectOneMenu>
 	<p:outputLabel value="Titulo Eleitor :"/>
@@ -265,6 +313,7 @@
 							<f:selectItem itemValue="SP" itemLabel="SP" />
 							<f:selectItem itemValue="TO" itemLabel="TO" />
 						</p:selectOneMenu>
+	
 	<p:outputLabel value="Data Sepultamento :"/>
     <p:calendar  effect="fold" navigator="true"
 	value="#{falecidoMB.falecido.dataSepultamento}"> 
@@ -273,14 +322,11 @@
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel for="txtFale" value="Hora Sepultamento:" />
-        <p:calendar id="txtFale" value="#{falecidoMB.falecido.horaSepultamento}" 
+        <p:calendar id="txtFale" value="#{falecidoMB.falecido.horaSepultamento}"
         pattern="HH:mm" timeOnly="true"  />
-	
 	</h:panelGrid>
 
-           <p:separator />
-
-			<h2>
+           <h2>
 				<h:outputText value="Pesquisar Jazigo" />
 			</h2>
 
@@ -312,7 +358,7 @@
 	value="#{falecidoMB.falecido.codJazigo}">
 	</p:inputText>				
 	</h:panelGrid>	
-<p:separator />
+					
 
            <h2>
 				<h:outputText value=" Dados Falecimento" />
@@ -331,7 +377,7 @@
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel value="Data Exumação :"/>
-    <p:calendar  effect="fold"  navigator="true"
+    <p:calendar  effect="fold" navigator="true" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtExumacao}"> 
@@ -362,7 +408,7 @@
 	value="#{falecidoMB.falecido.cartorio}">
 	</p:inputText>
 	<p:outputLabel value="Prazo para registro do óbito :"/>
-    <p:calendar  effect="fold"  navigator="true"
+    <p:calendar  effect="fold"  
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtRegistroObito}"> 
@@ -380,9 +426,8 @@
         <p:commandButton value="Limpar causa da morte" type="button" 
         onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
     </h:panelGrid>
-    </h:panelGrid>			
-	
-					<h:panelGrid>
+    </h:panelGrid>	
+    <h:panelGrid>
 						<h:panelGroup>
 						   <p:commandButton value="Atualizar"  actionListener="#{falecidoMB.atualizar}" ajax="false"  /> 
 							</h:panelGroup>
@@ -391,12 +436,8 @@
 						<h:panelGroup>
 							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
 						</h:panelGroup>
-					</h:panelGrid>	
-
-
-
-</h:form>
-              
+					</h:panelGrid>				
+   </h:form>               
 				<p/>
 			</div>
 			<!-- Fim da DIV TEXTO -->

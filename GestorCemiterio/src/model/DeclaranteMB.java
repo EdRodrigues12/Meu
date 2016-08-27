@@ -21,26 +21,25 @@ public class DeclaranteMB {
 	private List<Declarante> lista = new ArrayList<Declarante>();
 
 	public String adicionar() throws DAOException {
-		try{
-		declarante = new Declarante();
+		
+		//declarante = new Declarante();
 		declaranteDao.adicionar(declarante);
 		declarante = new Declarante();
-	}catch(DAOException e){
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar no banco"));
-	}
+	
 		return "";
 	}
 
 	public String pesquisar() throws DAOException {
+		//declarante = new Declarante();
 		String codigo = declarante.getCpf();
-		declarante = new Declarante();
+		
 		declarante = declaranteDao.pesquisar1(codigo);
-		declarante = new Declarante();
+		//declarante = new Declarante();
 		return "";
 	}
 
 	public String atualizar() throws DAOException {
-		declarante = new Declarante();
+		//declarante = new Declarante();
 		declaranteDao.atualizar(declarante);
 		declarante = new Declarante();
 		return "";
