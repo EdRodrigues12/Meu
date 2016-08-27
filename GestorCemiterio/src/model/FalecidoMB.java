@@ -46,10 +46,14 @@ public class FalecidoMB {
 	
 	
 	public String adicionar() throws DAOException {
+		try{
 		falecido = new Falecido();
 		falecidoDao.adicionar(falecido);
 		falecido = new Falecido();
 		imagem = new DefaultStreamedContent();
+		}catch(DAOException e){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar no banco"));
+		}
 		return "";
 	}
 

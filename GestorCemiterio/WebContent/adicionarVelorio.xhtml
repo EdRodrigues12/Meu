@@ -169,7 +169,7 @@
             <p:outputLabel for="time2" value="Hora Final:" />
             <p:calendar id="time2" value="#{velorioMB.velorio.horaFim}" pattern="HH:mm" timeOnly="true" timeZone="America/Sao_Paulo" required="true" />
  
-            <p:commandButton type="reset" value="Reset" />
+<!--             <p:commandButton type="reset" value="Reset" /> -->
             <p:commandButton id="addButton" value="Save" actionListener="#{velorioMB.salvar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" update="messages"  />
         </h:panelGrid>
     </p:dialog>  

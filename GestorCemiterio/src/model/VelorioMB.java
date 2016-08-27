@@ -67,7 +67,8 @@ public class VelorioMB implements Serializable {
 				evt.setAllDay(true);
 				evt.setEditable(true);
 				
-				if(vel.isStatus() == true){
+				Date data = new Date(System.currentTimeMillis());
+				if(vel.isStatus() == true || vel.getDiaFim().before(data) ){
 					evt.setStyleClass("emp1");
 				}else if(vel.isStatus() == false){
 					evt.setStyleClass("emp2");
@@ -160,7 +161,7 @@ public class VelorioMB implements Serializable {
 	
 	public void eventResize(ScheduleEntryResizeEvent evtMove ){
 		for(Velorio vel : lista){
-			if(vel.getId() == (Long) evtMove.getScheduleEvent().getData()){
+			if(vel.getId() == (Long) evtMove.getScheduleEvent().getData()&& velorio.getDia().getTime() <= velorio.getDiaFim().getTime()){
 				velorio = vel;
 				try {
 					dao.atualizar(velorio);

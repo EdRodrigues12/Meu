@@ -165,9 +165,9 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.nascimento}"> 
-<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
-<!-- 								locale="pt_BR"  -->
-<!-- 								timeZone="America/Sao_Paulo"/> -->
+	<f:convertDateTime	pattern="dd/MM/yy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel value="Idade :"/>
     <p:inputText id="txtIdade" 
@@ -284,9 +284,9 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dataSepultamento}"> 
-<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
-<!-- 								locale="pt_BR"  -->
-<!-- 								timeZone="America/Sao_Paulo"/> -->
+	<f:convertDateTime	pattern="dd/MM/yy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel for="txtFale" value="Hora Sepultamento:" />
         <p:calendar id="txtFale" value="#{falecidoMB.falecido.horaSepultamento}" 
@@ -343,18 +343,18 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtFalecimento}"> 
-<!-- 	<f:convertDateTime	pattern="dd/MM/yyyy"  -->
-<!-- 								locale="pt_BR"  -->
-<!-- 								timeZone="America/Sao_Paulo"/> -->
+	<f:convertDateTime	pattern="dd/MM/yy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel value="Data Exumação :"/>
     <p:calendar  effect="fold" navigator="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
     value="#{falecidoMB.falecido.dtExumacao}"> 
-<!--     <f:convertDateTime	pattern="dd/MM/yyyy"  -->
-<!-- 								locale="pt_BR"  -->
-<!-- 								timeZone="America/Sao_Paulo"/> -->
+    <f:convertDateTime	pattern="dd/MM/yy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	<p:outputLabel for="txtFal" value="Hora Falecimento:" />
         <p:calendar id="txtFal" value="#{falecidoMB.falecido.hrFalecimeneto}" 
@@ -429,7 +429,7 @@
 	<!-- Fim da DIV CORPO -->
 	<script language="JavaScript" type="text/javascript">
 		function Enviar1(){
-window.open('carregaJazigos.xhtml','Jazigo','scrollbars=yes, menubar=yes, status=yes, resizable=no, width=250px, height=250px, left=10px, top=10px')
+window.open('Donos.xhtml','Jazigo','scrollbars=yes, menubar=yes, status=yes, resizable=no, width=250px, height=250px, left=10px, top=10px')
 		}
 </script>
 </h:body>

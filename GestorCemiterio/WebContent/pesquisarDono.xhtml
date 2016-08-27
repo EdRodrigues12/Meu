@@ -94,7 +94,7 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  actionListener="#{donoMB.pesquisarDono}" onclick="Enviar1()"/> 
+						   <p:commandButton value="Pesquisar"  actionListener="#{donoMB.pesquisarDono}" ajax="false"/> 
 							</h:panelGroup>
 					</h:panelGrid>
 </h:form>
@@ -104,25 +104,25 @@
 
 			<div class="texto">
 				<h:form>
-				<h:panelGrid columns="2">
-	<p:outputLabel value="Código Jazigo :" />
-    <p:inputText  id="txtCod" 
-	value="#{donoMB.dono.codJazigo}">
-    </p:inputText>
-    <p:outputLabel value="Nome :"/>
-    <p:inputText  id="txtNome"
-	value="#{donoMB.dono.nome}"> 
-	</p:inputText>
-    <p:outputLabel value="CPF Declarante :" />
-    <p:inputMask id="txtCPF" mask="999.999.999-99" 
-    onBlur="ValidarCPF(txtCPF);" 
-    onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
-    required="true"
-	requiredMessage="Campo Obrigatorio"
-	value="#{donoMB.dono.cpf}">
-    </p:inputMask>
-	
-</h:panelGrid>
+	<h:dataTable 	value="#{donoMB.lista}" 
+					var="dono"
+					style="border-style:solid;"
+					border="3"
+					rowClasses="linha1,linha2">
+		<h:column>#{dono.cpf}
+			<f:facet name="header">CPF</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.nome}
+			<f:facet name="header">Nome</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.codJazigo}
+			<f:facet name="header">Jazigo</f:facet>
+		</h:column>
+		
+	</h:dataTable>
+
 				</h:form>
 				<p/>
 			</div>
