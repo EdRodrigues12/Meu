@@ -5,6 +5,7 @@ import java.util.List;
 import entidades.Dono;
 import entidades.DonoJazigo;
 
+
 public interface DonoDAO {
 	
 	public void adicionar(Dono d) throws DAOException;
@@ -21,7 +22,7 @@ public interface DonoDAO {
 	
 	public List<DonoJazigo> pesquisarJazigo(String dono) throws DAOException;
 	
-	
+	public Dono pesquisar1(String nome) throws DAOException;
 
 	
 

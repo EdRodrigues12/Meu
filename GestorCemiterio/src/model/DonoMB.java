@@ -30,6 +30,15 @@ public class DonoMB {
 		return "";
 	}
 	
+	public String pesquisarCPF() throws DAOException {
+		//declarante = new Declarante();
+		String cpf = dono.getCpf();
+		
+		dono = donoDao.pesquisar1(cpf);
+		//declarante = new Declarante();
+		return "";
+	}
+	
 	public String pesquisarDono() throws DAOException {
 		setLista(donoDao.pesquisar(dono.getNome()));
 		System.out.println(dono.getNome());

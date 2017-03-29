@@ -39,7 +39,7 @@ public class DonoDAOImpl implements DonoDAO {
 	@Override
 	public void atualizar(Dono d) throws DAOException {
 		String sql = "UPDATE dono SET cpf = ?,"
-				+ " nome = ?,codigoJazigo = ? WHERE cpf = ?";
+				+ " nome = ?,codigoJazigo = ? WHERE id = ?";
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -48,6 +48,7 @@ public class DonoDAOImpl implements DonoDAO {
 			stmt.setString(1, d.getCpf());
 			stmt.setString(2, d.getNome());
 			stmt.setInt(3, d.getCodJazigo());
+			stmt.setInt(4, d.getId());
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
@@ -94,6 +95,7 @@ public class DonoDAOImpl implements DonoDAO {
 
 			while (rs.next()) {
 				Dono d = new Dono();
+				d.setId( rs.getInt("id") );
 				d.setCpf(rs.getString("cpf"));
 				d.setNome(rs.getString("nome"));
 				d.setCodJazigo(rs.getInt("codigoJazigo"));
@@ -121,6 +123,7 @@ public class DonoDAOImpl implements DonoDAO {
 
 			while (rs.next()) {
 				Dono d = new Dono();
+				d.setId( rs.getInt("id") );
 				d.setCpf(rs.getString("cpf"));
 				d.setNome(rs.getString("nome"));
 				d.setCodJazigo(rs.getInt("codigoJazigo"));
@@ -192,6 +195,34 @@ public class DonoDAOImpl implements DonoDAO {
 		}
 		return donos;
 		
+	}
+
+	@Override
+	public Dono pesquisar1(String cpf) throws DAOException {
+		String sql = "SELECT * FROM dono WHERE cpf like ? ";
+		Dono d = new Dono();
+		try {
+			Connection con = DBResourceManager.getInstance().getCon();
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setString(1, "%" + cpf + "%");
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				d.setId( rs.getInt("id") );
+				d.setCpf(rs.getString("cpf"));
+				d.setNome(rs.getString("nome"));
+				d.setCodJazigo(rs.getInt("codigoJazigo"));
+				
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} catch (ClassNotFoundException e) {
+			throw new DAOException(e);
+		}
+		return d;
+	
 	}
 	
 	

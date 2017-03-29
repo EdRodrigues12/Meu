@@ -50,8 +50,8 @@ public class ColaboradorMB {
 	
 	public String editar(Colaborador c) { 
 		colaborador = c;
-		System.out.println("Botao Editar do taxista " + c.getNome() + " foi pressionado");
-		colaborador = new Colaborador();
+		System.out.println("Botao Editar do Col " + c.getNome() + " foi pressionado");
+		//colaborador = new Colaborador();
 		return "";
 	}
 	
