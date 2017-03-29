@@ -122,10 +122,12 @@
     maxlength="13"
 	value="#{declaranteMB.declarante.rg}">
 	</p:inputMask>
-	<p:outputLabel value="Sexo :"/>
-    <p:inputText id="txtSexo" 
-	value="#{declaranteMB.declarante.sexo}">
-	</p:inputText>
+	<p:outputLabel value="Sexo: " />
+	<p:selectOneMenu id="cbbSexo" value="#{declaranteMB.declarante.sexo}"
+							style="comboBox">
+							<f:selectItem itemValue="F" itemLabel="Feminino" />
+							<f:selectItem itemValue="M" itemLabel="Masculino" />
+						</p:selectOneMenu>
 	<p:outputLabel value="CEP :"/>
 	<p:inputMask  id="txtCEP" mask="99999-999"
     maxlength="9"
@@ -151,18 +153,64 @@
     <p:inputText id="txtCidade"
 	value="#{declaranteMB.declarante.cidade}">
 	</p:inputText>
-	<p:outputLabel value="UF :"/>
-    <p:inputText id="txtUF" 
-	value="#{declaranteMB.declarante.uf}">
-	</p:inputText>
+	<p:outputLabel value="UF: " />
+	<p:selectOneMenu id="cbbUF" value="#{declaranteMB.declarante.uf}"
+							style="comboBox">
+							<f:selectItem itemValue="AL" itemLabel="AL" />
+							<f:selectItem itemValue="AM" itemLabel="AM" />
+							<f:selectItem itemValue="AP" itemLabel="AP" />
+							<f:selectItem itemValue="BA" itemLabel="BA" />
+							<f:selectItem itemValue="CE" itemLabel="CE" />
+							<f:selectItem itemValue="DF" itemLabel="DF" />
+							<f:selectItem itemValue="ES" itemLabel="ES" />
+							<f:selectItem itemValue="GO" itemLabel="GO" />
+							<f:selectItem itemValue="MA" itemLabel="MA" />
+							<f:selectItem itemValue="MG" itemLabel="MG" />
+							<f:selectItem itemValue="MS" itemLabel="MS" />
+							<f:selectItem itemValue="MT" itemLabel="MT" />
+							<f:selectItem itemValue="PA" itemLabel="PA" />
+							<f:selectItem itemValue="PE" itemLabel="PE" />
+							<f:selectItem itemValue="PB" itemLabel="PB" />
+							<f:selectItem itemValue="PR" itemLabel="PR" />
+							<f:selectItem itemValue="PI" itemLabel="PI" />
+							<f:selectItem itemValue="RJ" itemLabel="RJ" />
+							<f:selectItem itemValue="RN" itemLabel="RN" />
+							<f:selectItem itemValue="RO" itemLabel="RO" />
+							<f:selectItem itemValue="RS" itemLabel="RS" />
+							<f:selectItem itemValue="RR" itemLabel="RR" />
+							<f:selectItem itemValue="SC" itemLabel="SC" />
+							<f:selectItem itemValue="SE" itemLabel="SE" />
+							<f:selectItem itemValue="SP" itemLabel="SP" />
+							<f:selectItem itemValue="TO" itemLabel="TO" />
+						</p:selectOneMenu>
+	
 	<p:outputLabel value="Profissão :"/>
     <p:inputText id="txtProfissao" 
 	value="#{declaranteMB.declarante.profissao}">
 	</p:inputText>
-	<p:outputLabel value="Parentesco :"/>
-    <p:inputText id="txtParentesco" 
-	value="#{declaranteMB.declarante.parentesco}">
-	</p:inputText>				
+	<p:outputLabel value="Parentesco: " />
+	<p:selectOneMenu id="cbbParentesco" value="#{declaranteMB.declarante.parentesco}"
+							style="comboBox">
+							<f:selectItem itemValue="Avó" itemLabel="Avó" />
+							<f:selectItem itemValue="Avô" itemLabel="Avô" />
+							<f:selectItem itemValue="Esposa" itemLabel="Esposa" />
+							<f:selectItem itemValue="Filho" itemLabel="Filho" />
+							<f:selectItem itemValue="Madrasta" itemLabel="Madrasta" />
+							<f:selectItem itemValue="Madrinha" itemLabel="Madrinha" />
+							<f:selectItem itemValue="Mãe" itemLabel="Mãe" />
+							<f:selectItem itemValue="Marido" itemLabel="Marido" />
+							<f:selectItem itemValue="Neto" itemLabel="Neto" />
+							<f:selectItem itemValue="Padrasto" itemLabel="Padrasto" />
+							<f:selectItem itemValue="Padrinho" itemLabel="Padrinho" />
+							<f:selectItem itemValue="Pai" itemLabel="Pai" />
+							<f:selectItem itemValue="Primo" itemLabel="Primo" />
+							<f:selectItem itemValue="Sobrinho" itemLabel="Sobrinho" />
+							<f:selectItem itemValue="Tio" itemLabel="Tio" />
+							<f:selectItem itemValue="Tia" itemLabel="Tia" />
+							<f:selectItem itemValue="Outro" itemLabel="Outro" />
+							
+						</p:selectOneMenu>
+					
 	<p:outputLabel value="Telefone :"/>
 	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
     maxlength="13"
