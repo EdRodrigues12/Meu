@@ -85,7 +85,8 @@
 				<h:form>
 	<h:panelGrid columns="2">
   	
-     <p:outputLabel value="CPF :" />
+     <p:outputLabel value="CPF :" 
+     style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:inputMask id="txtCPF" mask="999.999.999-99"
     required="true"
 	requiredMessage="Campo Obrigatorio" 
@@ -107,79 +108,80 @@
 <div class="texto">
 
 <h:form  >
-
+<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
 <h:panelGrid columns="2">
   	
    
-    <p:outputLabel value="Nascimento :"/>
-    <p:calendar  effect="fold" 
+    <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:calendar  effect="fold" readonly="true"
 	value="#{declaranteMB.declarante.nascimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yyyy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-    <p:outputLabel value="Nome :"/>
-    <p:inputText id="txtNome"
+    <p:outputLabel value="Nome :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtNome" readonly="true"
 	value="#{declaranteMB.declarante.nome}">
 	</p:inputText>
-    <p:outputLabel value="RG :"/>
+    <p:outputLabel value="RG :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputMask  id="txtRG" mask="999.999.999-9"
-    maxlength="13"
+    maxlength="13" readonly="true"
 	value="#{declaranteMB.declarante.rg}">
 	</p:inputMask>
-	<p:outputLabel value="Sexo :"/>
-    <p:inputText id="txtSexo" 
+	<p:outputLabel value="Sexo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtSexo" readonly="true"
 	value="#{declaranteMB.declarante.sexo}">
 	</p:inputText>
-	<p:outputLabel value="CEP :"/>
+	<p:outputLabel value="CEP :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtCEP" mask="99999-999"
-    maxlength="9"
+    maxlength="9" readonly="true"
 	value="#{declaranteMB.declarante.cep}">
 	</p:inputMask>
-	<p:outputLabel value="Endereço :"/>
-    <p:inputText id="txtEndereco" 
+	<p:outputLabel value="Endereço :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtEndereco" readonly="true"
 	value="#{declaranteMB.declarante.endereco}">
 	</p:inputText>
-	<p:outputLabel value="N° :"/>
-    <p:inputText id="txtN"
+	<p:outputLabel value="N° :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtN" readonly="true"
 	value="#{declaranteMB.declarante.numero}">
 	</p:inputText>
-	<p:outputLabel value="Complemento :"/>
-    <p:inputText id="txtComplemento" 
+	<p:outputLabel value="Complemento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtComplemento"  readonly="true"
 	value="#{declaranteMB.declarante.complemento}">
 	</p:inputText>
-	<p:outputLabel value="Bairro :"/>
-    <p:inputText id="txtBairro" 
+	<p:outputLabel value="Bairro :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtBairro"  readonly="true"
 	value="#{declaranteMB.declarante.bairro}">
 	</p:inputText>
-	<p:outputLabel value="Cidade :"/>
-    <p:inputText id="txtCidade"
+	<p:outputLabel value="Cidade :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtCidade" readonly="true"
 	value="#{declaranteMB.declarante.cidade}">
 	</p:inputText>
-	<p:outputLabel value="UF :"/>
-    <p:inputText id="txtUF" 
+	<p:outputLabel value="UF :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtUF" readonly="true"
 	value="#{declaranteMB.declarante.uf}">
 	</p:inputText>
-	<p:outputLabel value="Profissão :"/>
-    <p:inputText id="txtProfissao" 
+	<p:outputLabel value="Profissão :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtProfissao" readonly="true"
 	value="#{declaranteMB.declarante.profissao}">
 	</p:inputText>
-	<p:outputLabel value="Parentesco :"/>
-    <p:inputText id="txtParentesco" 
+	<p:outputLabel value="Parentesco :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtParentesco" readonly="true"
 	value="#{declaranteMB.declarante.parentesco}">
 	</p:inputText>				
-	<p:outputLabel value="Telefone :"/>
+	<p:outputLabel value="Telefone :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
-    maxlength="13"
+    maxlength="13" readonly="true"
 	value="#{declaranteMB.declarante.telefone}">
 	</p:inputMask>
-	<p:outputLabel value="Celular :"/>
+	<p:outputLabel value="Celular :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtCelular" mask="(99)99999-9999"
-    maxlength="14"
+    maxlength="14" readonly="true"
 	value="#{declaranteMB.declarante.celular}">
 	</p:inputMask>
-	<p:outputLabel value="Email :"/>
-    <p:inputText id="txtEmail"
+	<p:outputLabel value="Email :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtEmail" readonly="true"
 	value="#{declaranteMB.declarante.email}">
 	</p:inputText>
   	
@@ -190,11 +192,11 @@
 						   <p:commandButton value="Deletar"  action="#{declaranteMB.deletar}" ajax = "false" /> 
 							</h:panelGroup>
 					</h:panelGrid>
-					<h:panelGrid>
-						<h:panelGroup>
-							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
-						</h:panelGroup>
-					</h:panelGrid>
+<!-- 					<h:panelGrid> -->
+<!-- 						<h:panelGroup> -->
+<!-- 							<p:commandButton value="Botão" action="#{managedBeanQualquer}" /> -->
+<!-- 						</h:panelGroup> -->
+<!-- 					</h:panelGrid> -->
 				</h:form>
 				<p/>
 			</div>

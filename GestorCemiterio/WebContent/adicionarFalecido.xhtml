@@ -212,18 +212,25 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.secao}">
 	</p:inputText>
+	</h:panelGrid>
+	<h:panelGrid id="pnCEP" columns="4">
 	<p:outputLabel value="CEP :"/>
 	<p:inputMask  id="txtCEP" mask="99999-999"
     maxlength="9"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.falecido.cep}">
+	value="#{falecidoMB.cep}">
 	</p:inputMask>
+	<p:commandButton value="Pesquisar" icon="ui-icon-search" 
+                  action="#{falecidoMB.buscaCEP}" update="frmResult"/> 
+	</h:panelGrid>
+
+	<h:panelGrid id="frmResult"  columns="2">
 	<p:outputLabel value="Endereço :"/>
     <p:inputText id="txtEndereco" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.falecido.endereco}">
+	value="#{falecidoMB.endereco}">
 	</p:inputText>
 	<p:outputLabel value="N° :"/>
     <p:inputText id="txtN" 
@@ -241,14 +248,17 @@
     <p:inputText id="txtBairro" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.falecido.bairro}">
+	value="#{falecidoMB.bairro}">
 	</p:inputText>
 	<p:outputLabel value="Cidade :"/>
     <p:inputText id="txtCidade" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.falecido.cidade}">
+	value="#{falecidoMB.cidade}">
 	</p:inputText>
+	</h:panelGrid>
+	
+	<h:panelGrid columns="2">
 	<p:outputLabel value="UF: " />
 	<p:selectOneMenu id="cbbUF" value="#{falecidoMB.falecido.uf}"
 							style="comboBox">

@@ -43,8 +43,55 @@ public class FalecidoMB {
 	private StreamedContent imagem;
 	private Date dtExumacao;
 	private String dono;
+	private String cep = null;
+	 
+    private String tipoendereco;
+    private String endereco;
+    private String uf;
+    private String cidade;
+    private String bairro;
 	
 	
+
+	public String buscaCEP(){
+		System.out.println(cep);
+		WebServiceCep webServiceCep = WebServiceCep.searchCep(getCep());
+      
+        if (webServiceCep.wasSuccessful()) {
+        	//setTipoendereco(webServiceCep.getTipoendereco());
+            setEndereco(webServiceCep.getLogradouroFull());
+            setUf(webServiceCep.getUf());
+            setCidade(webServiceCep.getCidade());
+            setBairro(webServiceCep.getBairro());
+        	
+//        	falecido.setEndereco(webServiceCep.getLogradouroFull());
+//        	falecido.setUf(webServiceCep.getUf());
+//        	falecido.setCidade(webServiceCep.getCidade());
+//        	falecido.setBairro(webServiceCep.getBairro());
+            //falecido.setCep(cep);
+           // System.out.println(cep);
+            System.out.println(falecido.getEndereco());
+            
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cep Encontrado!", " "));
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cep Não Encontrado ", null));
+        }
+		return "";
+		
+		
+	}
+	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
 	public String adicionar() throws DAOException {
 		
 		//falecido = new Falecido();
@@ -234,7 +281,45 @@ public class FalecidoMB {
 	public void setDono(String dono) {
 		this.dono = dono;
 	}
+	public String getTipoendereco() {
+		return tipoendereco;
+	}
 
+	public void setTipoendereco(String tipoendereco) {
+		this.tipoendereco = tipoendereco;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
 
 
 }

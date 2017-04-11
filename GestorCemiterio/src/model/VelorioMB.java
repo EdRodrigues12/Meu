@@ -69,7 +69,7 @@ public class VelorioMB implements Serializable {
 				
 				Date data = new Date(System.currentTimeMillis());
 				if(vel.isStatus() == true || vel.getDiaFim().before(data) ){
-					evt.setStyleClass("emp1");
+					evt.setStyleClass("#33ff33");
 				}else if(vel.isStatus() == false){
 					evt.setStyleClass("emp2");
 				}

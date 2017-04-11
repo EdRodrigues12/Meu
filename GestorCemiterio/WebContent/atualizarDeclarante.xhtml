@@ -85,10 +85,11 @@
 				<h:form>
 	<h:panelGrid columns="2">
   	
-     <p:outputLabel value="CPF :" />
+     <p:outputLabel value="CPF :"
+     style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:inputMask id="txtCPF" mask="999.999.999-99"
-    required="true"
-	requiredMessage="Campo Obrigatorio" 
+    
+	 
 	value="#{declaranteMB.declarante.cpf}">
     </p:inputMask>
   	
@@ -96,99 +97,174 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  action="#{declaranteMB.pesquisar}" ajax = "false"/> 
+						   <p:commandButton value="Pesquisar" icon="ui-icon-search"  action="#{declaranteMB.pesquisar}" ajax = "false"/> 
 							</h:panelGroup>
 					</h:panelGrid>
 </h:form>
-
+<br />
+<br />
 <h:form  >
-
+<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
 <h:panelGrid columns="2">
   	
    
-    <p:outputLabel value="Nascimento :"/>
-    <p:calendar  effect="fold"  navigator="true"
+    <p:outputLabel value="Nome :"
+    style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtNome"
+    size="50" 
+   
+	
+	value="#{declaranteMB.declarante.nome}">
+	</p:inputText>
+    <p:outputLabel value="RG :"
+    style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputMask  id="txtRG" mask="999.999.999-9"
+    size="11"
+    maxlength="13"
+    
+	
+	value="#{declaranteMB.declarante.rg}">
+	</p:inputMask>
+	<p:outputLabel value="Nascimento :"
+    style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:calendar  effect="fold"   navigator="true" size="5"
+    
+	
 	value="#{declaranteMB.declarante.nascimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-    <p:outputLabel value="Nome :"/>
-    <p:inputText id="txtNome"
-	value="#{declaranteMB.declarante.nome}">
-	</p:inputText>
-    <p:outputLabel value="RG :"/>
-    <p:inputMask  id="txtRG" mask="999.999.999-9"
-    maxlength="13"
-	value="#{declaranteMB.declarante.rg}">
-	</p:inputMask>
-	<p:outputLabel value="Sexo: " />
+	<p:outputLabel value="Sexo: " 
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:selectOneMenu id="cbbSexo" value="#{declaranteMB.declarante.sexo}"
 							style="comboBox">
 							<f:selectItem itemValue="F" itemLabel="Feminino" />
 							<f:selectItem itemValue="M" itemLabel="Masculino" />
 						</p:selectOneMenu>
-	<p:outputLabel value="CEP :"/>
+	</h:panelGrid>					
+	 				
+	
+            <h:panelGrid id="pnCEP" columns="4">
+<!--                 <h:outputText value="CEP: " /> -->
+<!--                 <p:inputMask mask="99999-999" value="#{mbService.cep}" /> -->
+<p:outputLabel value="CEP :"
+style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtCEP" mask="99999-999"
+	size="7"
     maxlength="9"
-	value="#{declaranteMB.declarante.cep}">
+    
+	
+	value="#{declaranteMB.cep}">
 	</p:inputMask>
-	<p:outputLabel value="Endereço :"/>
+              <p:commandButton value="Pesquisar" icon="ui-icon-search" 
+                  action="#{declaranteMB.buscaCEP}" update="frmResult"/> 
+
+            </h:panelGrid>
+        					
+<!-- 	<p:outputLabel value="CEP :"/> -->
+<!-- 	<p:inputMask  id="txtCEP" mask="99999-999" -->
+<!--     maxlength="9" -->
+<!--      -->
+<!-- 	 -->
+<!-- 	value="#{declaranteMB.declarante.cep}"> -->
+<!-- 	</p:inputMask> -->
+
+        
+            <h:panelGrid id="frmResult" columns="2">
+	<p:outputLabel value="Endereço :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtEndereco" 
+    size="50"
+    
+	
 	value="#{declaranteMB.declarante.endereco}">
 	</p:inputText>
-	<p:outputLabel value="N° :"/>
-    <p:inputText id="txtN"
+	<p:outputLabel value="N° :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtN" 
+    size="3"
+    
+	
 	value="#{declaranteMB.declarante.numero}">
 	</p:inputText>
-	<p:outputLabel value="Complemento :"/>
+	<p:outputLabel value="Complemento :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtComplemento" 
+    
+	
 	value="#{declaranteMB.declarante.complemento}">
 	</p:inputText>
-	<p:outputLabel value="Bairro :"/>
+	<p:outputLabel value="Bairro :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtBairro" 
+    required="false"
+	
 	value="#{declaranteMB.declarante.bairro}">
 	</p:inputText>
-	<p:outputLabel value="Cidade :"/>
-    <p:inputText id="txtCidade"
+	<p:outputLabel value="Cidade :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtCidade" 
+    size="40"
+    
+	
 	value="#{declaranteMB.declarante.cidade}">
 	</p:inputText>
-	<p:outputLabel value="UF: " />
-	<p:selectOneMenu id="cbbUF" value="#{declaranteMB.declarante.uf}"
-							style="comboBox">
-							<f:selectItem itemValue="AL" itemLabel="AL" />
-							<f:selectItem itemValue="AM" itemLabel="AM" />
-							<f:selectItem itemValue="AP" itemLabel="AP" />
-							<f:selectItem itemValue="BA" itemLabel="BA" />
-							<f:selectItem itemValue="CE" itemLabel="CE" />
-							<f:selectItem itemValue="DF" itemLabel="DF" />
-							<f:selectItem itemValue="ES" itemLabel="ES" />
-							<f:selectItem itemValue="GO" itemLabel="GO" />
-							<f:selectItem itemValue="MA" itemLabel="MA" />
-							<f:selectItem itemValue="MG" itemLabel="MG" />
-							<f:selectItem itemValue="MS" itemLabel="MS" />
-							<f:selectItem itemValue="MT" itemLabel="MT" />
-							<f:selectItem itemValue="PA" itemLabel="PA" />
-							<f:selectItem itemValue="PE" itemLabel="PE" />
-							<f:selectItem itemValue="PB" itemLabel="PB" />
-							<f:selectItem itemValue="PR" itemLabel="PR" />
-							<f:selectItem itemValue="PI" itemLabel="PI" />
-							<f:selectItem itemValue="RJ" itemLabel="RJ" />
-							<f:selectItem itemValue="RN" itemLabel="RN" />
-							<f:selectItem itemValue="RO" itemLabel="RO" />
-							<f:selectItem itemValue="RS" itemLabel="RS" />
-							<f:selectItem itemValue="RR" itemLabel="RR" />
-							<f:selectItem itemValue="SC" itemLabel="SC" />
-							<f:selectItem itemValue="SE" itemLabel="SE" />
-							<f:selectItem itemValue="SP" itemLabel="SP" />
-							<f:selectItem itemValue="TO" itemLabel="TO" />
-						</p:selectOneMenu>
+	<p:outputLabel value="UF :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtUF" 
+    
 	
-	<p:outputLabel value="Profissão :"/>
-    <p:inputText id="txtProfissao" 
+	value="#{declaranteMB.declarante.uf}"
+	 maxlength="2"
+	size="2">
+	</p:inputText>
+	</h:panelGrid>
+        
+          
+<!-- 	<p:outputLabel value="UF: " />  -->
+<!-- 	<p:selectOneMenu id="cbbUF" value="#{declaranteMB.declarante.uf}" -->
+<!-- 							style="comboBox"> -->
+<!-- 							<f:selectItem itemValue="AL" itemLabel="AL" /> -->
+<!-- 							<f:selectItem itemValue="AM" itemLabel="AM" /> -->
+<!-- 							<f:selectItem itemValue="AP" itemLabel="AP" /> -->
+<!-- 							<f:selectItem itemValue="BA" itemLabel="BA" /> -->
+<!-- 							<f:selectItem itemValue="CE" itemLabel="CE" /> -->
+<!-- 							<f:selectItem itemValue="DF" itemLabel="DF" /> -->
+<!-- 							<f:selectItem itemValue="ES" itemLabel="ES" /> -->
+<!-- 							<f:selectItem itemValue="GO" itemLabel="GO" /> -->
+<!-- 							<f:selectItem itemValue="MA" itemLabel="MA" /> -->
+<!-- 							<f:selectItem itemValue="MG" itemLabel="MG" /> -->
+<!-- 							<f:selectItem itemValue="MS" itemLabel="MS" /> -->
+<!-- 							<f:selectItem itemValue="MT" itemLabel="MT" /> -->
+<!-- 							<f:selectItem itemValue="PA" itemLabel="PA" /> -->
+<!-- 							<f:selectItem itemValue="PE" itemLabel="PE" /> -->
+<!-- 							<f:selectItem itemValue="PB" itemLabel="PB" /> -->
+<!-- 							<f:selectItem itemValue="PR" itemLabel="PR" /> -->
+<!-- 							<f:selectItem itemValue="PI" itemLabel="PI" /> -->
+<!-- 							<f:selectItem itemValue="RJ" itemLabel="RJ" /> -->
+<!-- 							<f:selectItem itemValue="RN" itemLabel="RN" /> -->
+<!-- 							<f:selectItem itemValue="RO" itemLabel="RO" /> -->
+<!-- 							<f:selectItem itemValue="RS" itemLabel="RS" /> -->
+<!-- 							<f:selectItem itemValue="RR" itemLabel="RR" /> -->
+<!-- 							<f:selectItem itemValue="SC" itemLabel="SC" /> -->
+<!-- 							<f:selectItem itemValue="SE" itemLabel="SE" /> -->
+<!-- 							<f:selectItem itemValue="SP" itemLabel="SP" /> -->
+<!-- 							<f:selectItem itemValue="TO" itemLabel="TO" /> -->
+<!-- 						</p:selectOneMenu> -->
+
+         <h:panelGrid  columns="2">
+	<p:outputLabel value="Profissão :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtProfissao"
+    size="50" 
+    
+	
 	value="#{declaranteMB.declarante.profissao}">
 	</p:inputText>
-	<p:outputLabel value="Parentesco: " />
+	<p:outputLabel value="Parentesco: "
+	style="font-weight:bold; padding-right: 5px; float: right;" />
 	<p:selectOneMenu id="cbbParentesco" value="#{declaranteMB.declarante.parentesco}"
 							style="comboBox">
 							<f:selectItem itemValue="Avó" itemLabel="Avó" />
@@ -210,23 +286,35 @@
 							<f:selectItem itemValue="Outro" itemLabel="Outro" />
 							
 						</p:selectOneMenu>
-					
-	<p:outputLabel value="Telefone :"/>
+						
+	<p:outputLabel value="Telefone :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
+    size="11"
     maxlength="13"
+    
+	
 	value="#{declaranteMB.declarante.telefone}">
 	</p:inputMask>
-	<p:outputLabel value="Celular :"/>
+	<p:outputLabel value="Celular :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtCelular" mask="(99)99999-9999"
+	size="11"
     maxlength="14"
+    
+	
 	value="#{declaranteMB.declarante.celular}">
 	</p:inputMask>
-	<p:outputLabel value="Email :"/>
-    <p:inputText id="txtEmail"
+	<p:outputLabel value="Email :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtEmail" 
+    
+	
 	value="#{declaranteMB.declarante.email}">
 	</p:inputText>
   	
 </h:panelGrid>
+
 <br />
 <h:panelGrid>
 						<h:panelGroup>
@@ -234,11 +322,11 @@
 							</h:panelGroup>
 					</h:panelGrid>
 					
-					<h:panelGrid>
-						<h:panelGroup>
-							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
-						</h:panelGroup>
-					</h:panelGrid>
+<!-- 					<h:panelGrid> -->
+<!-- 						<h:panelGroup> -->
+<!-- 							<p:commandButton value="Botão" action="#{managedBeanQualquer}" /> -->
+<!-- 						</h:panelGroup> -->
+<!-- 					</h:panelGrid> -->
 				</h:form>
 				<p/>
 			</div>

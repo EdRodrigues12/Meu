@@ -82,10 +82,10 @@
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
-				<h:form>
+				<h:form action="relatorio" method="post">
 	<h:panelGrid columns="2">
 	<p:outputLabel value="Rua Jazigo :" />
-    <p:inputText  id="rua" 
+    <p:inputText  id="rua" name="rua"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{relatorioMB.rua}">
@@ -96,7 +96,8 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Gerar"  action="#{relatorioMB.geraJazigo}" ajax = "false" /> 
+						   <p:commandButton value="Gerar" action="#{relatorioMB.gera}"  ajax = "false" />  
+							
 							</h:panelGroup>
 					</h:panelGrid>
 					<h:panelGrid>

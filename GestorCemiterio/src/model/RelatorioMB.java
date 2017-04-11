@@ -9,8 +9,11 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -44,10 +47,19 @@ public class RelatorioMB {
 		return "";
 	}
 	
-	public void geraJazigo() throws IOException, ClassNotFoundException, SQLException{
+	public String gera() throws DAOException, ClassNotFoundException, ServletException, IOException, SQLException {
+//		RelatorioServlet relatorio = new RelatorioServlet();
+//		relatorio.geraRelatorio(jazigo.getRua() , null);
+		Relatorio rel = new Relatorio();
+		rel.getRelatorio();
+		return "";
+	}
+	
+	public void geraJazigo() throws ServletException, IOException, ClassNotFoundException, SQLException{
 		 FacesContext facesContext = FacesContext.getCurrentInstance();
 	        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
-		String erro = "";
+	        HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
+	        String erro = "";
 		
 		String jasper = "WEB-INF/reports/jazigoPorRua.jasper";
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -71,7 +83,8 @@ public class RelatorioMB {
 				sos.flush();
 				sos.close();
 			}else{
-				
+				RequestDispatcher rd = request.getRequestDispatcher("jazigoPorRua.xhtml");
+				request.setAttribute("erro", erro);
 				
 			}
 		}

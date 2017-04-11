@@ -6,7 +6,7 @@
 	<queryString>
 		<![CDATA[SELECT rua, quadra, numero
 FROM jazigo
-WHERE rua = $P{rua}]]>
+WHERE rua = 'Rua tal tal']]>
 	</queryString>
 	<field name="rua" class="java.lang.String"/>
 	<field name="quadra" class="java.lang.String"/>
