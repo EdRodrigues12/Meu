@@ -85,7 +85,8 @@
 	
 	<h:form enctype="multipart/form-data">
 	
-            <p:outputLabel value="Foto"/>
+            <p:outputLabel value="Foto"
+            style="font-weight:bold; padding-right: 5px; float: right;"/>
  <p:graphicImage value="#{falecidoMB.imagem}" id="imagem" cache="false"/>
  <p:fileUpload sizeLimit="204800" label="Procurar..."  
  fileUploadListener="#{falecidoMB.handleFileUpload}"
@@ -96,59 +97,60 @@
                  autoUpdate="true" closable="true"/>
 
 			<h:form>
-
+<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
 <h:panelGrid columns="2">
   	
-    <p:outputLabel value="CPF Declarante :" />
+    <p:outputLabel value="CPF Declarante :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputMask id="txtCPF" mask="999.999.999-99" 
     onBlur="ValidarCPF(txtCPF);" 
     onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
-    required="true"
+    size="13"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.cpfDeclarante}">
     </p:inputMask>
-    <p:outputLabel value="CPF Falecido :" />
+    <p:outputLabel value="CPF Falecido :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputMask id="txtCPFF" mask="999.999.999-99" 
     onBlur="ValidarCPF(txtCPFF);" 
     onKeyPress="MascaraCPF(txtCPFF);" maxlength="14"
-    required="true"
+    size="13"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.cpf}">
 	</p:inputMask>
-	<p:outputLabel value="Nome Falecido :"/>
+	<p:outputLabel value="Nome Falecido :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtNome" 
-    required="true"
+    size="50"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.nome}">
 	</p:inputText>
-	<p:outputLabel value="RG Falecido :"/>
+	<p:outputLabel value="RG Falecido :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputMask  id="txtRG" mask="999.999.999-9"
     maxlength="13"
-    required="true"
+    size="13"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.rg}">
 	</p:inputMask>
 	
 	
-	<p:outputLabel value="Sexo: " />
+	<p:outputLabel value="Sexo: " style="font-weight:bold; padding-right: 5px; float: right;" />
 	<p:selectOneMenu id="cbbSexo" value="#{falecidoMB.falecido.sexo}"
 							style="comboBox">
 							<f:selectItem itemValue="F" itemLabel="Feminino" />
 							<f:selectItem itemValue="M" itemLabel="Masculino" />
 						</p:selectOneMenu>
-	<p:outputLabel value="Naturalidade :"/>
+	<p:outputLabel value="Naturalidade :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtNat" 
-    required="true"
+    
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.naturalidade}">
 	</p:inputText>
-	<p:outputLabel value="Nacionalidade :"/>
+	<p:outputLabel value="Nacionalidade :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:inputText id="txtNac" 
-    required="true"
+    
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.nacionalidade}">
 	</p:inputText>
-	<p:outputLabel value="Etnia : " />
+	<p:outputLabel value="Etnia : " style="font-weight:bold; padding-right: 5px; float: right;" />
 	<p:selectOneMenu id="cbbEtnia" value="#{falecidoMB.falecido.etnia}"
 							style="comboBox">
 							<f:selectItem itemValue="Branco" itemLabel="Branco" />
@@ -160,28 +162,28 @@
 							<f:selectItem itemValue="Negro" itemLabel="Negro" />
 							<f:selectItem itemValue="Amarelo" itemLabel="Amarelo" />
 	</p:selectOneMenu>
-    <p:outputLabel value="Nascimento :"/>
+    <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:calendar  effect="fold" navigator="true"
-    required="true"
+    size="5"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.nascimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-	<p:outputLabel value="Idade :"/>
+	<p:outputLabel value="Idade :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtIdade" 
-    required="true"
+    size="2"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.idade}">
 	</p:inputText>
-   <p:outputLabel value="Profissão :"/>
+   <p:outputLabel value="Profissão :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtProfissao" 
-    required="true"
+    size="50"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.profissao}">
 	</p:inputText>
-	<p:outputLabel value="Estado Civil : " />
+	<p:outputLabel value="Estado Civil : " style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:selectOneMenu id="cbbCivil" value="#{falecidoMB.falecido.estCivil}"
 							style="comboBox">
 							<f:selectItem itemValue="Casado" itemLabel="Casado" />
@@ -191,33 +193,33 @@
 							<f:selectItem itemValue="Viúvo" itemLabel="Viúvo" />
 							
 	</p:selectOneMenu>
-	<p:outputLabel value="Titulo Eleitor :"/>
+	<p:outputLabel value="Titulo Eleitor :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtTitulo" mask="9999.9999.9999-99"
     maxlength="17"
-    required="true"
+    size="16"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.tituloEleitor}">
 	</p:inputMask>
-	<p:outputLabel value="Zona :"/>
+	<p:outputLabel value="Zona :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputText  id="txtZona" 
     maxlength="3"
-    required="true"
+    size="4"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.zona}">
 	</p:inputText>
-	<p:outputLabel value="Seção :"/>
+	<p:outputLabel value="Seção :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputText  id="txtSecao" 
     maxlength="4"
-    required="true"
+    size="4"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.secao}">
 	</p:inputText>
 	</h:panelGrid>
 	<h:panelGrid id="pnCEP" columns="4">
-	<p:outputLabel value="CEP :"/>
+	<p:outputLabel value="CEP :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtCEP" mask="99999-999"
     maxlength="9"
-    required="true"
+    size="9"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.cep}">
 	</p:inputMask>
@@ -226,81 +228,57 @@
 	</h:panelGrid>
 
 	<h:panelGrid id="frmResult"  columns="2">
-	<p:outputLabel value="Endereço :"/>
+	<p:outputLabel value="Endereço :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtEndereco" 
-    required="true"
+    size="50"
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.endereco}">
+	value="#{falecidoMB.falecido.endereco}">
 	</p:inputText>
-	<p:outputLabel value="N° :"/>
+	<p:outputLabel value="N° :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtN" 
-    required="true"
+    size="3"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.numero}">
 	</p:inputText>
-	<p:outputLabel value="Complemento :"/>
+	<p:outputLabel value="Complemento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtComplemento" 
-    required="true"
+    
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.complemento}">
 	</p:inputText>
-	<p:outputLabel value="Bairro :"/>
+	<p:outputLabel value="Bairro :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtBairro" 
-    required="true"
+    
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.bairro}">
+	value="#{falecidoMB.falecido.bairro}">
 	</p:inputText>
-	<p:outputLabel value="Cidade :"/>
+	<p:outputLabel value="Cidade :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtCidade" 
-    required="true"
+    size="40"
 	requiredMessage="Campo Obrigatorio"
-	value="#{falecidoMB.cidade}">
+	value="#{falecidoMB.falecido.cidade}">
+	</p:inputText>
+	<p:outputLabel value="UF :"
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtUF" size="2" maxlength="2"
+	value="#{falecidoMB.falecido.uf}">
 	</p:inputText>
 	</h:panelGrid>
 	
 	<h:panelGrid columns="2">
-	<p:outputLabel value="UF: " />
-	<p:selectOneMenu id="cbbUF" value="#{falecidoMB.falecido.uf}"
-							style="comboBox">
-							<f:selectItem itemValue="AL" itemLabel="AL" />
-							<f:selectItem itemValue="AM" itemLabel="AM" />
-							<f:selectItem itemValue="AP" itemLabel="AP" />
-							<f:selectItem itemValue="BA" itemLabel="BA" />
-							<f:selectItem itemValue="CE" itemLabel="CE" />
-							<f:selectItem itemValue="DF" itemLabel="DF" />
-							<f:selectItem itemValue="ES" itemLabel="ES" />
-							<f:selectItem itemValue="GO" itemLabel="GO" />
-							<f:selectItem itemValue="MA" itemLabel="MA" />
-							<f:selectItem itemValue="MG" itemLabel="MG" />
-							<f:selectItem itemValue="MS" itemLabel="MS" />
-							<f:selectItem itemValue="MT" itemLabel="MT" />
-							<f:selectItem itemValue="PA" itemLabel="PA" />
-							<f:selectItem itemValue="PE" itemLabel="PE" />
-							<f:selectItem itemValue="PB" itemLabel="PB" />
-							<f:selectItem itemValue="PR" itemLabel="PR" />
-							<f:selectItem itemValue="PI" itemLabel="PI" />
-							<f:selectItem itemValue="RJ" itemLabel="RJ" />
-							<f:selectItem itemValue="RN" itemLabel="RN" />
-							<f:selectItem itemValue="RO" itemLabel="RO" />
-							<f:selectItem itemValue="RS" itemLabel="RS" />
-							<f:selectItem itemValue="RR" itemLabel="RR" />
-							<f:selectItem itemValue="SC" itemLabel="SC" />
-							<f:selectItem itemValue="SE" itemLabel="SE" />
-							<f:selectItem itemValue="SP" itemLabel="SP" />
-							<f:selectItem itemValue="TO" itemLabel="TO" />
-						</p:selectOneMenu>
-	<p:outputLabel value="Data Sepultamento :"/>
+	
+	<p:outputLabel value="Data Sepultamento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:calendar  effect="fold"  navigator="true"
-    required="true"
+    size="4"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dataSepultamento}"> 
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-	<p:outputLabel for="txtFale" value="Hora Sepultamento:" />
+	<p:outputLabel for="txtFale" value="Hora Sepultamento:" style="font-weight:bold; padding-right: 5px; float: right;"/>
         <p:calendar id="txtFale" value="#{falecidoMB.falecido.horaSepultamento}" 
-        required="true"
+        size="4"
 		requiredMessage="Campo Obrigatorio"
         pattern="HH:mm" timeOnly="true"  />
 	
@@ -314,27 +292,27 @@
 <p:separator />
 
 
-<h:panelGrid columns="2">
+<h:panelGrid columns="4">
   	
-    <p:outputLabel value="Nome Dono Jazigo :"/>
+    <p:outputLabel value="Nome Dono Jazigo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText  id="nome" 
-    required="true"
+    size="50"
 	requiredMessage="Campo Obrigatorio"
 	value="#{donoMB.dono.nome}">
 	</p:inputText>
   	
-</h:panelGrid>
+
 <br />
-<h:panelGrid>
+
 						<h:panelGroup>
-						   <p:commandButton value="Ver Jazigo"  actionListener="#{donoMB.pesquisarDono}" onclick="Enviar1()"  /> 
+						   <p:commandButton value="Ver Jazigo" icon="ui-icon-search"  actionListener="#{donoMB.pesquisarDono}" onclick="Enviar1()"  /> 
 							</h:panelGroup>
 					</h:panelGrid>
 		<br />	
-	<h:panelGrid>	
-	<p:outputLabel value="Código Jazigo :"/>
+	<h:panelGrid columns="2">	
+	<p:outputLabel value="Código Jazigo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText  id="txtCod" 
-    required="true"
+    size="3"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.codJazigo}">
 	</p:inputText>				
@@ -348,60 +326,60 @@
 <h:panelGrid columns="2">
 
   	
-    <p:outputLabel value="Data Falecimento :"/>
+    <p:outputLabel value="Data Falecimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:calendar  effect="fold"  navigator="true"
-    required="true"
+    size="4"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtFalecimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-	<p:outputLabel value="Data Exumação :"/>
+	<p:outputLabel value="Data Exumação :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:calendar  effect="fold" navigator="true"
-    required="true"
+    size="4"
 	requiredMessage="Campo Obrigatorio"
     value="#{falecidoMB.falecido.dtExumacao}"> 
     <f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-	<p:outputLabel for="txtFal" value="Hora Falecimento:" />
+	<p:outputLabel for="txtFal" value="Hora Falecimento:" style="font-weight:bold; padding-right: 5px; float: right;"/>
         <p:calendar id="txtFal" value="#{falecidoMB.falecido.hrFalecimeneto}" 
-        required="true"
+        size="4"
 		requiredMessage="Campo Obrigatorio"
         pattern="HH:mm" timeOnly="true"  />
-    <p:outputLabel for="txtEx" value="Hora Exumação:" />
+    <p:outputLabel for="txtEx" value="Hora Exumação:" style="font-weight:bold; padding-right: 5px; float: right;"/>
         <p:calendar id="txtEx" value="#{falecidoMB.falecido.hrExumacao}" 
-        required="true"
+        size="4"
 		requiredMessage="Campo Obrigatorio"
         pattern="HH:mm" timeOnly="true"  />
-    <p:outputLabel value="Local Falecimento :"/>
+    <p:outputLabel value="Local Falecimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtLocal" 
-    required="true"
+    size="40"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.local}">
 	</p:inputText>
-	<p:outputLabel value="Cartorio :"/>
+	<p:outputLabel value="Cartorio :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtCart" 
-    required="true"
+    size="50"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.cartorio}">
 	</p:inputText>
-	<p:outputLabel value="Prazo para registro do óbito :"/>
+	<p:outputLabel value="Prazo para registro do óbito :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:calendar  effect="fold"  
-    required="true"
+    size="4"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.dtRegistroObito}"> 
 	</p:calendar>		
-	<p:outputLabel value="C.R.M(Médico) :"/>
+	<p:outputLabel value="C.R.M(Médico) :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtcrm" mask="9999999999/aa"
     maxlength="13"
-    required="true"
+    size="11"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.crm}">
 	</p:inputMask>
-	<p:outputLabel  value="Causa da morte :" /> 
+	<p:outputLabel  value="Causa da morte :" style="font-weight:bold; padding-right: 5px; float: right;" /> 
 	<p:editor id="editor" widgetVar="editorWidget" value="#{falecidoMB.falecido.causamorte}" width="600" />
      <h:panelGrid columns="2" >
         <p:commandButton value="Limpar causa da morte" type="button" 
@@ -416,11 +394,11 @@
 							
 							</h:panelGroup>
 					</h:panelGrid>	
-					<h:panelGrid>
-						<h:panelGroup>
-							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
-						</h:panelGroup>
-					</h:panelGrid>				
+<!-- 					<h:panelGrid> -->
+<!-- 						<h:panelGroup> -->
+<!-- 							<p:commandButton value="Botão"  /> -->
+<!-- 						</h:panelGroup> -->
+<!-- 					</h:panelGrid>				 -->
    </h:form>               
 				<p/>
 			</div>

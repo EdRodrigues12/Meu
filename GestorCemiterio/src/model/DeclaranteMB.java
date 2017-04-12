@@ -44,7 +44,7 @@ public class DeclaranteMB {
         	declarante.setUf(webServiceCep.getUf());
         	declarante.setCidade(webServiceCep.getCidade());
         	declarante.setBairro(webServiceCep.getBairro());
-//            declarante.setCep(cep);
+            declarante.setCep(cep);
 //            System.out.println(cep);
 //            System.out.println(declarante.getEndereco());
 //            System.out.println(declarante);
@@ -95,9 +95,19 @@ public class DeclaranteMB {
 
 	public String pesquisar() throws DAOException {
 		//declarante = new Declarante();
+		try{
 		String codigo = declarante.getCpf();
 		
 		declarante = declaranteDao.pesquisar1(codigo);
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", " "));
+   
+		}catch(DAOException e){
+			e.printStackTrace();
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
+	    	
+		}
 		//declarante = new Declarante();
 		return "";
 	}

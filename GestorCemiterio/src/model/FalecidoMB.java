@@ -41,6 +41,7 @@ public class FalecidoMB {
 	private Jazigo jazigo = new Jazigo();
 	private List<Jazigo> list = new ArrayList<Jazigo>();
 	private StreamedContent imagem;
+	private ManipularImagem mai = new ManipularImagem();
 	private Date dtExumacao;
 	private String dono;
 	private String cep = null;
@@ -59,16 +60,16 @@ public class FalecidoMB {
       
         if (webServiceCep.wasSuccessful()) {
         	//setTipoendereco(webServiceCep.getTipoendereco());
-            setEndereco(webServiceCep.getLogradouroFull());
-            setUf(webServiceCep.getUf());
-            setCidade(webServiceCep.getCidade());
-            setBairro(webServiceCep.getBairro());
+//            setEndereco(webServiceCep.getLogradouroFull());
+//            setUf(webServiceCep.getUf());
+//            setCidade(webServiceCep.getCidade());
+//            setBairro(webServiceCep.getBairro());
         	
-//        	falecido.setEndereco(webServiceCep.getLogradouroFull());
-//        	falecido.setUf(webServiceCep.getUf());
-//        	falecido.setCidade(webServiceCep.getCidade());
-//        	falecido.setBairro(webServiceCep.getBairro());
-            //falecido.setCep(cep);
+        	falecido.setEndereco(webServiceCep.getLogradouroFull());
+        	falecido.setUf(webServiceCep.getUf());
+        	falecido.setCidade(webServiceCep.getCidade());
+        	falecido.setBairro(webServiceCep.getBairro());
+            falecido.setCep(cep);
            // System.out.println(cep);
             System.out.println(falecido.getEndereco());
             
@@ -84,26 +85,29 @@ public class FalecidoMB {
 		
 	}
 	
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
 
 	public String adicionar() throws DAOException {
-		
+		try{
 		//falecido = new Falecido();
 		falecidoDao.adicionar(falecido);
 		
 		imagem = new DefaultStreamedContent();
 		falecido = new Falecido();
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Adicionado com sucesso!", " "));
+   
+		}catch(DAOException e){
+			e.printStackTrace();
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao adicionar ", null));
+	    	
+	}
 		return "";
 	}
 
 	public String pesquisar() throws DAOException {
 		//falecido = new Falecido();
+		try{
 		String codigo = falecido.getCpf();
 		int num = falecido.getCodJazigo();
 		jazigo = new Jazigo();
@@ -114,13 +118,32 @@ public class FalecidoMB {
 		falecido.setFoto(falecido.getFoto());
 	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
 	   // falecido = new Falecido();
+	    FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", " "));
+   
+		}catch(DAOException e){
+			e.printStackTrace();
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
+	    	
+		}
 		return "";
 	}
 	public String pesquisarPorNome() throws DAOException{
 		//falecido = new Falecido();
+		try{
 		imagem = new DefaultStreamedContent();
 		setLista(falecidoDao.pesquisar(falecido.getNome()));
-		falecido = new Falecido();
+		//falecido = new Falecido();
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", " "));
+   
+		}catch(DAOException e){
+			e.printStackTrace();
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
+	    	
+		}
 //		falecido.setFoto(falecido.getFoto());
 //	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
 		//falecido = new Falecido();
@@ -141,18 +164,37 @@ public class FalecidoMB {
 	public String atualizar() throws DAOException {
 		System.out.println(" teste");
 		//falecido = new Falecido();
+		try{
 		falecidoDao.atualizar(falecido);
 		System.out.println(falecido.getNome());
 		falecido = new Falecido();
 		imagem = new DefaultStreamedContent();
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", " "));
+   
+		}catch(DAOException e){
+			e.printStackTrace();
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao atualizar ", null));
+		}
 		return "";
 	}
 
 	public String deletar() throws DAOException {
 		//falecido = new Falecido();
+		try{
 		System.out.println(" teste");
 		falecidoDao.deletar(falecido.getCpf());
 		falecido = new Falecido();
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", " "));
+   
+		}catch(DAOException e){
+			e.printStackTrace();
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao deletar ", null));
+	    	
+		}
 		return "";
 
 	}
@@ -193,6 +235,8 @@ public class FalecidoMB {
 		 try {
 		 imagem = new DefaultStreamedContent(event.getFile().getInputstream());
 		 byte[] foto = event.getFile().getContents();
+		 
+		// mai.setImagemDimensao(foto., 180, 210);
 		 this.falecido.setFoto(foto);
 		 } catch (IOException ex) {
 		 Logger.getLogger(FalecidoMB.class.getName()).log(Level.SEVERE, null, ex);
@@ -200,6 +244,7 @@ public class FalecidoMB {
 		 UploadedFile uploadedFile = event.getFile();
 		 String fileNameUploaded = uploadedFile.getFileName(); 
          long fileSizeUploaded = uploadedFile.getSize(); 
+         
          String infoAboutFile = "<br/> Arquivo recebido: <b>" +fileNameUploaded              		+"</b><br/>"+
              "Tamanho do Arquivo: <b>"+fileSizeUploaded+"</b>";
          FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -321,5 +366,12 @@ public class FalecidoMB {
 		this.bairro = bairro;
 	}
 
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
 }
