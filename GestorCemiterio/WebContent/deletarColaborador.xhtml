@@ -83,8 +83,10 @@
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				<h:form>
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
 	<h:panelGrid columns="2">
-	<p:outputLabel value="Nome :" />
+	<p:outputLabel value="Nome :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText  id="txtNome" 
 	value="#{colaboradorMB.colaborador.nome}">
     </p:inputText>
@@ -117,7 +119,7 @@
 <!-- </div> -->
 
 <h2>
-		<p:outputLabel value="Deletar Colaborador" />
+		<p:outputLabel value="Deletar Colaborador"  />
 </h2>
 				<h:form>
 	<h:dataTable 	value="#{colaboradorMB.colaboradores}" 

@@ -158,7 +158,7 @@
 	<h:form enctype="multipart/form-data">
 	
  <p:outputLabel value="Foto " style="font-weight:bold; padding-right: 5px; float: right;"/>
- <p:graphicImage value="#{falecidoMB.imagem}" id="imagem" cache="false"/>
+ <p:graphicImage value="#{falecidoMB.imagem}" id="imagem" cache="false" width="200" height="200"/>
  
  
         </h:form>        
@@ -323,7 +323,8 @@
         <p:calendar id="txtFale" value="#{falecidoMB.falecido.horaSepultamento}" 
         pattern="HH:mm" timeOnly="true" readonly="true" />					
 	
-	
+	<br />
+	<br />
 	</h:panelGrid>
 
            <h2>
@@ -342,7 +343,8 @@
 <!-- 						   <p:commandButton value="Ver Jazigo"  actionListener="#{falecidoMB}" onclick="Enviar1()"  />  -->
 <!-- 							</h:panelGroup> -->
 <!-- 					</p:panelGrid> -->
-
+<br />
+<br />
            <h2>
 				<h:outputText value=" Dados Falecimento" />
 			</h2>

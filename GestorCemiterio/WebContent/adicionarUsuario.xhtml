@@ -83,40 +83,45 @@
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				<h:form>
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
 	<h:panelGrid columns="2"  id="matchGrid">
   	
-    <p:outputLabel value="Nível de Acesso :" />
+    <p:outputLabel value="Nível de Acesso :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:selectOneMenu id="cbbNiv" value="#{loginMB.user.nivel}"
 							style="comboBox">
 							<f:selectItem itemValue="Administrador" itemLabel="Administrador" />
 							<f:selectItem itemValue="Usuário Comum" itemLabel="Usuário Comum" />
 						</p:selectOneMenu>
-    <p:outputLabel value="ID do Usuário :"/>
-    <p:inputText  id="txtID"
+    <p:outputLabel value="ID do Usuário :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText  id="txtID" size="30"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.id}"> 
 	</p:inputText>
-    <p:outputLabel value="Nome Completo :"/>
-    <p:inputText id="txtNome" 
+    <p:outputLabel value="Nome Completo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtNome" size="50"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.nome}">
 	</p:inputText>
-    <p:outputLabel value="Data de Nascimento :"/>
-    <p:calendar  effect="fold"  
+    <p:outputLabel value="Data de Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:calendar  effect="fold"  size="4"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.nascimento}"> 
+	value="#{loginMB.user.nascimento}"
+	> <f:convertDateTime	pattern="dd/MM/yyyy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-    <p:outputLabel for="pwd1" value="Senha: *" />
+    <p:outputLabel for="pwd1" value="Senha: *" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:password id="pwd1" value="#{loginMB.user.senha}" match="pwd2" label="Senha" required="true" />
  
-    <p:outputLabel for="pwd2" value="Confirme a senha: *" />
+    <p:outputLabel for="pwd2" value="Confirme a senha: *" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:password id="pwd2" value="#{loginMB.user.senha}" label="Password 2" required="true" />
      <p:separator />
  
-    <p:messages id="messages" showDetail="true" autoUpdate="true" /> 
+    <p:messages id="message" showDetail="true" autoUpdate="true" /> 
   	
 </h:panelGrid>
 <br />
@@ -125,11 +130,11 @@
 						   <p:commandButton value="Adicionar"  action="#{loginMB.adicionar}" update="matchGrid" ajax = "false" /> 
 							</h:panelGroup>
 					</h:panelGrid>
-					<h:panelGrid>
-						<h:panelGroup>
-							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
-						</h:panelGroup>
-					</h:panelGrid>
+<!-- 					<h:panelGrid> -->
+<!-- 						<h:panelGroup> -->
+<!-- 							<p:commandButton value="Botão"  /> -->
+<!-- 						</h:panelGroup> -->
+<!-- 					</h:panelGrid> -->
 				</h:form>
 				<p/>
 			</div>

@@ -53,6 +53,15 @@
 <!-- Fim da TAG HEAD -->
 <!-- Início da TAG BODY -->
 <h:body>
+<style type="text/css">
+	.emp1 .fc-event-inner{
+	background: #006600;
+	}
+	.emp2 .fc-event-inner{
+	background: #003399;
+	}
+	</style>
+<p:growl id="messages" showDetail="true" />
 	<!-- Início da DIV CORPO -->
 	<div id="corpo">
 		<!-- Início da DIV CABEÇALHO -->
@@ -119,24 +128,28 @@
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
+			 
+    <p:messages id="messages1" showDetail="true" autoUpdate="true" closable="true" />
 				<h:form>
-    <p:growl id="messages" showDetail="true" />
- 
+	
+   
+       
     <h:panelGrid columnClasses="value">
          <h3 style="margin-top: 0">Velórios</h3>
         <p:schedule id="schedule" value="#{velorioMB.eventModel}" widgetVar="myschedule" timeZone="America/Sao_Paulo" >
- 
             <p:ajax event="dateSelect" listener="#{velorioMB.novoEvento}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
             <p:ajax event="eventSelect" listener="#{velorioMB.selecionarEvento}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
             <p:ajax event="eventMove" listener="#{velorioMB.eventMove}" update="schedule" />
             <p:ajax event="eventResize" listener="#{velorioMB.eventResize}" update="schedule" />
- 
+     
         </p:schedule>
- 
+        
         </h:panelGrid>
- 
+    
     <p:dialog widgetVar="eventDialog" header="Velórios" showEffect="clip" hideEffect="clip" modal="true">
-        <h:panelGrid id="eventDetails" columns="2">
+<!--        <p:growl id="messages1" showDetail="true" />  -->
+<!--     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="false" /> -->
+       <h:panelGrid id="eventDetails" columns="2">
         	<p:outputLabel for="nome" value="Nome Falecido" />
             <p:inputText id="nome" value="#{velorioMB.velorio.nomeFalecido}" required="true" />
             
@@ -158,10 +171,10 @@
             <p:selectBooleanCheckbox id="status" value="#{velorioMB.velorio.status}" required="true" />
  
             <p:outputLabel for="popup" value="Data início:" />
-            <p:calendar id="popup" value="#{velorioMB.velorio.dia}" pattern="dd/MM/yyyy " />
+            <p:calendar id="popup" value="#{velorioMB.velorio.dia}" pattern="dd/MM/yyyy " locale="pt_BR"/>
             
             <p:outputLabel for="popup2" value="Data Final:" />
-            <p:calendar id="popup2" value="#{velorioMB.velorio.diaFim}" pattern="dd/MM/yyyy " />
+            <p:calendar id="popup2" value="#{velorioMB.velorio.diaFim}" pattern="dd/MM/yyyy " locale="pt_BR" />
             
             <p:outputLabel for="time" value="Hora início:" />
             <p:calendar id="time" value="#{velorioMB.velorio.horaInicio}" pattern="HH:mm" timeOnly="true" timeZone="America/Sao_Paulo" required="true" />
@@ -170,7 +183,7 @@
             <p:calendar id="time2" value="#{velorioMB.velorio.horaFim}" pattern="HH:mm" timeOnly="true" timeZone="America/Sao_Paulo" required="true" />
  
 <!--             <p:commandButton type="reset" value="Reset" /> -->
-            <p:commandButton id="addButton" value="Save" actionListener="#{velorioMB.salvar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" update="messages"  />
+            <p:commandButton id="addButton" value="Save" actionListener="#{velorioMB.salvar}" oncomplete="PF('myschedule').update();" update=":messages"  />
         </h:panelGrid>
     </p:dialog>  
     

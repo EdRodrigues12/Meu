@@ -9,7 +9,6 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -69,8 +68,8 @@ public class VelorioMB implements Serializable {
 				
 				Date data = new Date(System.currentTimeMillis());
 				if(vel.isStatus() == true || vel.getDiaFim().before(data) ){
-					evt.setStyleClass("#33ff33");
-				}else if(vel.isStatus() == false){
+					evt.setStyleClass("#006600");
+				}else if(vel.isStatus() == false || vel.getDiaFim().after(data) ){
 					evt.setStyleClass("emp2");
 				}
 				
@@ -118,26 +117,35 @@ public class VelorioMB implements Serializable {
 				dao = new VelorioDAOImpl();
 				try {
 					dao.adicionar(velorio);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Adicionado com sucesso"));
 					inicializar();
 				} catch (DAOException e) {
+//					FacesContext context = FacesContext.getCurrentInstance();
+//			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar no banco ", null));
+			    	
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar no banco"));
 					
 				}
 				velorio = new Velorio();
 			}else{
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO",", Data Fim menor que Data início"));
-				
+//				FacesContext context = FacesContext.getCurrentInstance();
+//		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Data Fim menor que Data início ", null));
+		    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Data Fim menor que Data início"));
+//		    	FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", null);
+//		         
+//		        context.addMessage(null, message);;
 		}
 			
 		}else{
 			try {
 				dao.atualizar(velorio);
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Atualizado com sucesso"));
 				inicializar();
 			} catch (DAOException e) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao atualizar"));
 				
 			}
-			
+			velorio = new Velorio();
 		}
 	}
 	
@@ -147,6 +155,7 @@ public class VelorioMB implements Serializable {
 				velorio = vel;
 				try {
 					dao.atualizar(velorio);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Atualizado com sucesso"));
 					inicializar();
 				} catch (DAOException e) {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar"));
@@ -165,6 +174,7 @@ public class VelorioMB implements Serializable {
 				velorio = vel;
 				try {
 					dao.atualizar(velorio);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Atualizado com sucesso"));
 					inicializar();
 				} catch (DAOException e) {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar"));

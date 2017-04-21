@@ -13,7 +13,9 @@
 
 <div id="container">
 			<h:form id="formBody" method="post">
-			<p:messages showSummary="true" 
+<!-- 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /> -->
+	
+			<p:messages id="messages" showSummary="true" 
 			showDetail="false" 
 			toolTip="true"
 			infoStyle="color:blue;"
@@ -31,7 +33,7 @@
 				<p:message for="txtSenha"/>
 				<h:panelGroup/>		
 				
-				<p><a href="#">Esqueceu sua senha?</a></p>				
+<!-- 				<p><a href="#">Esqueceu sua senha?</a></p>				 -->
 				
 						<br/>
 						<center><h:commandButton value="Logar" image="img/botao_login.png" action="#{loginMB.logar}" onclick="validador()"/></center>

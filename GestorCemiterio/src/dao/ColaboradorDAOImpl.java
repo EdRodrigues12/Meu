@@ -12,7 +12,7 @@ import entidades.Colaborador;
 public class ColaboradorDAOImpl implements ColaboradorDAO {
 
 	@Override
-	public void adicionar(Colaborador c) {
+	public void adicionar(Colaborador c)throws DAOException {
 		try {
 			String sql = "INSERT INTO COLABORADOR(nome, servico, email, telefone) VALUES (?, ?, ?, ?)";
 			Connection con = DBResourceManager.getInstance().getCon();
@@ -28,7 +28,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	}
 
 	@Override
-	public void atualizar(Colaborador c) {
+	public void atualizar(Colaborador c)throws DAOException {
 		try {
 			String sql = "UPDATE COLABORADOR SET nome = ?, servico = ?, email = ?, telefone = ? "
 					+ "WHERE id = ?";
@@ -46,7 +46,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	}
 
 	@Override
-	public List<Colaborador> pesquisarPorNome(String nome) {
+	public List<Colaborador> pesquisarPorNome(String nome)throws DAOException {
 		List<Colaborador> colaboradores = new ArrayList<Colaborador>();
 		try {
 			String sql = "SELECT * FROM COLABORADOR WHERE nome LIKE ?";
@@ -70,7 +70,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	}
 	
 	@Override
-	public List<Colaborador> pesquisarPorServico(String servico) {
+	public List<Colaborador> pesquisarPorServico(String servico)throws DAOException {
 		List<Colaborador> colaboradores = new ArrayList<Colaborador>();
 		try {
 			String sql = "SELECT * FROM COLABORADOR WHERE servico LIKE ?";
@@ -94,7 +94,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	}
 
 	@Override
-	public void remover(int id) {
+	public void remover(int id)throws DAOException {
 		try {
 			String sql = "DELETE FROM COLABORADOR WHERE id = ?";
 			Connection con = DBResourceManager.getInstance().getCon();

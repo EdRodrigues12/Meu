@@ -83,8 +83,10 @@
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				<h:form>
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
 	<h:panelGrid columns="2"  id="matchGrid">
-  	<p:outputLabel value="ID do Usuário :"/>
+  	<p:outputLabel value="ID do Usuário :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText  id="txtID"
     required="true"
 	requiredMessage="Campo Obrigatorio"
@@ -106,29 +108,30 @@
 				<h:form>
 					<h:panelGrid columns="2"  id="matchGrid">
   	
-    <p:outputLabel value="Nível de Acesso :" />
-    <p:selectOneMenu id="cbbNive" value="#{loginMB.user.nivel}"
-							style="comboBox">
-							<f:selectItem itemValue="Administrador" itemLabel="Administrador" />
-							<f:selectItem itemValue="UsuárioComum" itemLabel="UsuárioComum" />
-						</p:selectOneMenu>
-    <p:outputLabel value="ID do Usuário :"/>
+    <p:outputLabel value="Nível de Acesso :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="cbbNive" value="#{loginMB.user.nivel}" readonly="true"	>
+				
+	</p:inputText>
+    <p:outputLabel value="ID do Usuário :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText  id="txtID"
-    required="true"
+    required="true" readonly="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.id}"> 
 	</p:inputText>
-    <p:outputLabel value="Nome Completo :"/>
-    <p:inputText id="txtNome" 
+    <p:outputLabel value="Nome Completo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtNome" readonly="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.nome}">
 	</p:inputText>
-    <p:outputLabel value="Data de Nascimento :"/>
-    <p:calendar  effect="fold"  
+    <p:outputLabel value="Data de Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:calendar  effect="fold"  readonly="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.nascimento}"> 
+	<f:convertDateTime	pattern="dd/MM/yyyy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
 	              
          	</h:panelGrid>
@@ -138,11 +141,11 @@
 						   <p:commandButton value="Deletar"  action="#{loginMB.deletar}" ajax = "false"/> 
 							</h:panelGroup>
 					</h:panelGrid>
-					<h:panelGrid>
-						<h:panelGroup>
-							<p:commandButton value="Botão" action="#{managedBeanQualquer}" />
-						</h:panelGroup>
-					</h:panelGrid>
+<!-- 					<h:panelGrid> -->
+<!-- 						<h:panelGroup> -->
+<!-- 							<p:commandButton value="Botão"  /> -->
+<!-- 						</h:panelGroup> -->
+<!-- 					</h:panelGrid> -->
 				</h:form>
 				<p/>
 			</div>

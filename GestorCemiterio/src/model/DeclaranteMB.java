@@ -95,19 +95,21 @@ public class DeclaranteMB {
 
 	public String pesquisar() throws DAOException {
 		//declarante = new Declarante();
-		try{
 		String codigo = declarante.getCpf();
-		
+		try{
 		declarante = declaranteDao.pesquisar1(codigo);
+		System.out.println(declarante.getCpf());
+		if (declarante.getCpf()==null){
 		FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", " "));
-   
+		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "CPF não cadastrado ", null));
+		}
 		}catch(DAOException e){
 			e.printStackTrace();
 	        FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
 	    	
 		}
+
 		//declarante = new Declarante();
 		return "";
 	}

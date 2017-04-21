@@ -20,7 +20,7 @@ public interface DonoDAO {
 	
 	public boolean deletarJazigo(int codigo) throws DAOException;
 	
-	public List<DonoJazigo> pesquisarJazigo(String dono) throws DAOException;
+	public List<DonoJazigo> pesquisarJazigo(int num) throws DAOException;
 	
 	public Dono pesquisar1(String nome) throws DAOException;
 

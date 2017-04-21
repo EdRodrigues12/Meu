@@ -87,10 +87,11 @@
 	
             <p:outputLabel value="Foto"
             style="font-weight:bold; padding-right: 5px; float: right;"/>
- <p:graphicImage value="#{falecidoMB.imagem}" id="imagem" cache="false"/>
  <p:fileUpload sizeLimit="204800" label="Procurar..."  
  fileUploadListener="#{falecidoMB.handleFileUpload}"
   description="Images" update="imagem"/>
+  <p:graphicImage value="#{falecidoMB.imagem}" id="imagem" cache="false" width="200" height="200"/>
+ 
  
         </h:form>        
         <p:messages  severity="info" escape="false" showDetail="true" 
@@ -283,6 +284,8 @@
         pattern="HH:mm" timeOnly="true"  />
 	
 </h:panelGrid>
+<br />
+<br />
 <p:separator />
 
 			<h2>
@@ -317,6 +320,8 @@
 	value="#{falecidoMB.falecido.codJazigo}">
 	</p:inputText>				
 	</h:panelGrid>	
+	<br />
+	<br />
 <p:separator />
 			<h2>
 				<h:outputText value="Dados Falecimento" />

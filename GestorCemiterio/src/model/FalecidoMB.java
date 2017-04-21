@@ -107,20 +107,24 @@ public class FalecidoMB {
 
 	public String pesquisar() throws DAOException {
 		//falecido = new Falecido();
-		try{
 		String codigo = falecido.getCpf();
-		int num = falecido.getCodJazigo();
-		jazigo = new Jazigo();
-	    jazigo = jazigoDao.pesquisarUmJazigo(num);
-		falecido = new Falecido();
-		imagem = new DefaultStreamedContent();
+		try{
+		
+		//int num = falecido.getCodJazigo();
+		//jazigo = new Jazigo();
+	   // jazigo = jazigoDao.pesquisarUmJazigo(num);
+	//	falecido = new Falecido();
 		falecido = falecidoDao.pesquisar1(codigo);
+		if(falecido.getCpf()== null ){
+		    FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro, CPF não cadastrado", " "));
+		    }
+		else{
+		imagem = new DefaultStreamedContent();
 		falecido.setFoto(falecido.getFoto());
 	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
-	   // falecido = new Falecido();
-	    FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", " "));
-   
+		}
+			   
 		}catch(DAOException e){
 			e.printStackTrace();
 	        FacesContext context = FacesContext.getCurrentInstance();
@@ -134,10 +138,11 @@ public class FalecidoMB {
 		try{
 		imagem = new DefaultStreamedContent();
 		setLista(falecidoDao.pesquisar(falecido.getNome()));
+		if(lista.isEmpty()){
 		//falecido = new Falecido();
 		FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", " "));
-   
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO, nome não cadastrado", " "));
+		}
 		}catch(DAOException e){
 			e.printStackTrace();
 	        FacesContext context = FacesContext.getCurrentInstance();

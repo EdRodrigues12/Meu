@@ -17,25 +17,31 @@
     <h:body>
         <i id="customheader" class="fa fa-fw fa-car" style="display:none"></i>
  
-        <p:dataTable var="jazigo" value="#{jazigoMB.jazigo}">
+        <p:dataTable var="jazigo" value="#{donoMB.dj}">
             <p:column headerText="Código Jazigo">
-                <h:outputText value="#{jazigo.codigo}" />
+                <h:outputText value="#{donojazigo.cpf}" />
+            <p:column headerText="Código Jazigo">
+                <h:outputText value="#{donojazigo.nome}" />
+            </p:column>    
+            </p:column>
+            <p:column headerText="Código Jazigo">
+                <h:outputText value="#{donojazigo.codigo}" />
             </p:column>
             
             <p:column headerText="Rua">
-                <h:outputText value="#{jazigo.rua}" />
+                <h:outputText value="#{donojazigo.rua}" />
             </p:column>
  
             <p:column headerText="Quadra">
-                <h:outputText value="#{jazigo.quadra}" />
+                <h:outputText value="#{donojazigo.quadra}" />
             </p:column>
  
             <p:column headerText="N°">
-                <h:outputText value="#{jazigo.numero}" />
+                <h:outputText value="#{donojazigo.numero}" />
             </p:column>
  
             <p:column headerText="Gaveta">
-                <h:outputText value="#{jazigo.gaveta}" />
+                <h:outputText value="#{donojazigo.gaveta}" />
             </p:column>
             
         </p:dataTable>

@@ -11,6 +11,7 @@ import dao.DonoDAO;
 import dao.DonoDAOImpl;
 import entidades.Dono;
 import entidades.DonoJazigo;
+import entidades.Jazigo;
 
 @ManagedBean
 @SessionScoped
@@ -18,10 +19,12 @@ public class DonoMB {
 
 	private DonoDAO donoDao = new DonoDAOImpl();
 	private Dono dono = new Dono();
+	private Jazigo jazigo = new Jazigo();
 	private DonoJazigo dj = new DonoJazigo();
 	private List<Dono> lista = new ArrayList<Dono>();
 	private List<DonoJazigo> list = new ArrayList<DonoJazigo>();
     private String nome;
+    private int num;
   
 
 	public String adicionar() throws DAOException {;
@@ -41,15 +44,19 @@ public class DonoMB {
 	
 	public String pesquisarDono() throws DAOException {
 		setLista(donoDao.pesquisar(dono.getNome()));
-		System.out.println(dono.getNome());
-		dono = new Dono();
+		
+		System.out.println(dj.getNome());
+		//dono = new Dono();
 		return "";
 	}
 
 	public String pesquisar() throws DAOException {
-		setList(donoDao.pesquisarJazigo(dono.getNome()));
+		setList(donoDao.pesquisarJazigo(num));
 		System.out.println(dono.getNome());
-		dono = new Dono();
+		dj.setNome(dono.getNome());
+		dj.setCodigo(jazigo.getCodigo());
+		System.out.println(dj.getNome());
+		//dono = new Dono();
 		return "";
 	}
 	
@@ -117,6 +124,30 @@ public class DonoMB {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public DonoDAO getDonoDao() {
+		return donoDao;
+	}
+
+	public void setDonoDao(DonoDAO donoDao) {
+		this.donoDao = donoDao;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public Jazigo getJazigo() {
+		return jazigo;
+	}
+
+	public void setJazigo(Jazigo jazigo) {
+		this.jazigo = jazigo;
 	}
 	
 }

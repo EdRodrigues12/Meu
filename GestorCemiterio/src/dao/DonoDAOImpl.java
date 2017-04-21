@@ -9,6 +9,7 @@ import java.util.List;
 
 import entidades.Dono;
 import entidades.DonoJazigo;
+import entidades.Jazigo;
 
 
 
@@ -162,10 +163,11 @@ public class DonoDAOImpl implements DonoDAO {
 	}
 
 	@Override
-	public List<DonoJazigo> pesquisarJazigo(String dono) throws DAOException {
+	public List<DonoJazigo> pesquisarJazigo(int dono) throws DAOException {
 		System.out.println(""+dono);
 		String sql = "SELECT cpf,nome,codigo, rua, quadra, gaveta,numero "
-				+ "FROM dono INNER JOIN jazigo on codigoJazigo = codigo WHERE nome LIKE ?";
+				+ "FROM dono INNER JOIN jazigo on codigoJazigo = codigo where numero = ? ";
+
 		List<DonoJazigo> donos = new ArrayList<DonoJazigo>();
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
@@ -175,17 +177,30 @@ public class DonoDAOImpl implements DonoDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
+//				Dono d = new Dono();
+//				Jazigo j = new Jazigo();
+//				
+//				d.setCpf(rs.getString("cpf"));
+//     			d.setNome(rs.getString("nome"));
+//				d.setCodJazigo(rs.getInt("codigo"));
+//				j.setRua(rs.getString("rua"));
+//				j.setQuadra(rs.getString("quadra"));
+//				j.setGaveta(rs.getInt("gaveta"));
+//				j.setNumero(rs.getInt("numero"));
+//				donos.addAll(dono, donos);
+				
+				
 				DonoJazigo d = new DonoJazigo();
 				
-				d.setCpf(rs.getString(1));
-				d.setNome(rs.getString(2));
-				d.setCodigo(rs.getInt(3));
-				d.setRua(rs.getString(4));
-				d.setQuadra(rs.getString(5));
-				d.setGaveta(rs.getInt(6));
-				d.setNumero(rs.getInt(7));
+				d.setCpf(rs.getString("cpf"));
+				d.setNome(rs.getString("nome"));
+				d.setCodigo(rs.getInt("codigo"));
+				d.setRua(rs.getString("rua"));
+				d.setQuadra(rs.getString("quadra"));
+				d.setGaveta(rs.getInt("gaveta"));
+				d.setNumero(rs.getInt("numero"));
 				donos.add(d);
-				System.out.println(""+donos);
+				System.out.println(""+d.getCpf());
 			}
 			stmt.close();
 		} catch (SQLException e) {
