@@ -3,7 +3,8 @@
 <!-- Início da TAG HTML -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
@@ -79,24 +80,33 @@
 			<h2>
 				Jazigo
 			</h2>
-			<h:outputLink class="link" value="adicionarJazigo.xhtml">Adicionar</h:outputLink>
+			<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
+			<h:commandLink class="link" action="#{loginMB.nivelAddJ}">Adicionar</h:commandLink>
 			|
-			<h:outputLink class="link" value="atualizarJazigo.xhtml">Atualizar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelAttJ}" >Atualizar</h:commandLink>
 			|
-			<h:outputLink class="link" value="pesquisarJazigo.xhtml">Pesquisar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelPesqJ}" >Pesquisar</h:commandLink>
 			|
-			<h:outputLink class="link" value="deletarJazigo.xhtml">Deletar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelDelJ}" >Deletar</h:commandLink>
+			
+			</h:form>
 			<h2>
 				Dono Jazigo
 			</h2>
-			<h:outputLink class="link" value="adicionarDono.xhtml">Adicionar Dono</h:outputLink>
+			<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
+			<h:commandLink class="link" action="#{loginMB.nivelAddDn}">Adicionar Dono</h:commandLink>
 			|
-			<h:outputLink class="link" value="atualizarDono.xhtml">Atualizar Dono</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelAttDn}" >Atualizar Dono</h:commandLink>
 			|
-			<h:outputLink class="link" value="pesquisarDono.xhtml">Pesquisar Dono</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelPesqDn}" >Pesquisar Dono</h:commandLink>
 			|
-			<h:outputLink class="link" value="deletarDono.xhtml">Deletar Dono</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelDelDn}" >Deletar Dono</h:commandLink>
 			
+			</h:form>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				Para trabalhar, selecione uma das opções acima.

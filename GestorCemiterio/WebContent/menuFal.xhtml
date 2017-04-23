@@ -3,7 +3,8 @@
 <!-- Início da TAG HTML -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
@@ -79,13 +80,18 @@
 			<h2>
 				Falecido
 			</h2>
-			<h:outputLink class="link" value="adicionarFalecido.xhtml">Adicionar</h:outputLink>
+			<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
+			<h:commandLink class="link" action="#{loginMB.nivelAddF}">Adicionar</h:commandLink>
 			|
-			<h:outputLink class="link" value="atualizarFalecido.xhtml">Atualizar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelAttF}" >Atualizar</h:commandLink>
 			|
-			<h:outputLink class="link" value="pesquisarFalecido.xhtml">Pesquisar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelPesqF}" >Pesquisar</h:commandLink>
 			|
-			<h:outputLink class="link" value="deletarFalecido.xhtml">Deletar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelDelF}" >Deletar</h:commandLink>
+			
+			</h:form>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				Para trabalhar, selecione uma das opções acima.

@@ -3,7 +3,8 @@
 <!-- Início da TAG HTML -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
@@ -79,7 +80,12 @@
 			<h2>
 				Velório
 			</h2>
-			<h:outputLink class="link" value="adicionarVelorio.xhtml">Gerenciar Velório</h:outputLink>
+			<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			<h:commandLink class="link" action="#{loginMB.nivelAddV}">Gerenciar Velório</h:commandLink>
+			
+			</h:form>
+<!-- 			<h:outputLink class="link" value="adicionarVelorio.xhtml">Gerenciar Velório</h:outputLink> -->
 <!-- 			| -->
 <!-- 			<h:outputLink class="link" value="pesquisarVelorioD.xhtml">Pesquisar por Data</h:outputLink> -->
 <!-- 			| -->

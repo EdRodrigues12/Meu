@@ -106,10 +106,16 @@ public class LoginMB {
 		//}
 		//catch(DAOExceptionLG e){
 			else if(usuarioDao.verificar(id)== true && 
-					usuarioDao.password(id).equals(senha)){
+					usuarioDao.password(id).equals(senha)&& usuarioDao.verNivel(id).equals("Administrador")){
 					//if(usuarioDao.verNivel(user.getId()).equals("Administrador")){
 			pagina = "index?faces-redirect=true";
 			logado = true;
+			}
+			else if(usuarioDao.verificar(id)== true && 
+					usuarioDao.password(id).equals(senha)&& ! usuarioDao.verNivel(id).equals("Administrador")){
+				System.out.println(user.getNivel());
+				pagina = "index?faces-redirect=true";
+				logado = true;
 			}
 													
 				else if(usuarioDao.verificar(id)== true && usuarioDao.password(id)!= senha){
@@ -119,11 +125,449 @@ public class LoginMB {
 						+ "inválida, tente novamentte");
 				fc.addMessage("formBody:txtSenha", msg);
 				}
+				else{
+					logado = false;
+					FacesContext fc = FacesContext.getCurrentInstance();
+					FacesMessage msg = new FacesMessage("Usuário ou Senha inválida","Usuário ou Senha inválida, tente novamente");
+					fc.addMessage("formBody:txtSenha, formBody:txtUsuario", msg);
+				}
 			//}
 		
 			
 		
 		return pagina;
+	}
+	public String nivelAddA() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuAdmin";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "adicionarUsuario?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAttA() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuAdmin";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "atualizarUsuario?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelDelA() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuAdmin";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "deletarUsuario?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	
+	public String nivelPesqA() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuAdmin";
+		if(usuarioDao.verNivel(id).equals("Administrador") || usuarioDao.verNivel(id)!=("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "pesquisarUsuario?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	
+	public String nivelAddC() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuCola";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "adicionarColaborador?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAttC() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuCola";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "atualizarColaborador?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelDelC() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuCola";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "deletarColaborador?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	
+	public String nivelPesqC() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuCola";
+		if(usuarioDao.verNivel(id).equals("Administrador") || usuarioDao.verNivel(id)!=("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "pesquisarColaborador?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAddD() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuDecla";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "adicionarDeclarante?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAttD() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuDecla";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "atualizarDeclarante?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelDelD() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuDecla";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "deletarDeclarante?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	
+	public String nivelPesqD() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuDecla";
+		if(usuarioDao.verNivel(id).equals("Administrador") || usuarioDao.verNivel(id)!=("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "pesquisarDeclarante?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAddF() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuFal";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "adicionarFalecido?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAttF() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuFal";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "atualizarFalecido?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelDelF() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuFal";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "deletarFalecido?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	
+	public String nivelPesqF() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuFal";
+		if(usuarioDao.verNivel(id).equals("Administrador") || usuarioDao.verNivel(id)!=("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "pesquisarFalecido?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAddJ() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "adicionarJazigo?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAttJ() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "atualizarJazigo?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelDelJ() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "deletarJazigo?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	
+	public String nivelPesqJ() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador") || usuarioDao.verNivel(id)!=("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "pesquisarJazigo?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAddDn() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "adicionarDono?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAttDn() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "atualizarDono?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelDelDn() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "deletarDono?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	
+	public String nivelPesqDn() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuJaz";
+		if(usuarioDao.verNivel(id).equals("Administrador") || usuarioDao.verNivel(id)!=("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "pesquisarDono?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
+	}
+	public String nivelAddV() throws DAOExceptionLG{
+		System.out.println(id);
+		String pagina = "menuVelo";
+		if(usuarioDao.verNivel(id).equals("Administrador")){
+			//return "adicionarUsuario.xhtml";
+			System.out.println("teste");
+			pagina = "adicionarVelorio?faces-redirect=true";
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não possui permissão", " "));
+      
+		}
+		
+		return pagina;
+		
 	}
 
 	public Usuario getUser() {

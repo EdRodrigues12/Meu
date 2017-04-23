@@ -126,12 +126,15 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.nome}">
 	</p:inputText>
-    <p:outputLabel value="Data de Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:calendar  effect="fold"  size="4"
+   <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;" />
+    <p:calendar  effect="fold" navigator="true"
+    size="5" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
+	
 	value="#{loginMB.user.nascimento}"> 
-	<f:convertDateTime	pattern="dd/MM/yyyy" 
+				
+	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>

@@ -105,15 +105,19 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.nome}">
 	</p:inputText>
-    <p:outputLabel value="Data de Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:calendar  effect="fold"  size="4"
+	<p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;" />
+    <p:calendar  effect="fold" navigator="true"
+    size="5" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.nascimento}"
-	> <f:convertDateTime	pattern="dd/MM/yyyy" 
+	
+	value="#{loginMB.user.nascimento}"> 
+				
+	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
+    
     <p:outputLabel for="pwd1" value="Senha: *" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:password id="pwd1" value="#{loginMB.user.senha}" match="pwd2" label="Senha" required="true" />
  
@@ -121,7 +125,7 @@
     <p:password id="pwd2" value="#{loginMB.user.senha}" label="Password 2" required="true" />
      <p:separator />
  
-    <p:messages id="message" showDetail="true" autoUpdate="true" /> 
+    <p:messages id="message" showDetail="true" autoUpdate="true" closable="true" /> 
   	
 </h:panelGrid>
 <br />

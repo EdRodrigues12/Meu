@@ -156,6 +156,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			while (rs.next()) {
 				usu.setNivel(rs.getString("nivel"));
 			}
+			System.out.println(usu.getNivel());
 			stmt.close();
 		} catch (SQLException e) {
 			throw new DAOExceptionLG(e);
@@ -163,6 +164,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			throw new DAOExceptionLG(e);
 		}
 		return usu.getNivel();
+		
 	}
 
 	@Override

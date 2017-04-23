@@ -3,7 +3,8 @@
 <!-- Início da TAG HTML -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
@@ -79,14 +80,18 @@
 			<h2>
 				Administrador
 			</h2>
-			<h:outputLink class="link" value="adicionarUsuario.xhtml">Adicionar</h:outputLink>
+			<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
+			<h:commandLink class="link" action="#{loginMB.nivelAddA}">Adicionar</h:commandLink>
 			|
-			<h:outputLink class="link" value="atualizarUsuario.xhtml">Atualizar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelAttA}" >Atualizar</h:commandLink>
 			|
-			<h:outputLink class="link" value="pesquisarUsuario.xhtml">Pesquisar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelPesqA}" >Pesquisar</h:commandLink>
 			|
-			<h:outputLink class="link" value="deletarUsuario.xhtml">Deletar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelDelA}" >Deletar</h:commandLink>
 			<!-- Início da DIV TEXTO -->
+			</h:form>
 			<div class="texto">
 				Para trabalhar, selecione uma das opções acima.
 				<p/>
