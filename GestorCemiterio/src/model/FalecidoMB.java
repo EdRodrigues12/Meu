@@ -21,10 +21,13 @@ import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
 import dao.DAOException;
+import dao.DeclaranteDAO;
+import dao.DeclaranteDAOImpl;
 import dao.FalecidoDAO;
 import dao.FalecidoDAOImpl;
 import dao.JazigoDAO;
 import dao.JazigoDAOImpl;
+import entidades.Declarante;
 import entidades.Falecido;
 import entidades.Jazigo;
 
@@ -40,6 +43,10 @@ public class FalecidoMB {
 	private JazigoDAO jazigoDao = new JazigoDAOImpl();
 	private Jazigo jazigo = new Jazigo();
 	private List<Jazigo> list = new ArrayList<Jazigo>();
+	
+	private DeclaranteDAO declaranteDao = new DeclaranteDAOImpl();
+	private Declarante declarante = new Declarante();
+	
 	private StreamedContent imagem;
 	private ManipularImagem mai = new ManipularImagem();
 	private Date dtExumacao;
@@ -87,15 +94,22 @@ public class FalecidoMB {
 	
 
 	public String adicionar() throws DAOException {
+		String cpf = falecido.getCpfDeclarante();
+		declarante = declaranteDao.pesquisar1(cpf);
 		try{
 		//falecido = new Falecido();
+			if(falecido.getCpfDeclarante().equals(declarante.getCpf())){
 		falecidoDao.adicionar(falecido);
 		
 		imagem = new DefaultStreamedContent();
 		falecido = new Falecido();
 		FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Adicionado com sucesso!", " "));
-   
+			}else{
+				FacesContext context = FacesContext.getCurrentInstance();
+		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "CPF Declarante não cadastrado ", null));
+		    	
+			}
 		}catch(DAOException e){
 			e.printStackTrace();
 	        FacesContext context = FacesContext.getCurrentInstance();
@@ -110,25 +124,27 @@ public class FalecidoMB {
 		String codigo = falecido.getCpf();
 		
 		try{
-			if(falecido.getFoto()!= null){
+			falecido = falecidoDao.pesquisar1(codigo);
+			 if(falecido.getCpf()== null ){
+			    FacesContext context = FacesContext.getCurrentInstance();
+		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro, CPF não cadastrado", " "));
+			    }
+		else if(falecido.getFoto()!= null){
 		//int num = falecido.getCodJazigo();
 		//jazigo = new Jazigo();
 	   // jazigo = jazigoDao.pesquisarUmJazigo(num);
 	//	falecido = new Falecido();
-		falecido = falecidoDao.pesquisar1(codigo);
+		
 		imagem = new DefaultStreamedContent();
 		falecido.setFoto(falecido.getFoto());
 	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
 		cep = falecido.getCep();
 		}
-		if(falecido.getFoto()== null ){
+			else if(falecido.getFoto()== null ){
 			falecido.setFoto(null);
 			falecido = falecidoDao.pesquisar1(codigo);
 		}
-		else if(falecido.getCpf()== null ){
-		    FacesContext context = FacesContext.getCurrentInstance();
-	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro, CPF não cadastrado", " "));
-		    }
+		
 		else{
 		
 		}
@@ -191,8 +207,13 @@ public class FalecidoMB {
 
 	public String atualizar() throws DAOException {
 		System.out.println(" teste");
-		//falecido = new Falecido();
+		String cpf = falecido.getCpfDeclarante();
+		declarante = declaranteDao.pesquisar1(cpf);
 		try{
+		//falecido = new Falecido();
+			if(falecido.getCpfDeclarante().equals(declarante.getCpf())){
+		//falecido = new Falecido();
+		
 		falecidoDao.atualizar(falecido);
 		System.out.println(falecido.getNome());
 		falecido.setCep(cep);
@@ -200,7 +221,11 @@ public class FalecidoMB {
 		imagem = new DefaultStreamedContent();
 		FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", " "));
-   
+			}else{
+				FacesContext context = FacesContext.getCurrentInstance();
+		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "CPF Declarante não cadastrado ", null));
+		    	
+			}
 		}catch(DAOException e){
 			e.printStackTrace();
 	        FacesContext context = FacesContext.getCurrentInstance();
