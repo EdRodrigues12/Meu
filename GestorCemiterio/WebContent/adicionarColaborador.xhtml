@@ -82,7 +82,8 @@
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
-				<h:form>
+				<h:form id="form">
+				
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 	<h:panelGrid columns="2">
 	<p:outputLabel value="Nome :" style="font-weight:bold; padding-right: 5px; float: right;" />
@@ -97,12 +98,17 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{colaboradorMB.colaborador.servico}"> 
 	</p:inputText>
-    <p:outputLabel value="Email :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtEmail" size="30"
+	
+    <p:outputLabel value="Email :" style="font-weight:bold; padding-right: 5px; float: right;" />
+    <p:inputText id="txtEmail" size="30" 
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{colaboradorMB.colaborador.email}">
+	<f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+	
 	</p:inputText>
+	
     <p:outputLabel value="Telefone :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
     maxlength="13" size="14"
@@ -117,7 +123,9 @@
 
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Adicionar"  action="#{colaboradorMB.adicionar}" ajax = "false" /> 
+						   <p:commandButton value="Adicionar"  action="#{colaboradorMB.adicionar}" update=":form"/> 
+						   
+						   
 							</h:panelGroup>
 					</h:panelGrid>
 <!-- 					<h:panelGrid> -->

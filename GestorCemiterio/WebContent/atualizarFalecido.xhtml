@@ -225,18 +225,26 @@
 							<f:selectItem itemValue="Negro" itemLabel="Negro" />
 							<f:selectItem itemValue="Amarelo" itemLabel="Amarelo" />
 	</p:selectOneMenu>
+	</h:panelGrid>
+	<h:panelGrid columns="4">
     <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:calendar  effect="fold" navigator="true"
-    size="5"
+    size="5" 
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.nascimento}"> 
+				
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
+	<h:panelGroup>
+						   <p:commandButton value="Idade" action="#{falecidoMB.calculaIdade}" update="txtIdade" /> 
+	</h:panelGroup>
+	</h:panelGrid>
+	<h:panelGrid columns="2">
 	<p:outputLabel value="Idade :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtIdade" 
-    size="2"
+    size="2" readonly="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.idade}">
 	</p:inputText>

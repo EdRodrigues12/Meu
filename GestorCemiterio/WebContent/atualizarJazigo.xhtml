@@ -6,6 +6,9 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
+<f:metadata>
+<f:viewAction action="#{jazigoMB.jazigosTodos}"/>
+</f:metadata>
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
 	<link href="style\estilo.css" rel="stylesheet" type="text/css"/>
@@ -82,7 +85,52 @@
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
-				<h:form>
+				<h:form id="table1">
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	<i id="customheader" class="fa fa-fw fa-car" style="display:none" ></i>
+<!--          <div style="height: 100px; overflow: auto;">  -->
+	<h3 style="margin-top: 0">Jazigos </h3>
+        <p:dataTable id="table" var="jazigo" value="#{jazigoMB.lista2}" reflow="true" rows="5" paginator="true" >
+            
+            <p:column headerText="Código Jazigo">
+                <h:outputText value="#{jazigo.codigo}" />
+            </p:column>
+            
+            <p:column headerText="Rua">
+                <h:outputText value="#{jazigo.rua}" />
+            </p:column>
+ 
+            <p:column headerText="Quadra">
+                <h:outputText value="#{jazigo.quadra}" />
+            </p:column>
+ 
+            <p:column headerText="N°">
+                <h:outputText value="#{jazigo.numero}" />
+            </p:column>
+ 
+            <p:column headerText="Gaveta">
+                <h:outputText value="#{jazigo.gaveta}" />
+            </p:column>
+            
+            <p:column headerText="Terreno">
+                <h:outputText value="#{jazigo.terreno}" />
+            </p:column>
+ 
+            <p:column headerText="Lado">
+                <h:outputText value="#{jazigo.lado}" />
+            </p:column>
+            
+            <p:column headerText="Comprimento">
+                <h:outputText value="#{jazigo.comprimento}" />
+            </p:column>
+ 
+            <p:column headerText="Largura">
+                <h:outputText value="#{jazigo.largura}" />
+            </p:column>
+           
+        </p:dataTable>
+        <br />
+        <br />
 	<h:panelGrid columns="2">
   	
     <p:outputLabel value="N° Jazigo :"/>
@@ -96,7 +144,7 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  action="#{jazigoMB.pesquisar}" ajax = "false"/> 
+						   <p:commandButton value="Pesquisar"  action="#{jazigoMB.pesquisar}" update=":text"/> 
 							</h:panelGroup>
 					</h:panelGrid>
 </h:form>
@@ -104,7 +152,7 @@
 </div>
 <div id="welcome">
 			<div class="texto">
-				<h:form>
+				<h:form id="text">
 					<h:panelGrid columns="2">
 						<p:outputLabel value="Rua: " />
 						<p:inputText value="#{jazigoMB.jazigo.rua}" />
@@ -140,7 +188,7 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Atualizar"  action="#{jazigoMB.atualizar}" ajax = "false" /> 
+						   <p:commandButton value="Atualizar"  action="#{jazigoMB.atualizar}" update=":table1:table, :text" /> 
 							</h:panelGroup>
 					</h:panelGrid>
 <!-- 					<h:panelGrid> -->

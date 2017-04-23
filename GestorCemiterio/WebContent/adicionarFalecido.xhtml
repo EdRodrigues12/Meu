@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:p="http://primefaces.org/ui">
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:a4j="http://richfaces.org/a4j">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
@@ -83,7 +84,7 @@
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 	
-	<h:form enctype="multipart/form-data">
+	<h:form id="form" enctype="multipart/form-data">
 	
             <p:outputLabel value="Foto"
             style="font-weight:bold; padding-right: 5px; float: right;"/>
@@ -97,7 +98,7 @@
         <p:messages  severity="info" escape="false" showDetail="true" 
                  autoUpdate="true" closable="true"/>
 
-			<h:form>
+			<h:form id="form1">
 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 	
 <h:panelGrid columns="2">
@@ -163,18 +164,26 @@
 							<f:selectItem itemValue="Negro" itemLabel="Negro" />
 							<f:selectItem itemValue="Amarelo" itemLabel="Amarelo" />
 	</p:selectOneMenu>
+	</h:panelGrid>
+	<h:panelGrid columns="4">
     <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:calendar  effect="fold" navigator="true"
-    size="5"
+    size="5" 
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.nascimento}"> 
+				
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
+	<h:panelGroup>
+						   <p:commandButton value="Idade" action="#{falecidoMB.calculaIdade}" update="txtIdade" /> 
+	</h:panelGroup>
+	</h:panelGrid>
+	<h:panelGrid columns="2">				
 	<p:outputLabel value="Idade :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtIdade" 
-    size="2"
+    size="2" readonly="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.idade}">
 	</p:inputText>
@@ -395,7 +404,7 @@
 <br />
 					<h:panelGrid>
 							<h:panelGroup>             
-						  	 <p:commandButton value="Finalizar Cadastro"  action="#{falecidoMB.adicionar}" ajax = "false"/> 
+						  	 <p:commandButton value="Finalizar Cadastro"  action="#{falecidoMB.adicionar}" update=":form, :form1"/> 
 							
 							</h:panelGroup>
 					</h:panelGrid>	

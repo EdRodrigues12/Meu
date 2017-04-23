@@ -97,7 +97,7 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar por CPF"  action="#{falecidoMB.pesquisar}" ajax = "false"  /> 
+						   <p:commandButton value="Pesquisar por CPF"  action="#{falecidoMB.pesquisar}" update=":form, :form1"  /> 
 							</h:panelGroup>
 					</h:panelGrid>
 					<br/>
@@ -114,13 +114,13 @@
 <br />
 <p:panelGrid>
 					<h:panelGroup>
-						   <p:commandButton value="Pesquisar por Nome"  action="#{falecidoMB.pesquisarPorNome}" ajax = "false"/> 
+						   <p:commandButton value="Pesquisar por Nome"  action="#{falecidoMB.pesquisarPorNome}" update=":table"/> 
 							</h:panelGroup>
 					</p:panelGrid>
 </h:form>
 </div>
 <br/>
-<h:form>
+<h:form id="table">
 	<h:dataTable 	value="#{falecidoMB.lista}" 
 					var="falecido"
 					style="border-style:solid;"
@@ -155,7 +155,7 @@
 
 				</h:form>
 	
-	<h:form enctype="multipart/form-data">
+	<h:form id="form" enctype="multipart/form-data">
 	
  <p:outputLabel value="Foto " style="font-weight:bold; padding-right: 5px; float: right;"/>
  <p:graphicImage value="#{falecidoMB.imagem}" id="imagem" cache="false" width="200" height="200"/>
@@ -165,7 +165,7 @@
         <p:messages  severity="info" escape="false" showDetail="true" 
                  autoUpdate="true" closable="true"/>
      
- <h:form  >
+ <h:form id="form1"  >
 
 <h:panelGrid columns="2">
   	

@@ -120,6 +120,8 @@
 		<p:outputLabel value="Deletar Dono" />
 </h2>
 				<h:form>
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
 	<h:dataTable 	value="#{donoMB.lista}" 
 					var="dono"
 					style="border-style:solid;"

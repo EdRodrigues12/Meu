@@ -11,7 +11,9 @@ public interface JazigoDAO {
 
 	public boolean deletar(int codigojazigo) throws DAOException;
 
-	public List<Jazigo> pesquisar(int numerojazigo) throws DAOException;
+	public List<Jazigo> pesquisar() throws DAOException;
+	
+	public List<Jazigo> pesquisarTodos() throws DAOException;
 	
 	public List<Jazigo> pesquisarRua(String rua) throws DAOException;
 

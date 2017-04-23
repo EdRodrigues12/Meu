@@ -82,7 +82,7 @@
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
-				<h:form>
+				<h:form id="form">
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 	
 	<h:panelGrid columns="2"  id="matchGrid">
@@ -127,7 +127,7 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Adicionar"  action="#{loginMB.adicionar}" update="matchGrid" ajax = "false" /> 
+						   <p:commandButton value="Adicionar"  action="#{loginMB.adicionar}" update="matchGrid, :form" /> 
 							</h:panelGroup>
 					</h:panelGrid>
 <!-- 					<h:panelGrid> -->

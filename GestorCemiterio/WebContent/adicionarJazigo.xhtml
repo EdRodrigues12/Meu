@@ -82,7 +82,8 @@
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
-				<h:form>
+				<h:form id="form">
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 	<h:panelGrid columns="2">
 	<p:outputLabel value="Rua :" />
     <p:inputText  id="txtRua" 
@@ -139,7 +140,7 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Adicionar"  action="#{jazigoMB.adicionar}" ajax = "false" /> 
+						   <p:commandButton value="Adicionar"  action="#{jazigoMB.jazigos}" actionListener="#{jazigoMB.adicionar}" update=":form"   /> 
 							</h:panelGroup>
 					</h:panelGrid>
 <!-- 					<h:panelGrid> -->

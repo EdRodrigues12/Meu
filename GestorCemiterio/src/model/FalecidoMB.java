@@ -51,7 +51,7 @@ public class FalecidoMB {
     private String uf;
     private String cidade;
     private String bairro;
-	
+	private int nAno;
 	
 
 	public String buscaCEP(){
@@ -108,22 +108,31 @@ public class FalecidoMB {
 	public String pesquisar() throws DAOException {
 		//falecido = new Falecido();
 		String codigo = falecido.getCpf();
-		try{
 		
+		try{
+			if(falecido.getFoto()!= null){
 		//int num = falecido.getCodJazigo();
 		//jazigo = new Jazigo();
 	   // jazigo = jazigoDao.pesquisarUmJazigo(num);
 	//	falecido = new Falecido();
 		falecido = falecidoDao.pesquisar1(codigo);
-		if(falecido.getCpf()== null ){
+		imagem = new DefaultStreamedContent();
+		falecido.setFoto(falecido.getFoto());
+	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
+		cep = falecido.getCep();
+		}
+		if(falecido.getFoto()== null ){
+			falecido.setFoto(null);
+			falecido = falecidoDao.pesquisar1(codigo);
+		}
+		else if(falecido.getCpf()== null ){
 		    FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro, CPF não cadastrado", " "));
 		    }
 		else{
-		imagem = new DefaultStreamedContent();
-		falecido.setFoto(falecido.getFoto());
-	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
+		
 		}
+			
 			   
 		}catch(DAOException e){
 			e.printStackTrace();
@@ -131,6 +140,7 @@ public class FalecidoMB {
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
 	    	
 		}
+		
 		return "";
 	}
 	public String pesquisarPorNome() throws DAOException{
@@ -138,6 +148,7 @@ public class FalecidoMB {
 		try{
 		imagem = new DefaultStreamedContent();
 		setLista(falecidoDao.pesquisar(falecido.getNome()));
+		cep = falecido.getCep();
 		if(lista.isEmpty()){
 		//falecido = new Falecido();
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -155,13 +166,25 @@ public class FalecidoMB {
 		return "";
 	}
 	
-	public String ver(Falecido f) { 
-		//falecido = new Falecido();
+	public String ver(Falecido f)throws DAOException { 
+		if(falecido.getFoto() != null){
 		falecido = f;
 		imagem = new DefaultStreamedContent();
 		falecido.setFoto(falecido.getFoto());
 	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
-	   // falecido = new Falecido();
+	    cep = falecido.getCep();}
+	    else if(falecido.getFoto()== null){
+	    	falecido.setFoto(null);
+			falecido = f;
+			cep = falecido.getCep();
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
+	    	
+		}
+		// falecido = new Falecido();
+	    
 		System.out.println("Botao Editar do taxista " + f.getNome() + " foi pressionado");
 		return "";
 	}
@@ -172,6 +195,7 @@ public class FalecidoMB {
 		try{
 		falecidoDao.atualizar(falecido);
 		System.out.println(falecido.getNome());
+		falecido.setCep(cep);
 		falecido = new Falecido();
 		imagem = new DefaultStreamedContent();
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -212,6 +236,28 @@ public class FalecidoMB {
 		return "";
 		
 	}
+	public void calculaIdade(){
+		Date hoje = new Date();    
+	      Calendar cal = Calendar.getInstance();    
+	          
+	      cal.setTime(hoje);    
+	      int day1 = cal.get(Calendar.DAY_OF_YEAR);    
+	      int ano1 = cal.get(Calendar.YEAR);    
+	          
+	      cal.setTime(falecido.getNascimento());    
+	      int day2 = cal.get(Calendar.DAY_OF_YEAR);    
+	      int ano2 = cal.get(Calendar.YEAR);    
+	          
+	      nAno = ano1 - ano2;    
+	         
+	      if(day1 < day2)    
+	         nAno--; //Ainda não completou aniversario esse ano.  
+	      System.out.println(nAno);
+	       falecido.setIdade(nAno);      
+	      //return nAno;    
+	     
+	   }    
+		
 	
 	public void calcularExumacao(/*int idade*/)throws DAOException{
 		System.out.println(" teste");
@@ -377,6 +423,16 @@ public class FalecidoMB {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+
+	public int getnAno() {
+		return nAno;
+	}
+
+
+	public void setnAno(int nAno) {
+		this.nAno = nAno;
 	}
 
 }

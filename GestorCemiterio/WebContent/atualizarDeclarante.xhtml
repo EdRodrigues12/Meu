@@ -308,9 +308,10 @@ style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:outputLabel value="Email :"
 	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtEmail" 
-    
+    value="#{declaranteMB.declarante.email}">
+    <f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 	
-	value="#{declaranteMB.declarante.email}">
 	</p:inputText>
   	
 </h:panelGrid>

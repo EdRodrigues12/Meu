@@ -3,8 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import dao.DAOException;
 import dao.DonoDAO;
@@ -27,23 +29,56 @@ public class DonoMB {
     private int num;
   
 
-	public String adicionar() throws DAOException {;
+	public String adicionar() throws DAOException {
+		//String cpf = dono.getCpf();
+		
+	
+		//if(dono.getCodJazigo()!= donoDao.pesquisar1(cpf).getCodJazigo()){
+		try{
 		donoDao.adicionar(dono);
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Adicionado com sucesso!", " "));
+   
 		dono = new Dono();
+		}catch(DAOException e){
+			FacesContext context = FacesContext.getCurrentInstance();
+		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao adicionar ", null));
+		    	
+		}
+		//else{
+			//FacesContext context = FacesContext.getCurrentInstance();
+	       // context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao adicionar, dono já adicionado ", null));
+	    	
+		//}
 		return "";
 	}
 	
 	public String pesquisarCPF() throws DAOException {
 		//declarante = new Declarante();
-		String cpf = dono.getCpf();
 		
+		String cpf = dono.getCpf();
+		try{
 		dono = donoDao.pesquisar1(cpf);
+		}
+		catch(DAOException e){
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
+	    	
+		}
 		//declarante = new Declarante();
 		return "";
 	}
 	
 	public String pesquisarDono() throws DAOException {
-		setLista(donoDao.pesquisar(dono.getNome()));
+		
+		try{
+			setLista(donoDao.pesquisar(dono.getNome()));
+			}
+			catch(DAOException e){
+				FacesContext context = FacesContext.getCurrentInstance();
+		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
+		    	
+			}
 		
 		System.out.println(dj.getNome());
 		//dono = new Dono();
@@ -61,28 +96,67 @@ public class DonoMB {
 	}
 	
 	public String pesquisarCpf() throws DAOException {
-		setLista(donoDao.pesquisarDonoCpf(dono.getCpf()));
-		System.out.println(dono.getNome());
-		dono = new Dono();
+		
+//		System.out.println(dono.getNome());
+//		dono = new Dono();
+		try{
+			setLista(donoDao.pesquisarDonoCpf(dono.getCpf()));
+			}
+			catch(DAOException e){
+				FacesContext context = FacesContext.getCurrentInstance();
+		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
+		    	
+			}
 		return "";
 	}
 
 	public String atualizar() throws DAOException {
-		donoDao.atualizar(dono);
-		dono = new Dono();
+		try{
+			donoDao.atualizar(dono);
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", " "));
+	   		dono = new Dono();
+			}catch(DAOException e){
+				FacesContext context = FacesContext.getCurrentInstance();
+			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao atualizar ", null));
+			    	
+			}
+		
+		
 		return "";
 	}
 
 	public String deletar(Dono d) throws DAOException {
-		dono = d;
-		donoDao.deletar(d.getCpf());
-		dono = new Dono();
+		try{
+			dono = d;
+			donoDao.deletar(d.getCpf());
+			dono = new Dono();
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Deletado com sucesso!", " "));
+	   		
+			}catch(DAOException e){
+				FacesContext context = FacesContext.getCurrentInstance();
+			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao deletar ", null));
+			    	
+			}
+		
+		
 		return "";
 
 	}
 	public String deletarJazigo(Dono d) throws DAOException {
-		dono = d;
-		donoDao.deletarJazigo(d.getCodJazigo());
+		try{
+			dono = d;
+			donoDao.deletarJazigo(d.getCodJazigo());
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Jazigo deletado com sucesso!", " "));
+	   		
+			}catch(DAOException e){
+				FacesContext context = FacesContext.getCurrentInstance();
+			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao deletar ", null));
+			    	
+			}
+		
 		return "";
 
 	}

@@ -99,6 +99,7 @@ public class DeclaranteMB {
 		try{
 		declarante = declaranteDao.pesquisar1(codigo);
 		System.out.println(declarante.getCpf());
+		cep = declarante.getCep();
 		if (declarante.getCpf()==null){
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "CPF não cadastrado ", null));
@@ -118,6 +119,7 @@ public class DeclaranteMB {
 		//declarante = new Declarante();
 		try{
 		declaranteDao.atualizar(declarante);
+		declarante.setCep(cep);
 		declarante = new Declarante();
 		FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", " "));

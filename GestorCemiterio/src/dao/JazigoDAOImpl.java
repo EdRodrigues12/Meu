@@ -90,14 +90,16 @@ public class JazigoDAOImpl implements JazigoDAO {
 	}
 
 	
-	public List<Jazigo> pesquisar(int numeroJazigo) throws DAOException {
-		String sql = "SELECT * FROM jazigo WHERE numero like ? ";
+	public List<Jazigo> pesquisar() throws DAOException {
+		String sql = "SELECT codigo,rua,quadra,gaveta,numero,terreno,lado,comprimento,largura FROM jazigo "
+				+ "LEFT OUTER JOIN dono ON codigo = codigoJazigo WHERE codigoJazigo IS NULL";
+				
 		List<Jazigo> jazigos = new ArrayList<Jazigo>();
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
 
-			stmt.setString(1, "%" + numeroJazigo + "%");
+			//stmt.setString(1, "%" + numeroJazigo + "%");
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -113,7 +115,7 @@ public class JazigoDAOImpl implements JazigoDAO {
 				j.setLargura(rs.getFloat("largura"));
 				jazigos.add(j);
 			}
-			stmt.close();
+			//stmt.close();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ClassNotFoundException e) {
@@ -169,6 +171,39 @@ public class JazigoDAOImpl implements JazigoDAO {
 			PreparedStatement stmt = con.prepareStatement(sql);
 
 			stmt.setString(1, "%" + rua + "%");
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Jazigo j = new Jazigo();
+				j.setCodigo(rs.getInt("codigo"));
+				j.setRua(rs.getString("rua"));
+				j.setQuadra(rs.getString("quadra"));
+				j.setGaveta(rs.getInt("gaveta"));
+				j.setNumero(rs.getInt("numero"));
+				j.setTerreno(rs.getInt("terreno"));
+				j.setLado(rs.getString("lado"));
+				j.setComprimento(rs.getFloat("comprimento"));
+				j.setLargura(rs.getFloat("largura"));
+				jazigos.add(j);
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} catch (ClassNotFoundException e) {
+			throw new DAOException(e);
+		}
+		return jazigos;
+	}
+
+
+	@Override
+	public List<Jazigo> pesquisarTodos() throws DAOException {
+		String sql = "SELECT * FROM jazigo ";
+		List<Jazigo> jazigos = new ArrayList<Jazigo>();
+		try {
+			Connection con = DBResourceManager.getInstance().getCon();
+			PreparedStatement stmt = con.prepareStatement(sql);
+
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
