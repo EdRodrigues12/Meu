@@ -84,57 +84,65 @@
 			<div class="texto">
 				<h:form id="form">
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-	<h:panelGrid columns="2">
-	<p:outputLabel value="Rua :" />
+	<fieldset> 
+		
+			<label for="Name" style="font-weight: bold;"> Dados Jazigo </label>	
+		<br />
+	<h:panelGrid columns="4" rowClasses="3">
+	<p:outputLabel value="Rua :" style="font-weight:bold;" />
     <p:inputText  id="txtRua" 
-    required="true"
+    required="true" size="50"
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.rua}">
     </p:inputText>
-    <p:outputLabel value="Quadra :"/>
+    <p:outputLabel value="Quadra :" style="font-weight:bold;"/>
     <p:inputText  id="txtQuadra"
-    maxlength="8"
+    maxlength="8" size="9"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.quadra}"> 
 	</p:inputText>
-	 <p:outputLabel value="Terreno :"/>
+	</h:panelGrid>
+	<br/>
+	<h:panelGrid columns="6" rowClasses="3">
+	<p:outputLabel value="Comprimento :" style="font-weight:bold;"/>
+    <p:inputText  id="txtComp" 
+    required="true" size="5"
+	requiredMessage="Campo Obrigatorio"
+	value="#{jazigoMB.jazigo.comprimento}">
+	</p:inputText>
+	<p:outputLabel value="Largura :" style="font-weight:bold;"/>
+    <p:inputText  id="txtLarg" 
+    required="true" size="5"
+	requiredMessage="Campo Obrigatorio"
+	value="#{jazigoMB.jazigo.largura}">
+	</p:inputText>
+	 <p:outputLabel value="Terreno :" style="font-weight:bold;"/>
     <p:inputText  id="txtTerreno"
-    maxlength="8"
+    maxlength="8" size="5"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.terreno}"> 
 	</p:inputText>
-    <p:outputLabel value="Gaveta :"/>
+    <p:outputLabel value="Gaveta :" style="font-weight:bold;"/>
     <p:inputText id="txtGaveta" 
-    required="true"
+    required="true" size="5"
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.gaveta}">
 	</p:inputText>
-	<p:outputLabel value="Lado: " />
+	<p:outputLabel value="Lado: " style="font-weight:bold;"/>
 	<p:selectOneMenu id="cbbLAdo" value="#{jazigoMB.jazigo.lado}"
 							style="comboBox">
 							<f:selectItem itemValue="Direito" itemLabel="Direito" />
 							<f:selectItem itemValue="Esquerdo" itemLabel="Esquerdo" />
 						</p:selectOneMenu>
-    <p:outputLabel value="N° Jazigo :"/>
+    <p:outputLabel value="N° Jazigo :" style="font-weight:bold;"/>
     <p:inputText  id="txtNumero" 
-    required="true"
+    required="true" size="3"
 	requiredMessage="Campo Obrigatorio"
 	value="#{jazigoMB.jazigo.numero}">
 	</p:inputText>
-	<p:outputLabel value="Comprimento :"/>
-    <p:inputText  id="txtComp" 
-    required="true"
-	requiredMessage="Campo Obrigatorio"
-	value="#{jazigoMB.jazigo.comprimento}">
-	</p:inputText>
-	<p:outputLabel value="Largura :"/>
-    <p:inputText  id="txtLarg" 
-    required="true"
-	requiredMessage="Campo Obrigatorio"
-	value="#{jazigoMB.jazigo.largura}">
-	</p:inputText>
+	
   	
 </h:panelGrid>
 <br />
@@ -148,6 +156,7 @@
 <!-- 							<p:commandButton value="Botão" action="#{managedBeanQualquer}" /> -->
 <!-- 						</h:panelGroup> -->
 <!-- 					</h:panelGrid> -->
+</fieldset>
 				</h:form>
 				<p/>
 			</div>

@@ -110,79 +110,140 @@
 <h:form  >
 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 	
-<h:panelGrid columns="2">
-  	
+<fieldset> 
+		
+			<label for="Name" style="font-weight: bold;"> Dados Declarante </label>	
+		<br />	
+<h:panelGrid columns="6" rowClasses="3"> 
+
+    <p:outputLabel value="CPF :" 
+	style="font-weight:bold;"/>
+    <p:inputMask id="txtCPF" mask="999.999.999-99" 
+    size="13"  readonly="true"
+    onBlur="ValidarCPF(txtCPF);" 
+    onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
+    
+	value="#{declaranteMB.declarante.cpf}">
+    </p:inputMask>
+  	<p:outputLabel value="Nome :" 
+  	style="font-weight:bold;"/>
+    <p:inputText id="txtNome"
+    size="50" readonly="true"
+	value="#{declaranteMB.declarante.nome}">
+	</p:inputText>
+    <p:outputLabel value="RG :" style="font-weight:bold;"/>
+    <p:inputMask  id="txtRG" mask="999.999.999-9"
+    maxlength="13" size="13"
+	value="#{declaranteMB.declarante.rg}">
+	</p:inputMask>
    
-    <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:calendar  effect="fold" readonly="true"
+    <p:outputLabel value="Nascimento :" style="font-weight:bold;"/>
+    <p:calendar  effect="fold" size="5" navigator="true" disabled="true"
 	value="#{declaranteMB.declarante.nascimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yyyy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
-    <p:outputLabel value="Nome :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtNome" readonly="true"
-	value="#{declaranteMB.declarante.nome}">
-	</p:inputText>
-    <p:outputLabel value="RG :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputMask  id="txtRG" mask="999.999.999-9"
-    maxlength="13" readonly="true"
-	value="#{declaranteMB.declarante.rg}">
-	</p:inputMask>
-	<p:outputLabel value="Sexo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtSexo" readonly="true"
-	value="#{declaranteMB.declarante.sexo}">
-	</p:inputText>
+    
+	<p:outputLabel value="Sexo :" style="font-weight:bold;"/>
+    <p:selectOneMenu id="cbbSexo" value="#{declaranteMB.declarante.sexo}" disabled="true"
+							style="comboBox">
+							<f:selectItem itemValue="F" itemLabel="Feminino" />
+							<f:selectItem itemValue="M" itemLabel="Masculino" />
+						</p:selectOneMenu>
+	
+	</h:panelGrid> 
+	<br />	
+	
+	<h:panelGrid id="pnCEP" columns="4" >
 	<p:outputLabel value="CEP :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-	<p:inputMask  id="txtCEP" mask="99999-999"
-    maxlength="9" readonly="true"
-	value="#{declaranteMB.declarante.cep}">
+	<p:inputMask  id="txtCEP" mask="99999-999" readonly="true"
+    maxlength="9" size="9"
+	value="#{declaranteMB.cep}">
 	</p:inputMask>
-	<p:outputLabel value="Endereço :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtEndereco" readonly="true"
+	 
+	</h:panelGrid>
+	<br />
+	<h:panelGrid id="frmResult"  columns="8" rowClasses="3">
+	<p:outputLabel value="Endereço :" style="font-weight:bold; "/>
+    <p:inputText id="txtEndereco" size="40" readonly="true"
 	value="#{declaranteMB.declarante.endereco}">
 	</p:inputText>
-	<p:outputLabel value="N° :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtN" readonly="true"
+	<p:outputLabel value="N° :" style="font-weight:bold;"/>
+    <p:inputText id="txtN" size="3" readonly="true"
 	value="#{declaranteMB.declarante.numero}">
 	</p:inputText>
-	<p:outputLabel value="Complemento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:outputLabel value="Complemento :" style="font-weight:bold;"/>
     <p:inputText id="txtComplemento"  readonly="true"
 	value="#{declaranteMB.declarante.complemento}">
 	</p:inputText>
-	<p:outputLabel value="Bairro :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:outputLabel value="Bairro :" style="font-weight:bold;"/>
     <p:inputText id="txtBairro"  readonly="true"
 	value="#{declaranteMB.declarante.bairro}">
 	</p:inputText>
-	<p:outputLabel value="Cidade :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtCidade" readonly="true"
+	<p:outputLabel value="Cidade :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txtCidade" size="40" readonly="true"
 	value="#{declaranteMB.declarante.cidade}">
 	</p:inputText>
-	<p:outputLabel value="UF :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtUF" readonly="true"
+	<p:outputLabel value="UF :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txtUF" size="2" maxlength="2" readonly="true"
 	value="#{declaranteMB.declarante.uf}">
 	</p:inputText>
-	<p:outputLabel value="Profissão :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtProfissao" readonly="true"
+	</h:panelGrid>
+	 <br />	
+	<h:panelGrid columns="6" rowClasses="3">
+	<p:outputLabel value="Profissão :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txtProfissao" size="50" readonly="true"
 	value="#{declaranteMB.declarante.profissao}">
 	</p:inputText>
-	<p:outputLabel value="Parentesco :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="txtParentesco" readonly="true"
-	value="#{declaranteMB.declarante.parentesco}">
-	</p:inputText>				
-	<p:outputLabel value="Telefone :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:outputLabel value="Parentesco :"
+	style="font-weight:bold; padding-left:35px;"/>
+    <p:selectOneMenu id="cbbParentesco" value="#{declaranteMB.declarante.parentesco}"
+				disabled="true"			style="comboBox">
+							<f:selectItem itemValue="Avó" itemLabel="Avó" />
+							<f:selectItem itemValue="Avô" itemLabel="Avô" />
+							<f:selectItem itemValue="Esposa" itemLabel="Esposa" />
+							<f:selectItem itemValue="Filho" itemLabel="Filho" />
+							<f:selectItem itemValue="Madrasta" itemLabel="Madrasta" />
+							<f:selectItem itemValue="Madrinha" itemLabel="Madrinha" />
+							<f:selectItem itemValue="Mãe" itemLabel="Mãe" />
+							<f:selectItem itemValue="Marido" itemLabel="Marido" />
+							<f:selectItem itemValue="Neto" itemLabel="Neto" />
+							<f:selectItem itemValue="Padrasto" itemLabel="Padrasto" />
+							<f:selectItem itemValue="Padrinho" itemLabel="Padrinho" />
+							<f:selectItem itemValue="Pai" itemLabel="Pai" />
+							<f:selectItem itemValue="Primo" itemLabel="Primo" />
+							<f:selectItem itemValue="Sobrinho" itemLabel="Sobrinho" />
+							<f:selectItem itemValue="Tio" itemLabel="Tio" />
+							<f:selectItem itemValue="Tia" itemLabel="Tia" />
+							<f:selectItem itemValue="Outro" itemLabel="Outro" />
+							
+						</p:selectOneMenu>				
+	<p:outputLabel value="Telefone :"
+	style="font-weight:bold; padding-left:35px;"/>
 	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
-    maxlength="13" readonly="true"
+    maxlength="13" size="11" readonly="true"
 	value="#{declaranteMB.declarante.telefone}">
 	</p:inputMask>
-	<p:outputLabel value="Celular :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<br />
+	</h:panelGrid >
+	<h:panelGrid columns="4" rowClasses="2">
+	<p:outputLabel value="Celular :"
+	style="font-weight:bold;"/>
 	<p:inputMask  id="txtCelular" mask="(99)99999-9999"
-    maxlength="14" readonly="true"
+    maxlength="14" size="11" readonly="true"
 	value="#{declaranteMB.declarante.celular}">
 	</p:inputMask>
-	<p:outputLabel value="Email :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:outputLabel value="Email :"
+	style="font-weight:bold; "/>
     <p:inputText id="txtEmail" readonly="true"
 	value="#{declaranteMB.declarante.email}">
+<!-- 	<f:validateRegex -->
+<!-- 		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /> -->
+	
 	</p:inputText>
   	
 </h:panelGrid>
@@ -197,6 +258,7 @@
 <!-- 							<p:commandButton value="Botão" action="#{managedBeanQualquer}" /> -->
 <!-- 						</h:panelGroup> -->
 <!-- 					</h:panelGrid> -->
+</fieldset>
 				</h:form>
 				<p/>
 			</div>

@@ -106,6 +106,10 @@
 <div id="welcome">
 			<div class="texto">
 				<h:form>
+				<fieldset> 
+		
+			<label for="Name" style="font-weight: bold;"> Dados Dono </label>	
+		<br />
 					<h:panelGrid columns="2"  id="matchGrid">
   	
     <p:outputLabel value="Nível de Acesso :" style="font-weight:bold; padding-right: 5px; float: right;"/>
@@ -125,7 +129,7 @@
 	value="#{loginMB.user.nome}">
 	</p:inputText>
     <p:outputLabel value="Data de Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:calendar  effect="fold"  readonly="true"
+    <p:calendar  effect="fold"  disabled="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{loginMB.user.nascimento}"> 
@@ -146,6 +150,7 @@
 <!-- 							<p:commandButton value="Botão"  /> -->
 <!-- 						</h:panelGroup> -->
 <!-- 					</h:panelGrid> -->
+</fieldset>
 				</h:form>
 				<p/>
 			</div>

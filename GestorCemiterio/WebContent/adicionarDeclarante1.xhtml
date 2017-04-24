@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:a4j="http://richfaces.org/a4j">
+	  xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
@@ -83,17 +82,11 @@
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
-
-			<h:form id="form">
-<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
- <fieldset> 
-		
-			<label for="Name" style="font-weight: bold;"> Dados Declarante </label>	
-		<br />	
-<h:panelGrid columns="6" rowClasses="3"> 
-
-    <p:outputLabel value="CPF :" 
-	style="font-weight:bold;"/>
+				<h:form id="form">
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	<h:panelGrid columns="2">
+  	<p:outputLabel value="CPF :" 
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputMask id="txtCPF" mask="999.999.999-99" 
     size="13"
     onBlur="ValidarCPF(txtCPF);" 
@@ -102,18 +95,18 @@
 	value="#{declaranteMB.declarante.cpf}">
     </p:inputMask>
   	<p:outputLabel value="Nome :" 
-  	style="font-weight:bold;"/>
+  	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtNome"
     size="50"
 	value="#{declaranteMB.declarante.nome}">
 	</p:inputText>
-    <p:outputLabel value="RG :" style="font-weight:bold;"/>
+    <p:outputLabel value="RG :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputMask  id="txtRG" mask="999.999.999-9"
     maxlength="13" size="13"
 	value="#{declaranteMB.declarante.rg}">
 	</p:inputMask>
    
-    <p:outputLabel value="Nascimento :" style="font-weight:bold;"/>
+    <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:calendar  effect="fold" size="5" navigator="true"
 	value="#{declaranteMB.declarante.nascimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yyyy" 
@@ -121,17 +114,14 @@
 								timeZone="America/Sao_Paulo"/>
 	</p:calendar>
     
-	<p:outputLabel value="Sexo :" style="font-weight:bold;"/>
+	<p:outputLabel value="Sexo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:selectOneMenu id="cbbSexo" value="#{declaranteMB.declarante.sexo}"
 							style="comboBox">
 							<f:selectItem itemValue="F" itemLabel="Feminino" />
 							<f:selectItem itemValue="M" itemLabel="Masculino" />
 						</p:selectOneMenu>
-	
-	</h:panelGrid> 
-	<br />	
-	
-	<h:panelGrid id="pnCEP" columns="4" >
+	</h:panelGrid>
+	<h:panelGrid id="pnCEP" columns="4">
 	<p:outputLabel value="CEP :" style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtCEP" mask="99999-999"
     maxlength="9" size="9"
@@ -139,46 +129,44 @@
 	</p:inputMask>
 	<p:commandButton value="Pesquisar" icon="ui-icon-search" 
                   action="#{declaranteMB.buscaCEP}" update="frmResult"/> 
- 
-	</h:panelGrid>
-	<br />
-	<h:panelGrid id="frmResult"  columns="8" rowClasses="3">
-	<p:outputLabel value="Endereço :" style="font-weight:bold; "/>
-    <p:inputText id="txtEndereco" size="40"
+
+            </h:panelGrid>
+            <h:panelGrid id="frmResult" columns="2">
+	<p:outputLabel value="Endereço :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtEndereco" size="50"
 	value="#{declaranteMB.declarante.endereco}">
 	</p:inputText>
-	<p:outputLabel value="N° :" style="font-weight:bold;"/>
+	<p:outputLabel value="N° :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtN" size="3"
 	value="#{declaranteMB.declarante.numero}">
 	</p:inputText>
-	<p:outputLabel value="Complemento :" style="font-weight:bold;"/>
-    <p:inputText id="txtComplemento" 
+	<p:outputLabel value="Complemento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtComplemento" size="30"
 	value="#{declaranteMB.declarante.complemento}">
 	</p:inputText>
-	<p:outputLabel value="Bairro :" style="font-weight:bold;"/>
+	<p:outputLabel value="Bairro :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtBairro" 
 	value="#{declaranteMB.declarante.bairro}">
 	</p:inputText>
 	<p:outputLabel value="Cidade :"
-	style="font-weight:bold;"/>
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtCidade" size="40"
 	value="#{declaranteMB.declarante.cidade}">
 	</p:inputText>
 	<p:outputLabel value="UF :"
-	style="font-weight:bold;"/>
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtUF" size="2" maxlength="2"
 	value="#{declaranteMB.declarante.uf}">
 	</p:inputText>
-	</h:panelGrid>
-	 <br />	
-	<h:panelGrid columns="6" rowClasses="3">
+	</h:panelGrid >
+	<h:panelGrid columns="2">
 	<p:outputLabel value="Profissão :"
-	style="font-weight:bold;"/>
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtProfissao" size="50"
 	value="#{declaranteMB.declarante.profissao}">
 	</p:inputText>
 	<p:outputLabel value="Parentesco :"
-	style="font-weight:bold; padding-left:35px;"/>
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:selectOneMenu id="cbbParentesco" value="#{declaranteMB.declarante.parentesco}"
 							style="comboBox">
 							<f:selectItem itemValue="Avó" itemLabel="Avó" />
@@ -201,26 +189,23 @@
 							
 						</p:selectOneMenu>				
 	<p:outputLabel value="Telefone :"
-	style="font-weight:bold; padding-left:35px;"/>
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
     maxlength="13" size="11"
 	value="#{declaranteMB.declarante.telefone}">
 	</p:inputMask>
-	<br />
-	</h:panelGrid >
-	<h:panelGrid columns="4" rowClasses="2">
 	<p:outputLabel value="Celular :"
-	style="font-weight:bold;"/>
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
 	<p:inputMask  id="txtCelular" mask="(99)99999-9999"
     maxlength="14" size="11"
 	value="#{declaranteMB.declarante.celular}">
 	</p:inputMask>
 	<p:outputLabel value="Email :"
-	style="font-weight:bold; "/>
+	style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtEmail"
 	value="#{declaranteMB.declarante.email}">
-<!-- 	<f:validateRegex -->
-<!-- 		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /> -->
+	<f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 	
 	</p:inputText>
   	
@@ -230,14 +215,10 @@
 						<h:panelGroup>
 						   <p:commandButton value="Adicionar"  action="#{declaranteMB.adicionar}" update=":form"/> 
 							</h:panelGroup>
-					</h:panelGrid>	
-</fieldset>
-<!-- 					<h:panelGrid> -->
-<!-- 						<h:panelGroup> -->
-<!-- 							<p:commandButton value="Botão"  /> -->
-<!-- 						</h:panelGroup> -->
-<!-- 					</h:panelGrid>				 -->
-   </h:form>               
+					</h:panelGrid>
+
+						
+				</h:form>
 				<p/>
 			</div>
 			<!-- Fim da DIV TEXTO -->
@@ -253,11 +234,6 @@
 		<!-- Fim da DIV WELCOME -->
 	</div>
 	<!-- Fim da DIV CORPO -->
-	<script language="JavaScript" type="text/javascript">
-		function Enviar1(){
-window.open('Donos.xhtml','Jazigo','scrollbars=yes, menubar=yes, status=yes, resizable=no, width=250px, height=250px, left=10px, top=10px')
-		}
-</script>
 </h:body>
 <!-- Fim da TAG BODY -->
 </html>
