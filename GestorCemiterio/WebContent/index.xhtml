@@ -29,7 +29,10 @@
 		<!--Fim da DIV CABEÇALHO-->
 		<!--Início da DIV MENU-->
 		<div id="menu">
+		
+						
 			<ul>
+			<h:form>
 				<li class="conteudo_m">
 					<h:outputLink value="index.xhtml">
 						<f:verbatim>HOME</f:verbatim>
@@ -70,7 +73,14 @@
 						<f:verbatim>VELÓRIO</f:verbatim>
 					</h:outputLink>
 				</li>
+				<li class="conteudo_m">
+					<h:commandLink action="#{loginMB.doLogout}" >
+						<f:verbatim>Sair</f:verbatim>
+					</h:commandLink>
+				</li>
+				</h:form>
 			</ul>
+			
 		</div>
 		<!--Fim da DIV MENU-->
 		<!--Início da DIV CONTAINER-->
