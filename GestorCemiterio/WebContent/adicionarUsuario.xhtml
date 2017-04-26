@@ -91,7 +91,7 @@
 	<h:panelGrid columns="2"  id="matchGrid">
   	
     <p:outputLabel value="Nível de Acesso :" style="font-weight:bold; padding-right: 5px; float: right;" />
-    <p:selectOneMenu id="cbbNiv" value="#{loginMB.user.nivel}"
+    <p:selectOneMenu id="cbbNiv" value="#{usuarioMB.user.nivel}"
 							style="comboBox">
 							<f:selectItem itemValue="Administrador" itemLabel="Administrador" />
 							<f:selectItem itemValue="Usuário Comum" itemLabel="Usuário Comum" />
@@ -100,13 +100,13 @@
     <p:inputText  id="txtID" size="30"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.id}"> 
+	value="#{usuarioMB.user.id}"> 
 	</p:inputText>
     <p:outputLabel value="Nome Completo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtNome" size="50"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.nome}">
+	value="#{usuarioMB.user.nome}">
 	</p:inputText>
 	<p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:calendar  effect="fold" navigator="true"
@@ -114,7 +114,7 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	
-	value="#{loginMB.user.nascimento}"> 
+	value="#{usuarioMB.user.nascimento}"> 
 				
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
@@ -122,10 +122,10 @@
 	</p:calendar>
     
     <p:outputLabel for="pwd1" value="Senha: *" style="font-weight:bold; padding-right: 5px; float: right;" />
-    <p:password id="pwd1" value="#{loginMB.user.senha}" match="pwd2" label="Senha" required="true" />
+    <p:password id="pwd1" value="#{usuarioMB.user.senha}" match="pwd2" label="Senha" required="true" />
  
     <p:outputLabel for="pwd2" value="Confirme a senha: *" style="font-weight:bold; padding-right: 5px; float: right;" />
-    <p:password id="pwd2" value="#{loginMB.user.senha}" label="Password 2" required="true" />
+    <p:password id="pwd2" value="#{usuarioMB.user.senha}" label="Password 2" required="true" />
      <p:separator />
  
     <p:messages id="message" showDetail="true" autoUpdate="true" closable="true" /> 
@@ -134,7 +134,7 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Adicionar"  action="#{loginMB.adicionar}" update="matchGrid, :form" /> 
+						   <p:commandButton value="Adicionar"  action="#{usuarioMB.adicionar}" update="matchGrid, :form" /> 
 							</h:panelGroup>
 					</h:panelGrid>
 <!-- 					<h:panelGrid> -->

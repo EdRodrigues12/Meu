@@ -90,14 +90,14 @@
     <p:inputText  id="txtID"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.id}"> 
+	value="#{usuarioMB.user.id}"> 
 	</p:inputText>
   	
 </h:panelGrid>
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  action="#{loginMB.pesquisar}" ajax = "false"/> 
+						   <p:commandButton value="Pesquisar"  action="#{usuarioMB.pesquisar}" ajax = "false"/> 
 							</h:panelGroup>
 					</h:panelGrid>
 </h:form>
@@ -113,26 +113,26 @@
 					<h:panelGrid columns="2"  id="matchGrid">
   	
     <p:outputLabel value="Nível de Acesso :" style="font-weight:bold; padding-right: 5px; float: right;"/>
-    <p:inputText id="cbbNive" value="#{loginMB.user.nivel}" readonly="true"	>
+    <p:inputText id="cbbNive" value="#{usuarioMB.user.nivel}" readonly="true"	>
 				
 	</p:inputText>
     <p:outputLabel value="ID do Usuário :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText  id="txtID" readonly="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.id}"> 
+	value="#{usuarioMB.user.id}"> 
 	</p:inputText>
     <p:outputLabel value="Nome Completo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtNome"  readonly="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.nome}">
+	value="#{usuarioMB.user.nome}">
 	</p:inputText>
     <p:outputLabel value="Data de Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:calendar  effect="fold"  disabled="true"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.nascimento}"> 
+	value="#{usuarioMB.user.nascimento}"> 
 	<f:convertDateTime	pattern="dd/MM/yyyy" 
 								locale="pt_BR" 
 								timeZone="America/Sao_Paulo"/>

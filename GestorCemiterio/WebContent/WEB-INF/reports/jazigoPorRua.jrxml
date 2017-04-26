@@ -3,10 +3,13 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="rua" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT rua, quadra, numero
 FROM jazigo
-WHERE rua = 'Rua tal tal']]>
+WHERE rua = $P{rua}]]>
 	</queryString>
 	<field name="rua" class="java.lang.String"/>
 	<field name="quadra" class="java.lang.String"/>
@@ -67,7 +70,7 @@ WHERE rua = 'Rua tal tal']]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="22">
+		<band height="21">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="cf5e45f5-f4a4-4c49-abcb-d81dfaaf27a5"/>
 			</line>

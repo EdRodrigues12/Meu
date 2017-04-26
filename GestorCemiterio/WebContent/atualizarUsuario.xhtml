@@ -90,14 +90,14 @@
     <p:inputText  id="txtID" size="30"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.id}"> 
+	value="#{usuarioMB.user.id}"> 
 	</p:inputText>
   	
 </h:panelGrid>
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar"  action="#{loginMB.pesquisar}" ajax = "false"/> 
+						   <p:commandButton value="Pesquisar"  action="#{usuarioMB.pesquisar}" ajax = "false"/> 
 							</h:panelGroup>
 					</h:panelGrid>
 </h:form>
@@ -113,7 +113,7 @@
 					<h:panelGrid columns="2"  id="matchGrid">
   	
     <p:outputLabel value="Nível de Acesso :" style="font-weight:bold; padding-right: 5px; float: right;" />
-    <p:selectOneMenu id="cbbNive" value="#{loginMB.user.nivel}"
+    <p:selectOneMenu id="cbbNive" value="#{usuarioMB.user.nivel}"
 							style="comboBox">
 							<f:selectItem itemValue="Administrador" itemLabel="Administrador" />
 							<f:selectItem itemValue="UsuárioComum" itemLabel="UsuárioComum" />
@@ -122,13 +122,13 @@
     <p:inputText  id="txtID" size="30"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.id}"> 
+	value="#{usuarioMB.user.id}"> 
 	</p:inputText>
     <p:outputLabel value="Nome Completo :" style="font-weight:bold; padding-right: 5px; float: right;"/>
     <p:inputText id="txtNome"  size="50"
     required="true"
 	requiredMessage="Campo Obrigatorio"
-	value="#{loginMB.user.nome}">
+	value="#{usuarioMB.user.nome}">
 	</p:inputText>
    <p:outputLabel value="Nascimento :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:calendar  effect="fold" navigator="true"
@@ -136,7 +136,7 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	
-	value="#{loginMB.user.nascimento}"> 
+	value="#{usuarioMB.user.nascimento}"> 
 				
 	<f:convertDateTime	pattern="dd/MM/yy" 
 								locale="pt_BR" 
@@ -145,10 +145,10 @@
 	
 	                
         <p:outputLabel for="pwd1" value="Senha: *" style="font-weight:bold; padding-right: 5px; float: right;"/>
-        <p:password id="pwd1" value="#{loginMB.user.senha}" match="pwd2" label="Senha" required="true" />
+        <p:password id="pwd1" value="#{usuarioMB.user.senha}" match="pwd2" label="Senha" required="true" />
  
         <p:outputLabel for="pwd2" value="Confirme a senha: *" style="font-weight:bold; padding-right: 5px; float: right;"/>
-        <p:password id="pwd2" value="#{loginMB.user.senha}" label="Password 2" required="true" />
+        <p:password id="pwd2" value="#{usuarioMB.user.senha}" label="Password 2" required="true" />
         <p:separator />
  
     <p:messages id="messages" showDetail="true" autoUpdate="true" /> 
@@ -157,7 +157,7 @@
 					<br />
 					<p:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Atualizar"  action="#{loginMB.atualizar}" ajax = "false"/> 
+						   <p:commandButton value="Atualizar"  action="#{usuarioMB.atualizar}" ajax = "false"/> 
 							</h:panelGroup>
 					</p:panelGrid>
 <!-- 					<h:panelGrid> -->
