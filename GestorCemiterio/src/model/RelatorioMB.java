@@ -97,42 +97,61 @@ public class RelatorioMB {
 //		}
 		 ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 	        ServletContext context = (ServletContext) externalContext.getContext();
-	        String arquivo = context.getRealPath("WEB-INF/reports/jazigoPorRua.jasper");
-	        
+	        String arquivo = "/WEB-INF/reports/jazigoPorRua.jasper";
+	        OutputStream servletOutputStream = null;
 	        FacesContext contexte = FacesContext.getCurrentInstance();
 	        HttpServletResponse response = (HttpServletResponse) contexte.getExternalContext().getResponse();
 	        HashMap<String, Object> param = new HashMap<String, Object>();
 	        param.put("rua",this.rua);
-	        
+			byte[]bytes = null;
+			
+			
+        	try {
+        		JasperReport relatorio = (JasperReport) JRLoader.loadObjectFromFile
+        			(context.getRealPath(arquivo));
+				bytes = JasperRunManager.runReportToPdf(relatorio, param, new DBResourceManager().getCon());
+			} catch (JRException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        	
 	        try {
-	            
-	            JasperRunManager.runReportToPdfStream(new FileInputStream(new File(arquivo)),response.getOutputStream(), param, new DBResourceManager().getCon());
-	            response.setContentType("application/pdf");
-	            OutputStream servletOutputStream = null;
-	            servletOutputStream = response.getOutputStream();
+	        	response.setContentType("application/pdf");
+	        	response.setContentLength(bytes.length);
+	        	servletOutputStream = response.getOutputStream();	        	          
+		        servletOutputStream.write(bytes);
 	            servletOutputStream.flush();
 	            servletOutputStream.close();
 	            contexte.renderResponse();
 	            contexte.responseComplete();
+	            System.out.println("Sem erro");
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
+	        
 		
 	}
 	
 	public void geraCausaFalecimento() throws IOException, ClassNotFoundException, SQLException{
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         ServletContext context = (ServletContext) externalContext.getContext();
-        String arquivo = context.getRealPath("WEB-INF/reports/causaFalecimento.jasper");
+        String arquivo = context.getRealPath("/WEB-INF/reports/causaFalecimento.jasper");
         OutputStream servletOutputStream = null;
         FacesContext contexte = FacesContext.getCurrentInstance();
         HttpServletResponse response = (HttpServletResponse) contexte.getExternalContext().getResponse();
         HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("causaMorte",this.causaMorte);
         try {
-            servletOutputStream = response.getOutputStream();
-            JasperRunManager.runReportToPdfStream(new FileInputStream(new File(arquivo)),response.getOutputStream(), param, new DBResourceManager().getCon());
+			JasperRunManager.runReportToPdfStream(new FileInputStream(new File(arquivo)),response.getOutputStream(), param, new DBResourceManager().getCon());
+		} catch (JRException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+            
+		try {
             response.setContentType("application/pdf");
+            contexte.responseComplete();
+            servletOutputStream = response.getOutputStream();
             servletOutputStream.flush();
             servletOutputStream.close();
             contexte.renderResponse();
