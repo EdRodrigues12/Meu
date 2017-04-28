@@ -8,4 +8,8 @@
     <lifecycle>
     <phase-listener>model.Listener</phase-listener>
     </lifecycle>
+    <validator>
+  <validator-id>ValidarCPF</validator-id>
+  <validator-class>model.ValidarCPF</validator-class>
+ </validator>
 </faces-config>

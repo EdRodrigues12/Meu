@@ -111,6 +111,11 @@
 					style="border-style:solid;"
 					border="3"
 					rowClasses="linha1,linha2">
+					
+		<h:column>#{dono.codJazigo}
+			<f:facet name="header">Jazigo</f:facet>
+		</h:column>
+		
 		<h:column>#{dono.cpf}
 			<f:facet name="header">CPF</f:facet>
 		</h:column>
@@ -119,9 +124,39 @@
 			<f:facet name="header">Nome</f:facet>
 		</h:column>
 		
-		<h:column>#{dono.codJazigo}
-			<f:facet name="header">Jazigo</f:facet>
+		<h:column>#{dono.telefone}
+			<f:facet name="header">Telefone</f:facet>
 		</h:column>
+				
+		<h:column>#{dono.cep}
+			<f:facet name="header">CEP</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.endereco}
+			<f:facet name="header">Endereço</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.numero}
+			<f:facet name="header">Numero</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.complemento}
+			<f:facet name="header">Complemento</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.bairro}
+			<f:facet name="header">Bairro</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.cidade}
+			<f:facet name="header">Cidade</f:facet>
+		</h:column>
+		
+		<h:column>#{dono.uf}
+			<f:facet name="header">UF</f:facet>
+		</h:column>
+		
+		
 		
 	</h:dataTable>
 

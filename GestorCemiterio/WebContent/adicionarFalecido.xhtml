@@ -114,6 +114,7 @@
     size="13"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.cpfDeclarante}">
+	<f:validator validatorId="ValidarCPF"/>
     </p:inputMask>
     <p:outputLabel value="CPF Falecido :" style="font-weight:bold;   "/>
     <p:inputMask id="txtCPFF" mask="999.999.999-99" 
@@ -122,6 +123,7 @@
     size="13"
 	requiredMessage="Campo Obrigatorio"
 	value="#{falecidoMB.falecido.cpf}">
+	<f:validator validatorId="ValidarCPF"/>
 	</p:inputMask>
 	<p:outputLabel value="Nome Falecido :" style="font-weight:bold;  "/>
     <p:inputText id="txtNome" 

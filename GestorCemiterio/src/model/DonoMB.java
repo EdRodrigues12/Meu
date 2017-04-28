@@ -27,6 +27,40 @@ public class DonoMB {
 	private List<DonoJazigo> list = new ArrayList<DonoJazigo>();
     private String nome;
     private int num;
+    private String cep = null;
+    
+    public String buscaCEP(){
+		System.out.println(cep);
+		WebServiceCep webServiceCep = WebServiceCep.searchCep(getCep());
+      
+        if (webServiceCep.wasSuccessful()) {
+//        	setTipoendereco(webServiceCep.getTipoendereco());
+//            setEndereco(webServiceCep.getLogradouroFull());
+//            setUf(webServiceCep.getUf());
+//            setCidade(webServiceCep.getCidade());
+//            setBairro(webServiceCep.getBairro());
+        	
+        	dono.setEndereco(webServiceCep.getLogradouroFull());
+        	dono.setUf(webServiceCep.getUf());
+        	dono.setCidade(webServiceCep.getCidade());
+        	dono.setBairro(webServiceCep.getBairro());
+            dono.setCep(cep);
+//            System.out.println(cep);
+//            System.out.println(declarante.getEndereco());
+//            System.out.println(declarante);
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cep Encontrado!", " "));
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cep Não Encontrado ", null));
+        }
+		
+		
+		return "";
+		
+		
+	}
   
 
 	public String adicionar() throws DAOException {
@@ -59,6 +93,7 @@ public class DonoMB {
 		String cpf = dono.getCpf();
 		try{
 		dono = donoDao.pesquisar1(cpf);
+		cep = dono.getCep();
 		}
 		catch(DAOException e){
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -73,6 +108,7 @@ public class DonoMB {
 		
 		try{
 			setLista(donoDao.pesquisar(dono.getNome()));
+			cep = dono.getCep();
 			}
 			catch(DAOException e){
 				FacesContext context = FacesContext.getCurrentInstance();
@@ -101,6 +137,7 @@ public class DonoMB {
 //		dono = new Dono();
 		try{
 			setLista(donoDao.pesquisarDonoCpf(dono.getCpf()));
+			cep = dono.getCep();
 			}
 			catch(DAOException e){
 				FacesContext context = FacesContext.getCurrentInstance();
@@ -113,8 +150,9 @@ public class DonoMB {
 	public String atualizar() throws DAOException {
 		try{
 			donoDao.atualizar(dono);
+			dono.setCep(cep);
 			FacesContext context = FacesContext.getCurrentInstance();
-	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", " "));
+	       	context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", " "));
 	   		dono = new Dono();
 			}catch(DAOException e){
 				FacesContext context = FacesContext.getCurrentInstance();
@@ -222,6 +260,16 @@ public class DonoMB {
 
 	public void setJazigo(Jazigo jazigo) {
 		this.jazigo = jazigo;
+	}
+
+
+	public String getCep() {
+		return cep;
+	}
+
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	
 }

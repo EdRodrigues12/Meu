@@ -151,6 +151,7 @@
 </h:form>
 </div>
 </div>
+<br />
 <div id="welcome">
 
 			<div class="texto">
@@ -161,14 +162,13 @@
 			<label for="Name" style="font-weight: bold;"> Dados Dono </label>	
 		<br />
 				<h:panelGrid columns="2">
-	<p:outputLabel value="Código Jazigo :" style="font-weight:bold;" />
+	<p:outputLabel value="Código Jazigo :" style="font-weight:bold;"/>
     <p:inputText  id="txtCod" size="3"
 	value="#{donoMB.dono.codJazigo}">
     </p:inputText>
-    <p:outputLabel value="Nome :" style="font-weight:bold;"/>
-    <p:inputText  id="txtNome" size="50"
-	value="#{donoMB.dono.nome}"> 
-	</p:inputText>
+    </h:panelGrid>
+    <br />
+    <h:panelGrid columns="8" rowClasses="4">
     <p:outputLabel value="CPF :" style="font-weight:bold;" />
     <p:inputMask id="txtCPF" mask="999.999.999-99" 
     onBlur="ValidarCPF(txtCPF);" size="13"
@@ -176,9 +176,60 @@
     required="true"
 	requiredMessage="Campo Obrigatorio"
 	value="#{donoMB.dono.cpf}">
+	<f:validator validatorId="ValidarCPF"/>
     </p:inputMask>
-
+    <p:outputLabel value="Nome :" style="font-weight:bold;"/>
+    <p:inputText  id="txtNome" size="50"
+	value="#{donoMB.dono.nome}"> 
+	</p:inputText>
+    
+    <p:outputLabel value="Telefone :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txttelefone" size="11" maxlength="13"
+	value="#{donoMB.dono.telefone}">
+	</p:inputText>   
 </h:panelGrid>
+<br />
+<h:panelGrid id="pnCEP" columns="4" >
+	<p:outputLabel value="CEP :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:inputMask  id="txtCEP" mask="99999-999"
+    maxlength="9" size="9"
+	value="#{donoMB.cep}">
+	</p:inputMask>
+	<p:commandButton value="Pesquisar" icon="ui-icon-search" 
+                  action="#{donoMB.buscaCEP}" update="frmResult"/> 
+ 
+	</h:panelGrid>
+	
+	<h:panelGrid id="frmResult"  columns="8" rowClasses="3">
+	<p:outputLabel value="Endereço :" style="font-weight:bold; "/>
+    <p:inputText id="txtEndereco" size="40"
+	value="#{donoMB.dono.endereco}">
+	</p:inputText>
+	<p:outputLabel value="N° :" style="font-weight:bold;"/>
+    <p:inputText id="txtN" size="3"
+	value="#{donoMB.dono.numero}">
+	</p:inputText>
+	<p:outputLabel value="Complemento :" style="font-weight:bold;"/>
+    <p:inputText id="txtComplemento" 
+	value="#{donoMB.dono.complemento}">
+	</p:inputText>
+	<p:outputLabel value="Bairro :" style="font-weight:bold;"/>
+    <p:inputText id="txtBairro" 
+	value="#{donoMB.dono.bairro}">
+	</p:inputText>
+	<p:outputLabel value="Cidade :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txtCidade" size="40"
+	value="#{donoMB.dono.cidade}">
+	</p:inputText>
+	<p:outputLabel value="UF :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txtUF" size="2" maxlength="2"
+	value="#{donoMB.dono.uf}">
+	</p:inputText>
+	</h:panelGrid>
+
 <br />
 <h:panelGrid>
 						<h:panelGroup>

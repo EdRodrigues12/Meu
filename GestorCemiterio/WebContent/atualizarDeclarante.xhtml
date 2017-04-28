@@ -120,6 +120,7 @@
     onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
     
 	value="#{declaranteMB.declarante.cpf}">
+	<f:validator validatorId="ValidarCPF"/>
     </p:inputMask>
   	<p:outputLabel value="Nome :" 
   	style="font-weight:bold;"/>
