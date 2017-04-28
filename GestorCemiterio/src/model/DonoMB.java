@@ -64,10 +64,7 @@ public class DonoMB {
   
 
 	public String adicionar() throws DAOException {
-		//String cpf = dono.getCpf();
-		
 	
-		//if(dono.getCodJazigo()!= donoDao.pesquisar1(cpf).getCodJazigo()){
 		try{
 		donoDao.adicionar(dono);
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -79,11 +76,7 @@ public class DonoMB {
 		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao adicionar ", null));
 		    	
 		}
-		//else{
-			//FacesContext context = FacesContext.getCurrentInstance();
-	       // context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao adicionar, dono já adicionado ", null));
-	    	
-		//}
+		
 		return "";
 	}
 	
@@ -132,9 +125,7 @@ public class DonoMB {
 	}
 	
 	public String pesquisarCpf() throws DAOException {
-		
-//		System.out.println(dono.getNome());
-//		dono = new Dono();
+
 		try{
 			setLista(donoDao.pesquisarDonoCpf(dono.getCpf()));
 			cep = dono.getCep();
@@ -164,10 +155,10 @@ public class DonoMB {
 		return "";
 	}
 
-	public String deletar(Dono d) throws DAOException {
+	public String deletar() throws DAOException {
 		try{
-			dono = d;
-			donoDao.deletar(d.getCpf());
+			
+			donoDao.deletar(dono.getCpf());
 			dono = new Dono();
 			FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Deletado com sucesso!", " "));

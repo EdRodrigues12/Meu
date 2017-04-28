@@ -48,7 +48,7 @@ public class FalecidoMB {
 	private Declarante declarante = new Declarante();
 	
 	private StreamedContent imagem;
-	private ManipularImagem mai = new ManipularImagem();
+	
 	private Date dtExumacao;
 	private String dono;
 	private String cep = null;
@@ -130,11 +130,7 @@ public class FalecidoMB {
 		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro, CPF não cadastrado", " "));
 			    }
 		else if(falecido.getFoto()!= null){
-		//int num = falecido.getCodJazigo();
-		//jazigo = new Jazigo();
-	   // jazigo = jazigoDao.pesquisarUmJazigo(num);
-	//	falecido = new Falecido();
-		
+				
 		imagem = new DefaultStreamedContent();
 		falecido.setFoto(falecido.getFoto());
 	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
@@ -176,9 +172,7 @@ public class FalecidoMB {
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
 	    	
 		}
-//		falecido.setFoto(falecido.getFoto());
-//	    imagem = new DefaultStreamedContent(new ByteArrayInputStream(falecido.getFoto()));
-		//falecido = new Falecido();
+
 		return "";
 	}
 	
@@ -252,15 +246,7 @@ public class FalecidoMB {
 		return "";
 
 	}
-	
-	public String carregaJazigos() throws DAOException{
-		System.out.println(" teste");
-		//int codigo = falecido.getCodJazigo();
-		//int txtNumero = (int) nomeText.getValue();
-		//setList(jazigoDao.pesquisarDono(dono));
-		return "";
-		
-	}
+
 	public void calculaIdade(){
 		Date hoje = new Date();    
 	      Calendar cal = Calendar.getInstance();    

@@ -74,20 +74,7 @@ public class JazigoMB {
 		}
 		
 		public void jazigos() throws DAOException {
-			//jazigo = new Jazigo();
-			//int codigo = jazigo.getNumero();
-			//try{
-				//jazigo = jazigoDao.pesquisarUmJazigo(codigo);
-				//if (jazigo.getRua()== null ){
-				//FacesContext context = FacesContext.getCurrentInstance();
-				//context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Jazigo não cadastrado ", null));
-				//}
-				//}catch(DAOException e){
-					//e.printStackTrace();
-			       // FacesContext context = FacesContext.getCurrentInstance();
-			       // context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao pesquisar ", null));
-			    	
-				//}
+			
 			lista = jazigoDao.pesquisar();
 			this.refresh();
 			

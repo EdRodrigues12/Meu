@@ -93,74 +93,102 @@
 <br />
 <h:panelGrid>
 						<h:panelGroup>
-						   <p:commandButton value="Pesquisar "  action="#{donoMB.pesquisarCpf}" ajax = "false"/> 
+						   <p:commandButton value="Pesquisar"  actionListener="#{donoMB.pesquisarCPF}" ajax="false"/> 
 							</h:panelGroup>
-						</h:panelGrid>
+					</h:panelGrid>
 </h:form>
+</div>
+</div>
+<div id="welcome">
 
-<!-- <div class="texto"> -->
-<!-- 				<h:form> -->
-<!-- 	<h:panelGrid columns="2"> -->
-<!-- 	<p:outputLabel value="Serviço :"/> -->
-<!--     <p:inputText  id="txtServiço" -->
-<!-- 	value="#{colaboradorMB.colaborador.servico}">  -->
-<!-- 	</p:inputText> -->
-  	
-<!-- </h:panelGrid> -->
-<!-- <br /> -->
-<!-- <p:panelGrid> -->
-<!-- 					<h:panelGroup> -->
-<!-- 						   <p:commandButton value="Pesquisar por Serviço"  action="" ajax = "false"/>  -->
-<!-- 							</h:panelGroup> -->
-<!-- 					</p:panelGrid> -->
-<!-- </h:form> -->
-<!-- </div> -->
-
-<h2>
-		<p:outputLabel value="Deletar Dono" />
-</h2>
+			<div class="texto">
 				<h:form>
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 	
-	<h:dataTable 	value="#{donoMB.lista}" 
-					var="dono"
-					style="border-style:solid;"
-					border="3"
-					rowClasses="linha1,linha2">
-		<h:column>#{dono.cpf}
-			<f:facet name="header">CPF</f:facet>
-		</h:column>
+<fieldset> 
 		
-		<h:column>#{dono.nome}
-			<f:facet name="header">Nome</f:facet>
-		</h:column>
-		
-		<h:column>#{dono.codJazigo}
-			<f:facet name="header">Jazigo</f:facet>
-		</h:column>
-		
-		<h:column>
-			<h:commandButton value="Deletar" action="#{donoMB.deletar( dono )}"/>
-			<f:facet name="header">Deletar Dono</f:facet>
-		</h:column>
-		<h:column>
-			<h:commandButton value="Deletar" action="#{donoMB.deletarJazigo( dono )}"/>
-			<f:facet name="header">Deletar Jazigo</f:facet>
-		</h:column>
-	</h:dataTable>
-
+			<label for="Name" style="font-weight: bold;"> Dados Dono </label>	
+		<br />
+				<h:panelGrid columns="2">
+	<p:outputLabel value="Código Jazigo :" style="font-weight:bold;"/>
+    <p:inputText  id="txtCod" size="3" readonly="true"
+	value="#{donoMB.dono.codJazigo}">
+    </p:inputText>
+    </h:panelGrid>
+    <br />
+    <h:panelGrid columns="8" rowClasses="4">
+    <p:outputLabel value="CPF :" style="font-weight:bold;" />
+    <p:inputMask id="txtCPF" mask="999.999.999-99" 
+    onBlur="ValidarCPF(txtCPF);" size="13" readonly="true"
+    onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
+    
+	
+	value="#{donoMB.dono.cpf}">
+<!-- 	<f:validator validatorId="ValidarCPF"/> -->
+    </p:inputMask>
+    <p:outputLabel value="Nome :" style="font-weight:bold;"/>
+    <p:inputText  id="txtNome" size="50" readonly="true"
+	value="#{donoMB.dono.nome}"> 
+	</p:inputText>
+    
+    <p:outputLabel value="Telefone :"
+	style="font-weight:bold;"/>
+    <p:inputMask id="txttelefone" size="11" maxlength="13"
+	value="#{donoMB.dono.telefone}" readonly="true"
+	mask="(99)9999-9999">
+	</p:inputMask>   
+</h:panelGrid>
+<br />
+<h:panelGrid id="pnCEP" columns="4" >
+	<p:outputLabel value="CEP :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:inputMask  id="txtCEP" mask="99999-999"
+    maxlength="9" size="9" readonly="true"
+	value="#{donoMB.cep}">
+	</p:inputMask>
+	 
+	</h:panelGrid>
+	
+	<h:panelGrid id="frmResult"  columns="8" rowClasses="3">
+	<p:outputLabel value="Endereço :" style="font-weight:bold; "/>
+    <p:inputText id="txtEndereco" size="40" readonly="true"
+	value="#{donoMB.dono.endereco}">
+	</p:inputText>
+	<p:outputLabel value="N° :" style="font-weight:bold;"/>
+    <p:inputText id="txtN" size="3" readonly="true"
+	value="#{donoMB.dono.numeroD}">
+	</p:inputText>
+	<p:outputLabel value="Complemento :" style="font-weight:bold;"/>
+    <p:inputText id="txtComplemento"  readonly="true"
+	value="#{donoMB.dono.complemento}">
+	</p:inputText>
+	<p:outputLabel value="Bairro :" style="font-weight:bold;"/>
+    <p:inputText id="txtBairro"  readonly="true"
+	value="#{donoMB.dono.bairro}">
+	</p:inputText>
+	<p:outputLabel value="Cidade :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txtCidade" size="40" readonly="true"
+	value="#{donoMB.dono.cidade}">
+	</p:inputText>
+	<p:outputLabel value="UF :"
+	style="font-weight:bold;"/>
+    <p:inputText id="txtUF" size="2" maxlength="2" readonly="true"
+	value="#{donoMB.dono.uf}">
+	</p:inputText>
+	</h:panelGrid>
 
 <br />
-<!-- <p:panelGrid> -->
-<!-- 						<h:panelGroup> -->
-<!-- 						   <p:commandButton value="Atualizar"  action="" ajax = "false" />  -->
-<!-- 							</h:panelGroup> -->
-<!-- 					</p:panelGrid> -->
-<!-- 					<h:panelGrid> -->
-<!-- 						<h:panelGroup> -->
-<!-- 							<p:commandButton value="Botão" action="" /> -->
-<!-- 						</h:panelGroup> -->
-<!-- 					</h:panelGrid> -->
+
+</fieldset>
+
+				
+<br />
+<p:panelGrid>
+						<h:panelGroup>
+						   <p:commandButton value="Deletar"  action="#{donoMB.deletar}" ajax = "false" /> 
+							</h:panelGroup>
+					</p:panelGrid>
+
 				</h:form>
 				<p/>
 			</div>

@@ -120,20 +120,14 @@ public class VelorioMB implements Serializable {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Adicionado com sucesso"));
 					inicializar();
 				} catch (DAOException e) {
-//					FacesContext context = FacesContext.getCurrentInstance();
-//			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar no banco ", null));
-			    	
+
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Erro ao salvar no banco"));
 					
 				}
 				velorio = new Velorio();
 			}else{
-//				FacesContext context = FacesContext.getCurrentInstance();
-//		        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Data Fim menor que Data início ", null));
-		    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Data Fim menor que Data início"));
-//		    	FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", null);
-//		         
-//		        context.addMessage(null, message);;
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"ERRO","Data Fim menor que Data início"));
+
 		}
 			
 		}else{

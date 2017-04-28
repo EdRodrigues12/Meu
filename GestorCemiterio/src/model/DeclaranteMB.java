@@ -63,27 +63,14 @@ public class DeclaranteMB {
 	}
 
 	public String adicionar() throws DAOException {
-		
-		//declarante = new Declarante();
-//		declarante.setCep(getCep());
-//		declarante.setBairro(getBairro());
-//    	declarante.setendereco(getendereco());
-//    	declarante.setCidade(getCidade());
-//    	declarante.setUf(getuf());
+
 		try{
 		declaranteDao.adicionar(declarante);
-		
+		declarante = new Declarante();
 		FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Adicionado com sucesso!", " "));
    
 		
-		System.out.println(declarante);
-//		declarante.setCep(cep);
-//    	declarante.setBairro(bairro);
-//    	declarante.setendereco(endereco);
-//    	declarante.setCidade(cidade);
-//    	declarante.setUf(uf);
-		declarante = new Declarante();
 		}catch(DAOException e){
 			e.printStackTrace();
 		        FacesContext context = FacesContext.getCurrentInstance();
