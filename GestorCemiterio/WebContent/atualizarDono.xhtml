@@ -186,7 +186,8 @@
     <p:outputLabel value="Telefone :"
 	style="font-weight:bold;"/>
     <p:inputText id="txttelefone" size="11" maxlength="13"
-	value="#{donoMB.dono.telefone}">
+	value="#{donoMB.dono.telefone}"
+	mask="(99)9999-9999">
 	</p:inputText>   
 </h:panelGrid>
 <br />
@@ -208,7 +209,7 @@
 	</p:inputText>
 	<p:outputLabel value="N° :" style="font-weight:bold;"/>
     <p:inputText id="txtN" size="3"
-	value="#{donoMB.dono.numero}">
+	value="#{donoMB.dono.numeroD}">
 	</p:inputText>
 	<p:outputLabel value="Complemento :" style="font-weight:bold;"/>
     <p:inputText id="txtComplemento" 

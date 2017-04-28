@@ -8,7 +8,7 @@ public class Dono {
 	private Jazigo jazigo;
 	private String cep;
 	private String endereco;
-	private int numero;
+	private int numeroD;
 	private String complemento;
 	private String bairro;
 	private String cidade;
@@ -57,11 +57,11 @@ public class Dono {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public int getNumero() {
-		return numero;
+	public int getnumeroD() {
+		return numeroD;
 	}
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setnumeroD(int numeroD) {
+		this.numeroD = numeroD;
 	}
 	public String getComplemento() {
 		return complemento;

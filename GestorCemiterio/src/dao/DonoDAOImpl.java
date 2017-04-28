@@ -17,7 +17,9 @@ public class DonoDAOImpl implements DonoDAO {
 
 	@Override
 	public void adicionar(Dono d) throws DAOException {
-		String sql = "INSERT INTO dono (cpf, nome,codigoJazigo) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO dono (cpf, nome,codigoJazigo, cep, endereco, numeroD, "
+				+  "complemento, bairro, cidade, uf, telefone  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -26,6 +28,15 @@ public class DonoDAOImpl implements DonoDAO {
 			stmt.setString(1, d.getCpf());
 			stmt.setString(2, d.getNome());
 			stmt.setInt(3, d.getCodJazigo());
+			stmt.setString(4, d.getCep());
+			stmt.setString(5, d.getEndereco());
+			stmt.setInt(6, d.getnumeroD());
+			stmt.setString(7, d.getComplemento());
+			stmt.setString(8, d.getBairro());
+			stmt.setString(9, d.getCidade());
+			stmt.setString(10, d.getUf());
+			stmt.setString(11, d.getTelefone());
+			
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -40,7 +51,8 @@ public class DonoDAOImpl implements DonoDAO {
 	@Override
 	public void atualizar(Dono d) throws DAOException {
 		String sql = "UPDATE dono SET cpf = ?,"
-				+ " nome = ?,codigoJazigo = ? WHERE id = ?";
+				+ " nome = ?,codigoJazigo = ?,cep = ?,endereco = ?,numeroD = ?,complemento = ?,bairro = ?,"
+				+ "cidade = ?,uf = ?,telefone = ? WHERE id = ?";
 		try {
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -49,7 +61,15 @@ public class DonoDAOImpl implements DonoDAO {
 			stmt.setString(1, d.getCpf());
 			stmt.setString(2, d.getNome());
 			stmt.setInt(3, d.getCodJazigo());
-			stmt.setInt(4, d.getId());
+			stmt.setString(4, d.getCep());
+			stmt.setString(5, d.getEndereco());
+			stmt.setInt(6, d.getnumeroD());
+			stmt.setString(7, d.getComplemento());
+			stmt.setString(8, d.getBairro());
+			stmt.setString(9, d.getCidade());
+			stmt.setString(10, d.getUf());
+			stmt.setString(11, d.getTelefone());
+			stmt.setInt(12, d.getId());
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
@@ -100,6 +120,15 @@ public class DonoDAOImpl implements DonoDAO {
 				d.setCpf(rs.getString("cpf"));
 				d.setNome(rs.getString("nome"));
 				d.setCodJazigo(rs.getInt("codigoJazigo"));
+				d.setCep(rs.getString("cep"));
+				d.setEndereco(rs.getString("endereco"));
+				d.setnumeroD(rs.getInt("numeroD"));
+				d.setComplemento(rs.getString("complemento"));
+				d.setBairro(rs.getString("bairro"));
+				d.setCidade(rs.getString("cidade"));
+				d.setUf(rs.getString("uf"));
+				d.setTelefone(rs.getString("telefone"));
+							
 				donos.add(d);
 			}
 			stmt.close();
@@ -128,6 +157,14 @@ public class DonoDAOImpl implements DonoDAO {
 				d.setCpf(rs.getString("cpf"));
 				d.setNome(rs.getString("nome"));
 				d.setCodJazigo(rs.getInt("codigoJazigo"));
+				d.setCep(rs.getString("cep"));
+				d.setEndereco(rs.getString("endereco"));
+				d.setnumeroD(rs.getInt("numeroD"));
+				d.setComplemento(rs.getString("complemento"));
+				d.setBairro(rs.getString("bairro"));
+				d.setCidade(rs.getString("cidade"));
+				d.setUf(rs.getString("uf"));
+				d.setTelefone(rs.getString("telefone"));
 				donos.add(d);
 			}
 			stmt.close();
@@ -228,6 +265,14 @@ public class DonoDAOImpl implements DonoDAO {
 				d.setCpf(rs.getString("cpf"));
 				d.setNome(rs.getString("nome"));
 				d.setCodJazigo(rs.getInt("codigoJazigo"));
+				d.setCep(rs.getString("cep"));
+				d.setEndereco(rs.getString("endereco"));
+				d.setnumeroD(rs.getInt("numeroD"));
+				d.setComplemento(rs.getString("complemento"));
+				d.setBairro(rs.getString("bairro"));
+				d.setCidade(rs.getString("cidade"));
+				d.setUf(rs.getString("uf"));
+				d.setTelefone(rs.getString("telefone"));
 				
 			}
 			stmt.close();
