@@ -173,10 +173,10 @@
     <p:inputMask id="txtCPF" mask="999.999.999-99" 
     onBlur="ValidarCPF(txtCPF);" size="13"
     onKeyPress="MascaraCPF(txtCPF);" maxlength="14"
-    required="true"
-	requiredMessage="Campo Obrigatorio"
+    disabled="true"
+	
 	value="#{donoMB.dono.cpf}">
-	<f:validator validatorId="ValidarCPF"/>
+<!-- 	<f:validator validatorId="ValidarCPF"/> -->
     </p:inputMask>
     <p:outputLabel value="Nome :" style="font-weight:bold;"/>
     <p:inputText  id="txtNome" size="50"
@@ -185,10 +185,10 @@
     
     <p:outputLabel value="Telefone :"
 	style="font-weight:bold;"/>
-    <p:inputText id="txttelefone" size="11" maxlength="13"
+    <p:inputMask id="txttelefone" size="11" maxlength="13"
 	value="#{donoMB.dono.telefone}"
 	mask="(99)9999-9999">
-	</p:inputText>   
+	</p:inputMask>   
 </h:panelGrid>
 <br />
 <h:panelGrid id="pnCEP" columns="4" >

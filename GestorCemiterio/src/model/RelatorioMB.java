@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -34,6 +35,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 @ManagedBean
@@ -62,6 +64,7 @@ public class RelatorioMB {
 		return "";
 	}
 	
+		
 	public void geraJazigo() throws ServletException, IOException, ClassNotFoundException, SQLException{
 //			FacesContext facesContext = FacesContext.getCurrentInstance();
 //	        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
