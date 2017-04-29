@@ -85,4 +85,29 @@ public String deletar() throws DAOExceptionLG {
 
 }
 
+public UsuarioDAO getUsuarioDao() {
+	return usuarioDao;
+}
+
+public void setUsuarioDao(UsuarioDAO usuarioDao) {
+	this.usuarioDao = usuarioDao;
+}
+
+public Usuario getUser() {
+	return user;
+}
+
+public void setUser(Usuario user) {
+	this.user = user;
+}
+
+public List<Usuario> getLista() {
+	return lista;
+}
+
+public void setLista(List<Usuario> lista) {
+	this.lista = lista;
+}
+
+
 }
