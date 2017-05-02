@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- Início da TAG HTML -->
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -10,7 +10,7 @@
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
 	<link href="style\estilo.css" rel="stylesheet" type="text/css"/>
 	<title>
-		SGC - Menu Velório
+		SGC - Menu Jazigo
 	</title>
 </h:head>
 <!-- Fim da TAG HEAD -->
@@ -78,25 +78,35 @@
 		<!-- Início da DIV WELCOME -->
 		<div id="welcome">	
 			<h2>
-				Velório
+				Jazigo
 			</h2>
 			<h:form>
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-							<h:outputLink value="schedule.xhtml" class="link">Gerenciar Velório</h:outputLink>
+	
+			<h:commandLink class="link" action="#{loginMB.nivelAddJ}">Adicionar</h:commandLink>
+			|
+			<h:commandLink class="link" action="#{loginMB.nivelAttJ}" >Atualizar</h:commandLink>
+			|
+			<h:commandLink class="link" action="#{loginMB.nivelPesqJ}" >Pesquisar</h:commandLink>
+			|
+			<h:commandLink class="link" action="#{loginMB.nivelDelJ}" >Deletar</h:commandLink>
 			
 			</h:form>
-<!-- 			<h:outputLink class="link" value="adicionarVelorio.xhtml">Gerenciar Velório</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioD.xhtml">Pesquisar por Data</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioH.xhtml">Pesquisar por Hora</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioSala.xhtml">Pesquisar por Sala</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioFal.xhtml">Pesquisar por Falecido</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioDec.xhtml">Pesquisar por Declarante</h:outputLink> -->
+			<h2>
+				Dono Jazigo
+			</h2>
+			<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
+			<h:commandLink class="link" action="#{loginMB.nivelAddDn}">Adicionar Dono</h:commandLink>
+			|
+			<h:commandLink class="link" action="#{loginMB.nivelAttDn}" >Atualizar Dono</h:commandLink>
+			|
+			<h:commandLink class="link" action="#{loginMB.nivelPesqDn}" >Pesquisar Dono</h:commandLink>
+			|
+			<h:commandLink class="link" action="#{loginMB.nivelDelDn}" >Deletar Dono</h:commandLink>
 			
+			</h:form>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				Para trabalhar, selecione uma das opções acima.

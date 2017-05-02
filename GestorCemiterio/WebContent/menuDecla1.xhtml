@@ -7,9 +7,11 @@
 	xmlns:p="http://primefaces.org/ui">
 <!-- Início da TAG HEAD -->
 <h:head>
-	<meta http-equiv="texto-Type" content="text/html; charset=utf-8" />
-	<link href="style\estilo.css" rel="stylesheet" type="text/css" />
-	<title>SGC - Menu Administrador</title>
+	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
+	<link href="style\estilo.css" rel="stylesheet" type="text/css"/>
+	<title>
+		SGC - Menu Declarante
+	</title>
 </h:head>
 <!-- Fim da TAG HEAD -->
 <!-- Início da TAG BODY -->
@@ -21,7 +23,7 @@
 			<!-- Início da DIV LOGO -->
 			<div id="logo">
 				<h1>
-					<h:graphicImage url="img/bgzin.png" width="960" height="193" />
+					<h:graphicImage url="img/bgzin.png" width="960" height="193"/>
 				</h1>
 			</div>
 			<!-- Fim da DIV LOGO -->
@@ -30,59 +32,78 @@
 		<!-- Início da DIV MENU -->
 		<div id="menu">
 			<ul>
-				<li><h:outputLink value="index.xhtml">
+				<li>
+					<h:outputLink value="index.xhtml">
 						<f:verbatim>HOME</f:verbatim>
-					</h:outputLink></li>
-				<li><h:outputLink value="menuAdmin.xhtml">
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuAdmin.xhtml">
 						<f:verbatim>ADMINISTRADOR</f:verbatim>
-					</h:outputLink></li>
-				<li><h:outputLink value="menuCola.xhtml">
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuCola.xhtml">
 						<f:verbatim>COLABORADORES</f:verbatim>
-					</h:outputLink></li>
-				<li><h:outputLink value="menuDecla.xhtml">
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuDecla.xhtml">
 						<f:verbatim>DECLARANTE</f:verbatim>
-					</h:outputLink></li>
-				<li><h:outputLink value="menuFal.xhtml">
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuFal.xhtml">
 						<f:verbatim>FALECIDO</f:verbatim>
-					</h:outputLink></li>
-				<li><h:outputLink value="menuJaz.xhtml">
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuJaz.xhtml">
 						<f:verbatim>JAZIGO</f:verbatim>
-					</h:outputLink></li>
-				<li><h:outputLink value="menuRela.xhtml">
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuRela.xhtml">
 						<f:verbatim>RELATÓRIOS</f:verbatim>
-					</h:outputLink></li>
-				<li><h:outputLink value="menuVelo.xhtml">
+					</h:outputLink>
+				</li>
+				<li>
+					<h:outputLink value="menuVelo.xhtml">
 						<f:verbatim>VELÓRIO</f:verbatim>
-					</h:outputLink></li>
+					</h:outputLink>
+				</li>
 			</ul>
 		</div>
 		<!-- Fim da DIV MENU -->
 		<!-- Início da DIV WELCOME -->
-		<div id="welcome">
-			<h2>Colaborador</h2>
+		<div id="welcome">	
+			<h2>
+				Declarante
+			</h2>
 			<h:form>
-				<p:messages id="messages" showDetail="true" autoUpdate="true"
-					closable="true" />
-
-				<h:outputLink value="adicionarColaborador.xhtml" class="link">Adicionar</h:outputLink>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
+			<h:commandLink class="link" action="#{loginMB.nivelAddD}">Adicionar</h:commandLink>
 			|
-			<h:outputLink value="atualizarColaborador.xhtml" class="link">Atualizar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelAttD}" >Atualizar</h:commandLink>
 			|
-			<h:outputLink value="pesquisarColaborador.xhtml" class="link">Pesquisar</h:outputLink>
+			<h:commandLink class="link" action="#{loginMB.nivelPesqD}" >Pesquisar</h:commandLink>
 			|
-			<h:outputLink value="deletarColaborador.xhtml" class="link">Deletar</h:outputLink>
-
+			<h:commandLink class="link" action="#{loginMB.nivelDelD}" >Deletar</h:commandLink>
+			
 			</h:form>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				Para trabalhar, selecione uma das opções acima.
-				<p />
+				<p/>
 			</div>
 			<!-- Fim da DIV TEXTO -->
 			<!-- Início da DIV RODAPÉ -->
 			<div id="rodapé">
-				<p align="center">2016 © -TODOS OS DIREITOS RESERVADOS POR SHEEP
-					SOFTWARE COMPANY</p>
+				<p align="center">
+						2016 © -TODOS OS DIREITOS RESERVADOS POR SHEEP
+						SOFTWARE COMPANY
+				</p>
 			</div>
 			<!-- Fim da DIV RODAPÉ -->
 		</div>

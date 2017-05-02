@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- Início da TAG HTML -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html">
 <!-- Início da TAG HEAD -->
 <h:head>
 	<meta http-equiv="texto-Type" content="text/html; charset=utf-8"/>
 	<link href="style\estilo.css" rel="stylesheet" type="text/css"/>
 	<title>
-		SGC - Menu Velório
+		SGC - Menu de Relatórios
 	</title>
 </h:head>
 <!-- Fim da TAG HEAD -->
@@ -62,7 +61,7 @@
 						<f:verbatim>JAZIGO</f:verbatim>
 					</h:outputLink>
 				</li>
-				<li>
+				<li class="conteudo_m">
 					<h:outputLink value="menuRela.xhtml">
 						<f:verbatim>RELATÓRIOS</f:verbatim>
 					</h:outputLink>
@@ -78,25 +77,23 @@
 		<!-- Início da DIV WELCOME -->
 		<div id="welcome">	
 			<h2>
-				Velório
+				Selecione abaixo o tipo de relatório que você deseja gerar:
 			</h2>
-			<h:form>
-			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-							<h:outputLink value="schedule.xhtml" class="link">Gerenciar Velório</h:outputLink>
-			
-			</h:form>
-<!-- 			<h:outputLink class="link" value="adicionarVelorio.xhtml">Gerenciar Velório</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioD.xhtml">Pesquisar por Data</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioH.xhtml">Pesquisar por Hora</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioSala.xhtml">Pesquisar por Sala</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioFal.xhtml">Pesquisar por Falecido</h:outputLink> -->
-<!-- 			| -->
-<!-- 			<h:outputLink class="link" value="pesquisarVelorioDec.xhtml">Pesquisar por Declarante</h:outputLink> -->
-			
+			<div>
+			<h:outputLink class="relatorio" value="jazigosPorRua.xhtml">Jazigos por rua</h:outputLink>
+			</div>
+			<div>
+			<h:outputLink class="relatorio" value="falecidosPorMes.xhtml">Falecidos por mês</h:outputLink>
+			</div>
+			<div>
+			<h:outputLink class="relatorio" value="veloriosPorDia.xhtml">Velórios por dia</h:outputLink>
+			</div>
+			<div>
+			<h:outputLink class="relatorio" value="causaFalecimento.xhtml">Falecimento por causa</h:outputLink>
+			</div>
+			<div>
+			<h:outputLink class="relatorio" value="exumacaoporMes.xhtml">Exumação por mês</h:outputLink>
+			</div>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
 				Para trabalhar, selecione uma das opções acima.
