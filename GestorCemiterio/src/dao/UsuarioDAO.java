@@ -12,5 +12,6 @@ public interface UsuarioDAO {
 	public String password(String id) throws DAOExceptionLG;
 	public String user(String id) throws DAOExceptionLG;
 	public String verNivel(String id) throws DAOExceptionLG;
+	public boolean autenticarLogin(String usuario, String senha);
 	
 }
