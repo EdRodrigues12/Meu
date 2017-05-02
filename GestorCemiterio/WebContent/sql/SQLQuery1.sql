@@ -102,7 +102,16 @@ CREATE TABLE dono(
 id int not null identity,
 cpf char(15)NOT NULL,
 nome VARCHAR(100) NOT NULL,
+cep CHAR(9) NOT NULL,
+endereco VARCHAR(150) NOT NULL,
+numeroD INT NOT NULL,
+bairro VARCHAR(50) NOT NULL,
+complemento VARCHAR(50) NOT NULL,
+cidade VARCHAR(100) NOT NULL,
+uf CHAR(2) NOT NULL,
+telefone CHAR(15) NOT NULL,
 codigoJazigo int NOT NULL,
+
 FOREIGN KEY (codigoJazigo) REFERENCES Jazigo (codigo),
 PRIMARY KEY (id)
 )
