@@ -52,7 +52,7 @@ public class LoginMB {
 		HttpSession sessao = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		sessao.invalidate();
 
-		return "login?faces-redirect=true";
+		return "Login?faces-redirect=true";
 
 	}
 

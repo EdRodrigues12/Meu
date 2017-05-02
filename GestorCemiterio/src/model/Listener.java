@@ -30,9 +30,9 @@ public class Listener implements PhaseListener {
 		lstPaginas.add("/pesquisarColaborador.xhtml");
 		lstPaginas.add("/pesquisarDeclarante.xhtml");
 		lstPaginas.add("/pesquisarDono.xhtml");
-		lstPaginas.add("pesquisarFalecido.xhtml");
+		lstPaginas.add("/pesquisarFalecido.xhtml");
 		lstPaginas.add("/pesquisarJazigo.xhtml");
-		lstPaginas.add("pesquisarUsuario.xhtml");
+		lstPaginas.add("/pesquisarUsuario.xhtml");
 		lstPaginas.add("/acessoNegado.xhtml");
 
 		FacesContext fc = FacesContext.getCurrentInstance();
