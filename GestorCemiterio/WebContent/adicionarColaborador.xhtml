@@ -120,7 +120,8 @@
 	requiredMessage="Campo Obrigatorio"
 	value="#{colaboradorMB.colaborador.telefone}">
 	</p:inputMask>
-	
+	<h:outputText value="QR" />
+    <p:barcode value="0123456789" type="qr"/>
   	
 </h:panelGrid>
 <br />

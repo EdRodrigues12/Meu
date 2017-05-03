@@ -14,7 +14,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	@Override
 	public void adicionar(Colaborador c)throws DAOException {
 		try {
-			String sql = "INSERT INTO COLABORADOR(nome, servico, email, telefone) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO colaborador(nome, servico, email, telefone) VALUES (?, ?, ?, ?)";
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
@@ -30,7 +30,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	@Override
 	public void atualizar(Colaborador c)throws DAOException {
 		try {
-			String sql = "UPDATE COLABORADOR SET nome = ?, servico = ?, email = ?, telefone = ? "
+			String sql = "UPDATE colaborador SET nome = ?, servico = ?, email = ?, telefone = ? "
 					+ "WHERE id = ?";
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -49,7 +49,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	public List<Colaborador> pesquisarPorNome(String nome)throws DAOException {
 		List<Colaborador> colaboradores = new ArrayList<Colaborador>();
 		try {
-			String sql = "SELECT * FROM COLABORADOR WHERE nome LIKE ?";
+			String sql = "SELECT * FROM colaborador WHERE nome LIKE ?";
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, "%"+nome+"%");
@@ -73,7 +73,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	public List<Colaborador> pesquisarPorServico(String servico)throws DAOException {
 		List<Colaborador> colaboradores = new ArrayList<Colaborador>();
 		try {
-			String sql = "SELECT * FROM COLABORADOR WHERE servico LIKE ?";
+			String sql = "SELECT * FROM colaborador WHERE servico LIKE ?";
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, "%"+servico+"%");
@@ -96,7 +96,7 @@ public class ColaboradorDAOImpl implements ColaboradorDAO {
 	@Override
 	public void remover(int id)throws DAOException {
 		try {
-			String sql = "DELETE FROM COLABORADOR WHERE id = ?";
+			String sql = "DELETE FROM colaborador WHERE id = ?";
 			Connection con = DBResourceManager.getInstance().getCon();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, id);

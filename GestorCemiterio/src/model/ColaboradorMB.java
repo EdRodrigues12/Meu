@@ -99,6 +99,21 @@ public class ColaboradorMB {
 		return "";
 	}
 	
+	public String deletar()throws DAOException{
+		try{
+		
+		dao.remover(colaborador.getId());
+		colaborador = new Colaborador();
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Deletado com Sucesso!", " "));
+   		
+		}catch(DAOException e){
+			e.printStackTrace();
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao deletar ", null));
+		}	
+		return "";
+	}
 	public String editar(Colaborador c) { 
 		colaborador = c;
 		System.out.println("Botao Editar do Col " + c.getNome() + " foi pressionado");

@@ -78,7 +78,7 @@
 		<!-- Início da DIV WELCOME -->
 		<div id="welcome">
 			<h2>
-				<p:outputLabel value="Deletar Colaborador" />
+				<p:outputLabel value="Pesquisar Colaborador" />
 			</h2>
 			<!-- Início da DIV TEXTO -->
 			<div class="texto">
@@ -86,7 +86,7 @@
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 	
 	<h:panelGrid columns="2">
-	<p:outputLabel value="Nome :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:outputLabel value="Nome :" style="font-weight:bold; padding-right: 5px; float: right;" />
     <p:inputText  id="txtNome" 
 	value="#{colaboradorMB.colaborador.nome}">
     </p:inputText>
@@ -100,12 +100,29 @@
 						</h:panelGrid>
 </h:form>
 
-
+<div class="texto">
+				<h:form>
+	<h:panelGrid columns="2">
+	<p:outputLabel value="Serviço :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText  id="txtServiço"
+	value="#{colaboradorMB.colaborador.servico}"> 
+	</p:inputText>
+  	
+</h:panelGrid>
+<br />
+<h:panelGrid>
+					<h:panelGroup>
+						   <p:commandButton value="Pesquisar por Serviço"  action="#{colaboradorMB.pesquisarPorServico}" ajax = "false"/> 
+							</h:panelGroup>
+					</h:panelGrid>
+</h:form>
+</div>
+<br/>
 <h2>
-		<p:outputLabel value="Deletar Colaborador"  />
+		<p:outputLabel value="Deletar Colaborador" />
 </h2>
 				<h:form>
-	<h:dataTable 	value="#{colaboradorMB.colaboradores}" 
+	<h:dataTable id="table" 	value="#{colaboradorMB.colaboradores}" 
 					var="colaborador"
 					style="border-style:solid;"
 					border="3"
@@ -132,14 +149,53 @@
 			<f:facet name="header">Telefone</f:facet>
 		</h:column>
 		<h:column>
-			<h:commandButton value="Deletar" action="#{colaboradorMB.remover( colaborador )}"/>
-			<f:facet name="header">Deletar</f:facet>
+			<p:commandButton value="Ver Dados" action="#{colaboradorMB.editar( colaborador )}" ajax = "false" />
+			<f:facet name="header">Ver Dados</f:facet>
 		</h:column>
 	</h:dataTable>
-
+	<br/>
+	<fieldset> 
+		
+			<label for="Name" style="font-weight: bold;"> Dados Colaborador </label>	
+		<br />
+	<h:panelGrid columns="2" >
+	<p:outputLabel value="Nome :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText  id="txtNome" size="50"
+   
+	value="#{colaboradorMB.colaborador.nome}">
+    </p:inputText>
+    <p:outputLabel value="Serviço :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText  id="txtServiço" size="40"
+   
+	value="#{colaboradorMB.colaborador.servico}"> 
+	</p:inputText>
+    <p:outputLabel value="Email :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+    <p:inputText id="txtEmail"  size="30"
+    
+	value="#{colaboradorMB.colaborador.email}">
+<!-- 	<f:validateRegex -->
+<!-- 		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /> -->
+	
+	</p:inputText>
+    <p:outputLabel value="Telefone :" style="font-weight:bold; padding-right: 5px; float: right;"/>
+	<p:inputMask  id="txtTelefone" mask="(99)9999-9999"
+    maxlength="13" size="14"
+   
+	value="#{colaboradorMB.colaborador.telefone}">
+	</p:inputMask>
+	
+  	
+</h:panelGrid>
+  	
 
 <br />
+<h:panelGrid>
+						<h:panelGroup>
+						   <p:commandButton value="Deletar"  action="#{colaboradorMB.deletar}" update=":table" ajax = "false" /> 
+							</h:panelGroup>
+					</h:panelGrid>
 
+</fieldset>
 				</h:form>
 				<p/>
 			</div>

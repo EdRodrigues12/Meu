@@ -27,10 +27,18 @@ public class ValidarCPF implements Validator {
     public boolean CPF(String strCpf) {  
     	strCpf = String.valueOf(strCpf).replaceAll("[^0123456789]", "");
     	System.out.println("cpf"+strCpf);
-    	for (int i = 1; i < strCpf.length(); i++){
-   		 if(strCpf.charAt(i) == strCpf.charAt(i-1)){
-   			 return false;
-   		 }
+//    	for (int i = 1; i < strCpf.length(); i++){
+//   		 if(strCpf.charAt(i) != strCpf.charAt(i-1)){
+//   			 return false;
+//   		 }
+//    	}
+    	if (strCpf.equals("00000000000") || strCpf.equals("11111111111") ||
+    			strCpf.equals("22222222222") || strCpf.equals("33333333333") ||
+    			strCpf.equals("44444444444") || strCpf.equals("55555555555") ||
+    			strCpf.equals("66666666666") || strCpf.equals("77777777777") ||
+    			strCpf.equals("88888888888") || strCpf.equals("99999999999") ||
+    	       (strCpf.length() != 11)){
+    	       return(false);
     	}
     	
         if (strCpf.equals("")) {  
