@@ -171,10 +171,18 @@
             <p:selectBooleanCheckbox id="status" value="#{velorioMB.velorio.status}" required="true" />
  
             <p:outputLabel for="popup" value="Data início:" />
-            <p:calendar id="popup" value="#{velorioMB.velorio.dia}" pattern="dd/MM/yyyy " locale="pt_BR"/>
+            <p:calendar id="popup" value="#{velorioMB.velorio.dia}"  navigator="true"  >
+            <f:convertDateTime pattern="dd/MM/yy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
+            </p:calendar>
             
             <p:outputLabel for="popup2" value="Data Final:" />
-            <p:calendar id="popup2" value="#{velorioMB.velorio.diaFim}" pattern="dd/MM/yyyy " locale="pt_BR" />
+            <p:calendar id="popup2" value="#{velorioMB.velorio.diaFim}"  navigator="true"  >
+            <f:convertDateTime pattern="dd/MM/yy" 
+								locale="pt_BR" 
+								timeZone="America/Sao_Paulo"/>
+            </p:calendar>
             
             <p:outputLabel for="time" value="Hora início:" />
             <p:calendar id="time" value="#{velorioMB.velorio.horaInicio}" pattern="HH:mm" timeOnly="true" timeZone="America/Sao_Paulo" required="true" />

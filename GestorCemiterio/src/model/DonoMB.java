@@ -87,6 +87,10 @@ public class DonoMB {
 		try{
 		dono = donoDao.pesquisar1(cpf);
 		cep = dono.getCep();
+		if (dono.getCpf()==null){
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "CPF não cadastrado ", null));
+			}
 		}
 		catch(DAOException e){
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -102,6 +106,10 @@ public class DonoMB {
 		try{
 			setLista(donoDao.pesquisar(dono.getNome()));
 			cep = dono.getCep();
+			if (lista.isEmpty()){
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nome não cadastrado ", null));
+				}
 			}
 			catch(DAOException e){
 				FacesContext context = FacesContext.getCurrentInstance();
@@ -129,6 +137,10 @@ public class DonoMB {
 		try{
 			setLista(donoDao.pesquisarDonoCpf(dono.getCpf()));
 			cep = dono.getCep();
+			if (dono.getCpf()==null){
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "CPF não cadastrado ", null));
+				}
 			}
 			catch(DAOException e){
 				FacesContext context = FacesContext.getCurrentInstance();

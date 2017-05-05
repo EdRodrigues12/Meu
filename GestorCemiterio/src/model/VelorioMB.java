@@ -3,6 +3,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
 
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -99,6 +101,8 @@ public class VelorioMB implements Serializable {
 	    velorio = new Velorio();
 	    velorio.setDia(new java.sql.Date(evt.getStartDate().getTime()));
 	    velorio.setDiaFim(new java.sql.Date(evt.getEndDate().getTime()));
+//	    velorio.setDia((Date)selectEvent.getObject());
+//	    velorio.setDiaFim((Date)selectEvent.getObject());
 		
 	}
 	
@@ -110,12 +114,22 @@ public class VelorioMB implements Serializable {
 	return "";
 }
 	
+	
 	public void salvar(){
 			
 		if(velorio.getId() == null){
 			if(velorio.getDia().getTime() <= velorio.getDiaFim().getTime()){
 				dao = new VelorioDAOImpl();
 				try {
+//					Calendar calendar = Calendar.getInstance();
+//					calendar.setTime(velorio.getDia());
+//					calendar.add(calendar.DATE, 1);
+//					velorio.setDia(calendar.getTime());
+//					
+//					calendar.setTime(velorio.getDiaFim());
+//					calendar.add(calendar.DATE, 1);
+//					velorio.setDiaFim(calendar.getTime());
+					
 					dao.adicionar(velorio);
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Adicionado com sucesso"));
 					inicializar();
