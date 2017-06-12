@@ -1,3 +1,4 @@
+--Banco Certo
 use BD_cemiterio7
 
 -- -----------------------------------------------------
@@ -35,6 +36,10 @@ rua VARCHAR(150) NOT NULL,
 quadra CHAR(8) NOT NULL,
 gaveta INT NOT NULL,
 numero INT NOT NULL,
+terreno int not null,
+lado varchar (10),
+comprimento DECIMAL(7,2)NOT NULL,
+largura DECIMAL(7,2)NOT NULL
 PRIMARY KEY (codigo)
  )
  -------------------------------------------------
@@ -75,33 +80,20 @@ CREATE TABLE falecido (
   crm CHAR(15) NULL,
   causaMorte VARCHAR(150) NULL,
   idade int,
+  dataSepultamento DATETIME NOT NULL,
+  horaSepultamento DATETIME NOT NULL
   PRIMARY KEY (cpf),
   FOREIGN KEY (cpfDeclarante) REFERENCES declarante (cpf),
   FOREIGN KEY (codigoJazigo) REFERENCES Jazigo (codigo)
   )
 	
--- -----------------------------------------------------
--- Table BD_cemiterio.falecimento
--- -----------------------------------------------------
 
-CREATE TABLE falecimento (
-cpfFalecido CHAR(15) NOT NULL,
-dataFalecimento DATETIME NOT NULL,
-dataExumacao DATETIME NOT NULL,
-horaFalecimento DATETIME NOT NULL,
-horaExumacao DATETIME NOT NULL,
-localFalecimento VARCHAR(100) NOT NULL,
-cartorio VARCHAR(45) NOT NULL,
-registroObito DATETIME NOT NULL,
-crm CHAR(15) NULL,
-causaMorte VARCHAR(150) NULL,
-FOREIGN KEY (cpfFalecido) REFERENCES Falecido(cpf)
-)
 
 CREATE TABLE dono(
 id int not null identity,
 cpf char(15)NOT NULL,
 nome VARCHAR(100) NOT NULL,
+codigoJazigo int NOT NULL,
 cep CHAR(9) NOT NULL,
 endereco VARCHAR(150) NOT NULL,
 numeroD INT NOT NULL,
@@ -110,8 +102,6 @@ complemento VARCHAR(50) NOT NULL,
 cidade VARCHAR(100) NOT NULL,
 uf CHAR(2) NOT NULL,
 telefone CHAR(15) NOT NULL,
-codigoJazigo int NOT NULL,
-
 FOREIGN KEY (codigoJazigo) REFERENCES Jazigo (codigo),
 PRIMARY KEY (id)
 )
@@ -134,16 +124,34 @@ CREATE TABLE usuario (
   PRIMARY KEY (id)
   )
 
+  CREATE TABLE velorio (
+  id int  NOT NULL identity,
+  cpfFalecido CHAR(15) NOT NULL,
+  cpfDeclarante CHAR(15) NOT NULL,
+  nomeDeclarante VARCHAR(100)NOT NULL,
+  nomeFalecido VARCHAR(100)NOT NULL,
+  dia DATETIME NOT NULL,
+  diaFim DATETIME NOT NULL,
+  horaInicio DATETIME NOT NULL,
+  horaFim DATETIME NOT NULL,
+  sala int  NOT NULL,
+  statu bit NOT NULL,
+  PRIMARY KEY (id),
+  --FOREIGN KEY (cpfFalecido) REFERENCES Falecido(cpf)
+  )
+  INSERT INTO velorio ( cpfFalecido, cpfDeclarante, nomeDeclarante, nomeFalecido, dia, diaFim,horaInicio,horaFim, sala, statu )  VALUES ('222.222.222-22' , '222.222.222-22' ,'Teste','Teste','2016-08-21','2016-08-21','04:00','12:00',50, 1);
 SELECT * FROM falecido
 SELECT * FROM jazigo 
 SELECT * FROM colaborador
 SELECT * FROM declarante
 SELECT * FROM usuario
 SELECT * FROM  dono
+SELECT * FROM  velorio
 
 SELECT cpf,nome,codigo, rua, quadra, gaveta,numero FROM dono INNER JOIN jazigo on codigoJazigo = codigo
  WHERE nome LIKE 'Teste'
 
+ delete falecido where cpf like '555.555.555-55'
 
 
 INSERT INTO jazigo ( rua, quadra, gaveta, numero)  VALUES ('Rua tal tal' , 12345 ,2,2);
@@ -155,7 +163,10 @@ ALTER TABLE `falecimento` CHANGE `crm` `crm` char(15)
 ALTER TABLE falecido ALTER COLUMN tituloEleitor char(20)
 ALTER TABLE falecido ADD idade int
 ALTER TABLE jazigo ADD dono varchar(100)
-
+ALTER TABLE falecido ADD dataSepultamento date
+ALTER TABLE falecido ADD horaSepultamento date
+ALTER TABLE falecido alter column dataSepultamento  DATETIME
+ALTER TABLE falecido alter column horaSepultamento  DATETIME
 update jazigo Set dono = null where dono ='Teste'
  delete dono from jazigo where dono='Teste'
  
@@ -164,6 +175,6 @@ update jazigo Set dono = null where dono ='Teste'
 -- ---- drop database BD_cemiterio3
  drop table falecido
 
-INSERT INTO usuario (id, nivel, nome, nascimento, senha )  VALUES (1, 'adm' , 'teste' ,'1111-11-11' ,123 );
+INSERT INTO usuario (id, nivel, nome, nascimento, senha )  VALUES (1, 'admin' , 'admin' ,'1111-11-11' ,123 );
 
 INSERT INTO usuario (id, nivel, nome, nascimento, senha )  VALUES (2, 'Administrador' , 'teste' ,'1111-11-11' ,123 );
