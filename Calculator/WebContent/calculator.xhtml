@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Calculator</title>
+</h:head>
+<h:body>
+	<h:form id="frmResult" >
+	<p:panel id="basic" header="Calculator" footer="JSF" style="margin-bottom:20px; float: center;"  >
+      
+    
+		<h:panelGrid columns="4" rowClasses="3" id="growl" >
+
+			<p:commandButton value="1 " id="numb1" 			
+				action ="#{calculoMB.numb}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="2 " id="b2" update="growl"
+				actionListener="#{calculoMB.getNumb}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="3 " id="b3" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+				
+				<p:commandButton value=" + " id="s" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="4 " id="b4" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="5 " id="b5" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="6 " id="b6" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+				
+				<p:commandButton value=" - " id="sub" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="7 " id="b7" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="8 " id="b8" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="9" id="b9" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+				
+				<p:commandButton value=" * " id="mult" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+			<p:commandButton value="0" id="b0" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+				
+				<p:commandButton value=" . " id="p" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+				
+				<p:commandButton value=" / " id="div" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+				
+				<p:commandButton value=" = " id="ig" update="growl"
+				actionListener="#{buttonView.buttonAction}"
+				styleClass="ui-priority-primary" />
+
+
+		</h:panelGrid>
+		<p:column>
+                <p:inputText id="input4" value="#{calculoMB.number.result}"  decimalPlaces="6">           
+                </p:inputText>  
+            </p:column>
+                                  
+		</p:panel>
+		
+		<p:panel id="basic2" header="Simple Calculator" footer="JSF"
+			style="margin-bottom:20px; float: center;">
+			<h:panelGrid id="pg" columns="5" rowClasses="2" >
+				<p:outputLabel>Number 1</p:outputLabel>
+				<p:inputText id="number1" value="#{calculoMB.number.number}"
+					size="10" decimalPlaces="6"></p:inputText>
+				<p:outputLabel>Number 2</p:outputLabel>
+				<p:inputText id="number2" value="#{calculoMB.number.number2}"
+					size="10" decimalPlaces="6"></p:inputText>
+				
+
+			</h:panelGrid>
+
+			<h3 style="margin-top: 0">Options</h3>
+			<h:panelGrid columns="6" rowClasses="3" style="margin-bottom:10px" cellpadding="5">
+				<p:outputLabel  value="Math:" />
+				<p:selectOneRadio id="options" value="#{calculoMB.math}">
+					<f:selectItem itemLabel="Addition" itemValue="1" />
+					<f:selectItem itemLabel="Subtraction" itemValue="2" />
+					<f:selectItem itemLabel="Multiplication" itemValue="3" />
+					<f:selectItem itemLabel="Division" itemValue="4" />
+				</p:selectOneRadio>
+				<h:panelGroup>
+					<p:commandButton value=" = " action="#{calculoMB.calcular}"	ajax="false" />
+				</h:panelGroup>
+				<p:outputLabel>Result</p:outputLabel>
+				<p:inputText id="txtResult" value="#{calculoMB.number.result}"></p:inputText>
+			</h:panelGrid>
+		</p:panel>
+		
+		<h:commandButton value="Fuck " 
+				action="#{calculoMB.numb}"/>
+	</h:form>
+</h:body>
+</html>
